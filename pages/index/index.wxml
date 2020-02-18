@@ -1,1 +1,2 @@
 <view>网易云音乐</view>
+<button bind:tap="login">登录</button>
