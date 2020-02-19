@@ -1,0 +1,9 @@
+.nav-header-one {
+    height: 150rpx;
+    background-color: #BD341A;
+}
+
+.header-text {
+    bottom: 30rpx;
+    color: #fff;
+}

@@ -1,0 +1,15 @@
+<view class="model-main fl s-b fl-w m-t-10">
+    <view class="model-item" wx:for="{{modelArr}}" wx:key="index">
+        <view class="model-image w-100 p-r">
+            <image class="img imgs" src="{{item.picUrl||item.blurCoverUrl}}"></image>
+            <!-- 播放次数 -->
+            <view class="playcount fl p-a" wx:if="{{item.playCount}}">
+                <view class="play-image">
+                    <image class="img" src="../../../assets/images/playcount.png"></image>
+                </view>
+                <view class="play-count f-s-12">{{item.playCount}}次</view>
+            </view>
+        </view>
+        <view class="model-text f-s-13 t-over-2">{{item.name}}</view>
+    </view>
+</view>

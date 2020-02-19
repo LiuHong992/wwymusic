@@ -1,0 +1,52 @@
+.searches {
+    width: 500rpx;
+}
+
+.van-search {
+    padding-top: 10rpx !important;
+    padding-bottom: 0 !important;
+}
+
+.headimg {
+    width: 60rpx;
+    height: 60rpx;
+    margin: auto 0;
+}
+
+
+/* 轮播图 */
+
+.swipers {
+    padding: 0 50rpx 20rpx;
+}
+
+swiper {
+    overflow: hidden;
+    border-radius: 20rpx;
+}
+
+swiper-item {
+    border-radius: 20rpx;
+}
+
+.swiper-image {
+    border-radius: 20rpx;
+}
+
+
+/* 导航栏 */
+
+.nav-image {
+    width: 70rpx;
+    height: 70rpx;
+    margin: 0 auto 20rpx;
+}
+
+
+/* 推荐歌单 */
+
+.mores {
+    line-height: 50rpx;
+    border-radius: 30rpx;
+    background-color: #E1E1E0;
+}

@@ -1,2 +1,81 @@
-<view>网易云音乐</view>
-<button bind:tap="login">登录</button>
+<!-- 自定义导航栏 -->
+<navBarOne headtext="网易云音乐"></navBarOne>
+<!-- 最外层的内容层 -->
+<view class="main-content">
+    <!-- 头部搜索框 -->
+    <view class="head-search fl p-15 s-b">
+        <view class="headtxt f-s-20 f-w l-h-40">音乐馆</view>
+        <!-- 搜索框 -->
+        <view class="searches">
+            <vant-search placeholder="请输入搜索关键词"></vant-search>
+        </view>
+        <view class="headimg">
+            <image class="img" src="../../assets/images/music.png"></image>
+        </view>
+    </view>
+    <!-- 轮播图 -->
+    <view class="swipers">
+        <swiper indicator-dots="{{true}}" circular="{{true}}" indicator-active-color="#FA421A" autoplay="{{true}}" interval="{{3000}}" duration="{{500}}">
+            <swiper-item wx:for="{{banners}}" wx:key="index">
+                <image class="swiper-image img" src="{{item.imageUrl}}" />
+            </swiper-item>
+        </swiper>
+    </view>
+    <!-- 导航栏 -->
+    <view class="nav-bar fl p-15 s-b">
+        <view class="nav-item t-center" wx:for="{{navBar}}" wx:key="index">
+            <view class="nav-image">
+                <image class="img" src="{{item.paths}}"></image>
+            </view>
+            <view class="nav-text">{{item.title}}</view>
+        </view>
+    </view>
+    <!-- 推荐歌单 -->
+    <view class="rec-content p-15">
+        <view class="rec-header f-w f-s-18 fl s-b">
+            <view class="header-title l-h-30">推荐歌单</view>
+            <view class="mores f-w p-5 f-s-13">歌单广场</view>
+        </view>
+        <commonModel wx:if="{{recArr.length>0}}" modelArr="{{recArr}}"></commonModel>
+    </view>
+    <!-- 新碟、新歌 -->
+    <view class="news p-15">
+        <view class="news-header fl s-b">
+            <view class="header-title l-h-30 fl">
+                <view class="new-dish {{newNum===0?'f-w f-s-18':''}}" bind:tap="changeNum">新碟</view>
+                <view class="new-song m-l-10 {{newNum===1?'f-w f-s-18':''}}" bind:tap="changeNums">
+                    新歌
+                </view>
+            </view>
+            <view class="mores f-w p-5 f-s-13" wx:if="{{newNum===0}}">更多新碟</view>
+            <view class="mores f-w p-5 f-s-13" wx:if="{{newNum===1}}">更多新歌</view>
+        </view>
+        <commonModel wx:if="{{newdishArr.length>0 && newNum===0}}" modelArr="{{newdishArr}}"></commonModel>
+        <commonModel wx:if="{{newsongArr.length>0 && newNum===1}}" modelArr="{{newsongArr}}"></commonModel>
+    </view>
+    <!-- 音乐新势力 -->
+    <view class="power-content p-15">
+        <view class="power-header fl s-b">
+            <view class="header-title f-w f-s-18 l-h-30">音乐新势力</view>
+            <view class="mores f-w p-5 f-s-13">新音乐</view>
+        </view>
+        <commonModel wx:if="{{newsongArr.length>0}}" modelArr="{{newsongArr}}"></commonModel>
+    </view>
+    <!-- 推荐电台 -->
+    <view class="radio-content p-15">
+        <view class="radio-header fl s-b">
+            <view class="header-title f-w f-s-18 l-h-30">推荐电台</view>
+            <view class="mores f-w p-5 f-s-13">电台广场</view>
+        </view>
+        <commonModel wx:if="{{radioArr.length>0}}" modelArr="{{radioArr}}"></commonModel>
+    </view>
+    <!-- 推荐节目 -->
+    <view class="program-content p-15">
+        <view class="program-header fl s-b">
+            <view class="header-title f-w f-s-18 l-h-30">推荐节目</view>
+            <view class="mores f-w p-5 f-s-13">更多节目</view>
+        </view>
+        <commonModel wx:if="{{programArr.length>0}}" modelArr="{{programArr}}"></commonModel>
+    </view>
+</view>
+<!-- <button bind:tap="login">登录</button> -->

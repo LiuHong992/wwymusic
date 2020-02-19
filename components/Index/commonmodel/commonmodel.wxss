@@ -1,0 +1,26 @@
+.model-item {
+    width: 31%;
+}
+
+.model-image {
+    height: 200rpx;
+    border-radius: 20rpx;
+}
+
+.imgs {
+    border-radius: 20rpx;
+}
+
+
+/* 播放次数 */
+
+.playcount {
+    top: 0;
+    right: 0;
+    color: #fff;
+}
+
+.play-image {
+    width: 40rpx;
+    height: 40rpx;
+}

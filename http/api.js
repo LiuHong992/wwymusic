@@ -83,7 +83,17 @@ export default ({
             initial: ["热", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
         },
     ],
-
+    "searchType": [
+        { id: 1018, name: "综合" },
+        { id: 1, name: "单曲" },
+        { id: 1014, name: "视频" },
+        { id: 100, name: "歌手" },
+        { id: 10, name: "专辑" },
+        { id: 1000, name: "歌单" },
+        { id: 1009, name: "电台" },
+        { id: 1002, name: "用户" },
+        { id: 1004, name: "MV" },
+    ],
     // 登录页
 
     // 登录页有两个接口，一个手机号，一个邮箱登录
@@ -212,9 +222,17 @@ export default ({
     keywordSearch(keyword) {
         return fly.get(`/search?keywords=${keyword}`)
     },
+    // 搜索联想词
+    searchSuggest(keywords) {
+        return fly.get(`/search/suggest?keywords=${keywords}&type=mobile`)
+    },
     //搜索多重匹配
     multimatch(keyword) {
         return fly.get(`/search/multimatch?keywords=${keyword}`)
+    },
+    // 
+    keywordSearch(keyword, type = 1018) {
+        return fly.get(`/search?keywords=${keyword}&type=${type}`)
     },
     //默认搜索关键词
     defaultKeyword() {
@@ -225,6 +243,9 @@ export default ({
         return fly.get(`/search/hot/detail`)
     },
     //歌手分类列表
+    // limit为上拉加载时所需要数据
+    // cat : 即 category Code,歌手类型,默认 1001,返回华语男歌手数据
+    // initial: 按首字母索引查找参数
     artist(limit, Code, initial) {
         return fly.get(`/artist/list?limit=${limit}&cat=${Code}&initial=${initial}`)
     },
