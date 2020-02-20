@@ -172,6 +172,7 @@ export default ({
     // 从首页数据点击到相关详情页的相关接口
 
     // 从推荐歌单点击到详情页的接口
+    // 自定义导航栏(歌单)
     // id : 推荐歌单 id
     //获取到数据时 res.playlist.tracks 为歌单里面的歌曲
     //其他可能用到 res.playlist.description（简介描述）  res.playlist.name （大标题）
@@ -182,6 +183,7 @@ export default ({
         return fly.get(`/playlist/detail?id=${id}`)
     },
     // 从新碟点击到详情页的接口
+    // 自定义导航栏(专辑)
     // id : 专辑歌单 id
     // res.songs这个数组为下方歌曲列表,数组长度就位总共多少歌曲
     // res.album对象为顶部相关数据的渲染对象
@@ -189,6 +191,7 @@ export default ({
         return fly.get(`/album?id=${id}`)
     },
     // 从推荐电台和推荐节目点击到详情页的接口
+    // 自定义导航栏(电台/节目)
     // PS:推荐节目中的id为对象最外层id，不要用mainSong里面提供的id(404警告)
     detailByDjProgram(id) {
         return fly.get(`/dj/program/detail?id=${id}`)
@@ -230,7 +233,7 @@ export default ({
     multimatch(keyword) {
         return fly.get(`/search/multimatch?keywords=${keyword}`)
     },
-    // 
+    // 综合搜索
     keywordSearch(keyword, type = 1018) {
         return fly.get(`/search?keywords=${keyword}&type=${type}`)
     },

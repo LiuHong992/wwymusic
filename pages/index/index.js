@@ -121,9 +121,8 @@ Page({
     getRadio() {
         api.getRecRadio().then(res => {
             if (res.code === 200) {
-                this.grounps(res.result, this.data.radioArr)
                 this.setData({
-                    radioArr: this.data.radioArr,
+                    radioArr: res.result,
                 })
             }
         }).catch(err => {
@@ -139,7 +138,6 @@ Page({
                     programArr: this.data.programArr,
                 })
             }
-            console.log(this.data.programArr);
         }).catch(err => {
             console.log(err);
         });
@@ -155,10 +153,27 @@ Page({
                 }
             })
             if (flag) {
-                reciveArr.push(dataArr[num])
+                if (!dataArr[num].playCount) {
+                    reciveArr.push(dataArr[num])
+                } else {
+                    this.playCounts(dataArr[num])
+                    reciveArr.push(dataArr[num])
+                }
             } else {
                 i--
             }
+        }
+    },
+    // 播放次数的计算方法
+    playCounts(items) {
+        if (items.playCount >= 100000000) {
+            let one = (items.playCount / 100000000).toFixed(2)
+            return items.playCount = `${one}亿次`
+        } else if (items.playCount < 100000000 && items.playCount >= 10000) {
+            let one = parseInt(items.playCount / 10000)
+            return items.playCount = `${one}万次`
+        } else {
+            return items.playCount = `${items.playCount}次`
         }
     },
     // login() {

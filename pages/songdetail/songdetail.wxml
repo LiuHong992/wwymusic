@@ -1,0 +1,11 @@
+<!-- 最外层内容层 -->
+<scroll-view class="detail-content w-100 p-r" scroll-y="{{true}}">
+    <!-- 虚化背景图 -->
+    <view class="w-100 bgs p-a" wx:if="{{bgImg!==null}}" style="background:url({{bgImg}})"></view>
+    <view class="w-100 bgs p-a" wx:else style="background:#f46f46">
+        
+    </view>
+      
+    <!-- 自定义导航栏2 -->
+    <navBarTwo navName="{{navName}}"></navBarTwo>
+</scroll-view>

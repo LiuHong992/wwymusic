@@ -1,12 +1,12 @@
-// components/Index/commonmodel/commonmodel.js
+// components/navBarTwo/navBarTwo.js
 Component({
     /**
      * 组件的属性列表
      */
     properties: {
-        modelArr: {
-            type: Array,
-            value: () => []
+        navName: {
+            type: String,
+            value: ''
         }
     },
 
@@ -22,6 +22,11 @@ Component({
      * 组件的方法列表
      */
     methods: {
-
+        // 返回按钮
+        backTo() {
+            wx.navigateBack({
+                delta: 1
+            });
+        }
     }
 })

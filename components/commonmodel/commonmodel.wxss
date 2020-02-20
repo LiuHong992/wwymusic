@@ -15,12 +15,13 @@
 /* 播放次数 */
 
 .playcount {
-    top: 0;
-    right: 0;
+    top: 2rpx;
+    right: 2rpx;
     color: #fff;
 }
 
 .play-image {
     width: 40rpx;
     height: 40rpx;
+    margin-right: 4rpx;
 }

@@ -1,6 +1,4 @@
 {
-    "usingComponents": {
-        "navBarOne": "../../components/navBarOne/navBarOne"
-    },
-    "navigationStyle": "custom"
+    "usingComponents": {},
+    "navigationBarTitleText": "歌手"
 }

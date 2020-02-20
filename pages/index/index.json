@@ -1,8 +1,6 @@
 {
     "usingComponents": {
-        "navBarOne": "../../components/navBarOne/navBarOne",
         "vant-search": "../../lib/vant/search/index",
-        "commonModel": "../../components/Index/commonmodel/commonmodel"
-    },
-    "navigationStyle": "custom"
+        "commonModel": "../../components/commonmodel/commonmodel"
+    }
 }

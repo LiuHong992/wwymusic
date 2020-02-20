@@ -1,0 +1,12 @@
+<view class="nav-header-two w-100 p-r fl sticky z-max">
+    <view class="hole-left fl p-a m-l-10">
+        <view class="back-image" bind:tap="backTo">
+            <image class="img" src="../../assets/images/back.png"></image>
+        </view>
+        <view class="header-text m-l-10 i-block h-20 l-h-20 f-s-18">{{navName}}</view>
+    </view>
+    <!-- 右边更多按钮 -->
+    <view class="more-btn p-a">
+        <image class="img" src="../../assets/images/more.png"></image>
+    </view>
+</view>

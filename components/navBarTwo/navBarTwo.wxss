@@ -1,0 +1,25 @@
+.nav-header-two {
+    height: 150rpx;
+}
+
+.hole-left {
+    left: 0;
+    bottom: 10rpx;
+}
+
+.back-image {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.header-text {
+    margin-top: 8rpx;
+    color: rgb(29, 28, 28);
+}
+
+.more-btn {
+    right: 186rpx;
+    bottom: 24rpx;
+    width: 50rpx;
+    height: 50rpx;
+}

@@ -1,0 +1,12 @@
+.detail-content {
+    height: 100vh;
+    color: #b8b3b3;
+}
+
+.bgs {
+    z-index: -1;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: blur(40rpx);
+}

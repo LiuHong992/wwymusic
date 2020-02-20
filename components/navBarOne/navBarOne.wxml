@@ -1,3 +1,0 @@
-<view class="nav-header-one w-100 p-r sticky z-max">
-    <view class="header-text h-20 l-h-20 t-center w-100 p-a f-s-15">{{headtext}}</view>
-</view>

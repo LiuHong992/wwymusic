@@ -1,4 +1,4 @@
-// components/Index/commonmodel.js
+// pages/djprodetail/djprodetail.js
 Page({
 
   /**

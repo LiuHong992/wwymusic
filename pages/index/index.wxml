@@ -1,5 +1,3 @@
-<!-- 自定义导航栏 -->
-<navBarOne headtext="网易云音乐"></navBarOne>
 <!-- 最外层的内容层 -->
 <view class="main-content">
     <!-- 头部搜索框 -->
@@ -36,7 +34,7 @@
             <view class="header-title l-h-30">推荐歌单</view>
             <view class="mores f-w p-5 f-s-13">歌单广场</view>
         </view>
-        <commonModel wx:if="{{recArr.length>0}}" modelArr="{{recArr}}"></commonModel>
+        <commonModel detailname="歌单" wx:if="{{recArr.length>0}}" modelArr="{{recArr}}"></commonModel>
     </view>
     <!-- 新碟、新歌 -->
     <view class="news p-15">
@@ -50,7 +48,7 @@
             <view class="mores f-w p-5 f-s-13" wx:if="{{newNum===0}}">更多新碟</view>
             <view class="mores f-w p-5 f-s-13" wx:if="{{newNum===1}}">更多新歌</view>
         </view>
-        <commonModel wx:if="{{newdishArr.length>0 && newNum===0}}" modelArr="{{newdishArr}}"></commonModel>
+        <commonModel detailname="专辑" wx:if="{{newdishArr.length>0 && newNum===0}}" modelArr="{{newdishArr}}"></commonModel>
         <commonModel wx:if="{{newsongArr.length>0 && newNum===1}}" modelArr="{{newsongArr}}"></commonModel>
     </view>
     <!-- 音乐新势力 -->
@@ -67,7 +65,7 @@
             <view class="header-title f-w f-s-18 l-h-30">推荐电台</view>
             <view class="mores f-w p-5 f-s-13">电台广场</view>
         </view>
-        <commonModel wx:if="{{radioArr.length>0}}" modelArr="{{radioArr}}"></commonModel>
+        <commonModel detailname="电台" wx:if="{{radioArr.length>0}}" modelArr="{{radioArr}}"></commonModel>
     </view>
     <!-- 推荐节目 -->
     <view class="program-content p-15">
@@ -75,7 +73,7 @@
             <view class="header-title f-w f-s-18 l-h-30">推荐节目</view>
             <view class="mores f-w p-5 f-s-13">更多节目</view>
         </view>
-        <commonModel wx:if="{{programArr.length>0}}" modelArr="{{programArr}}"></commonModel>
+        <commonModel detailname="节目" wx:if="{{programArr.length>0}}" modelArr="{{programArr}}"></commonModel>
     </view>
 </view>
 <!-- <button bind:tap="login">登录</button> -->
