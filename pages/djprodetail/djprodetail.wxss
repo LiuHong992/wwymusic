@@ -1,1 +1,88 @@
-/* pages/djprodetail/djprodetail.wxss */
+.hole-content {
+    height: 100vh;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/* 空白区域 */
+
+.empty-area {
+    height: 28.26vh;
+}
+
+
+/* 主播名订阅数 */
+
+.rname-follow {
+    width: 90vw;
+}
+
+
+/* 主播名 */
+
+.name-info {}
+
+
+/* 订阅数 */
+
+.subcount {
+    color: rgb(177, 175, 175);
+}
+
+
+/* 订阅 */
+
+.follows {
+    border-radius: 44rpx;
+    background-color: #B3281F;
+}
+
+.foll-img {
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 10rpx;
+}
+
+
+/* 下方内容层 */
+
+.bottom-content {
+    /* padding: 20rpx 20rpx 20rpx 40rpx; */
+    border-top-left-radius: 40rpx;
+    border-top-right-radius: 40rpx;
+    background-color: #fff;
+}
+
+
+/* 标签栏头部 */
+
+.tags-header {
+    border-bottom: 2rpx solid #ccc;
+}
+
+
+/* 节目数 */
+
+.pronum {
+    color: #989898 !important;
+}
+
+
+/* 下划线 */
+
+.lines {
+    left: 37%;
+    bottom: -2rpx;
+    width: 100rpx;
+    height: 6rpx;
+    background-color: #B3281F;
+}
+
+
+/* 滚动层公共样式 */
+
+.common-scroll {
+    height: 48.33vh;
+}

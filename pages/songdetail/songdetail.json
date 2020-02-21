@@ -1,6 +1,7 @@
 {
     "usingComponents": {
-        "navBarTwo": "../../components/navBarTwo/navBarTwo"
+        "navBarTwo": "../../components/navBarTwo/navBarTwo",
+        "songDetailModel": "../../components/songDetailModel/songDetailModel"
     },
     "navigationStyle": "custom"
 }

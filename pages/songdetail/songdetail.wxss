@@ -10,3 +10,152 @@
     background-repeat: no-repeat;
     filter: blur(40rpx);
 }
+
+.list-content {
+    height: 35.74vh;
+}
+
+
+/* 封面图 */
+
+.left-cover {
+    min-width: 300rpx;
+    height: 300rpx;
+    border-radius: 30rpx;
+}
+
+.imges {
+    border-radius: 30rpx;
+}
+
+
+/* 歌单名 */
+
+.listname {
+    color: #fff;
+}
+
+
+/* 歌单创造者头像 */
+
+.headimg {
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 50%;
+}
+
+
+/* 用户名 */
+
+.names {
+    max-width: 200rpx;
+    margin-left: 10rpx;
+    color: #fff;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 90rpx;
+}
+
+
+/* 更多按钮 */
+
+.morebtn {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.user-btn {
+    margin-top: 28rpx;
+    margin-left: 8rpx;
+}
+
+.listbtn {
+    margin-top: 8rpx;
+}
+
+
+/* 简介内容 */
+
+.main-info {
+    max-width: 240rpx;
+    color: rgb(214, 212, 212);
+}
+
+
+/* 导航栏 */
+
+
+/* 导航栏图片 */
+
+.item-image {
+    width: 70rpx;
+    height: 70rpx;
+    margin: 0 auto 20rpx;
+}
+
+
+/* 导航栏文字 */
+
+.item-info {
+    color: #fff;
+}
+
+
+/* 下部分歌曲具体内容 */
+
+.songs-content {
+    padding: 20rpx 20rpx 20rpx 40rpx;
+    border-top-left-radius: 40rpx;
+    border-top-right-radius: 40rpx;
+    background-color: #fff;
+}
+
+.songs-maincont {
+    height: 45.31vh;
+}
+
+
+/* 左边的播放图片 */
+
+.play-image {
+    width: 56rpx;
+    height: 56rpx;
+}
+
+
+/* 歌曲总数 */
+
+.songcount {
+    line-height: 56rpx;
+    color: black;
+}
+
+.cl {
+    color: #585858;
+}
+
+
+/* 收藏 */
+
+.collect-cont {
+    top: 0;
+    right: 10rpx;
+    padding: 12rpx 10rpx;
+    border-radius: 32rpx;
+    background-color: #F9421E;
+}
+
+
+/* 加号 */
+
+.addimg {
+    width: 32rpx;
+    height: 32rpx;
+    margin-top: 2rpx;
+}
+
+.collectnum {
+    margin-left: 4rpx;
+    color: #fff;
+}

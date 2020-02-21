@@ -1,0 +1,22 @@
+<view class="item-model fl p-r">
+    <!-- 歌曲下标 -->
+    <view class="song-index">{{songIndex}}</view>
+    <!-- 歌曲名和歌手名 -->
+    <view class="song-singer m-l-20">
+        <!-- 歌曲名 -->
+        <view class="song-info f-s-15 t-over f-w">{{songMain.name}}</view>
+        <!-- 歌手名 -->
+        <view class="singer-info t-over m-t-10">{{songMain.ar[0].name}}</view>
+        <!-- 播放和更多按钮 -->
+        <view class="p-a play-more fl">
+            <!-- 播放按钮 -->
+            <view class="play-btn">
+                <image class="img" src="../../assets/images/nowplay.png"></image>
+            </view>
+            <!-- 更多按钮 -->
+            <view class="more-btn m-l-10">
+                <image class="img" src="../../assets/images/more.png"></image>
+            </view>
+        </view>
+    </view>
+</view>

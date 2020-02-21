@@ -1,3 +1,6 @@
 {
-    "usingComponents": {}
+    "usingComponents": {
+        "mainDetail": "../../components/djproDetail/mainDetail/mainDetail",
+        "proDetail": "../../components/djproDetail/proDetail/proDetail"
+    }
 }

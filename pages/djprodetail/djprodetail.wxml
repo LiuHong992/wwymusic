@@ -1,2 +1,56 @@
-
-
+<!-- 最外层内容层 -->
+<view class="hole-content w-100" style="background-image:url({{detailObj.coverUrl}})">
+    <!-- 空白区域 -->
+    <view class="empty-area w-100"></view>
+    <!-- 电台名字/订阅按钮 -->
+    <view class="rname-follow wh-text fl s-b p-20">
+        <!-- 主播名和订阅数 -->
+        <view class="name-sub">
+            <!-- 主播名 -->
+            <view class="name-info f-w f-s-18">{{detailObj.radio.name}}</view>
+            <!-- 订阅数 -->
+            <view class="subcount" wx:if="{{detailObj.likedCount>0}}">
+                {{detailObj.likedCount}}已订阅
+            </view>
+            <view class="subcount" wx:else>暂无订阅</view>
+        </view>
+        <!-- 订阅按钮 -->
+        <view class="follows p-10 t-center fl" wx:if="{{!detailObj.subscribed}}">
+            <view class="foll-img">
+                <image class="img" src="../../assets/images/sub.png"></image>
+            </view>
+            <view class="foll-text l-h-20">关注</view>
+        </view>
+    </view>
+    <!-- 下方内容层 -->
+    <view class="bottom-content">
+        <!-- 标签栏头部 -->
+        <view class="tags-header h-40 l-h-40 fl w-100 t-center">
+            <view class="details-left f-1 p-r">
+                <view class="det-text {{djNum===0?'red-text':''}}" bind:tap="changeNum">详情</view>
+                <!-- 下方横线 -->
+                <view class="lines p-a" wx:if="{{djNum===0}}"></view>
+            </view>
+            <view class="programs-right f-1 p-r">
+                <view class="pro-text {{djNum===1?'red-text':''}}" bind:tap="changeNums">
+                    节目
+                    <!-- 节目数 -->
+                    <text class="pronum">{{detailObj.trackCount}}</text>
+                </view>
+                <!-- 下方横线 -->
+                <view class="lines p-a" wx:if="{{djNum===1}}"></view>
+            </view>
+        </view>
+        <!-- 标签栏内容层 -->
+        <view class="tags-content p-10">
+            <!-- 详情内容层 -->
+            <scroll-view scroll-y="{{true}}" class="common-scroll main-detail" wx:if="{{djNum===0}}">
+                <mainDetail detailObj="{{detailObj}}"></mainDetail>
+            </scroll-view>
+            <!-- 节目内容层 -->
+            <scroll-view scroll-y="{{true}}" class="common-scroll pro-detail" wx:if="{{djNum===1}}">
+                <proDetail songsArr="{{songsArr}}" songsCount="{{detailObj.trackCount}}"></proDetail>
+            </scroll-view>
+        </view>
+    </view>
+</view>

@@ -14,7 +14,25 @@ Page({
         // 接收背景图的参数
         bgImg: '',
         // 接收专辑歌曲的数组
-        albumsArr: []
+        albumsArr: [],
+        // 导航栏数据
+        navArr: [{
+                pathes: '../../assets/images/comment.png',
+                titles: '评论'
+            },
+            {
+                pathes: '../../assets/images/share.png',
+                titles: '分享'
+            },
+            {
+                pathes: '../../assets/images/download.png',
+                titles: '下载'
+            },
+            {
+                pathes: '../../assets/images/check.png',
+                titles: '多选'
+            },
+        ]
     },
     // 对传过来的id进行相应的请求
     getMainData() {
@@ -33,10 +51,13 @@ Page({
             if (res.code === 200) {
                 wx.hideLoading();
                 this.data.briefObj = res.playlist
+                this.collCounts(this.data.briefObj)
                 this.data.bgImg = res.playlist.backgroundCoverUrl
+                this.data.albumsArr = res.playlist.tracks
                 this.setData({
                     briefObj: this.data.briefObj,
-                    bgImg: this.data.bgImg
+                    bgImg: this.data.bgImg,
+                    albumsArr: this.data.albumsArr
                 })
                 console.log(this.data.briefObj);
             } else {
@@ -53,6 +74,7 @@ Page({
             if (res.code === 200) {
                 wx.hideLoading();
                 this.data.briefObj = res.album
+                this.collCounts(this.data.briefObj)
                 this.data.albumsArr = res.songs
                 this.data.bgImg = res.album.blurPicUrl
                 this.setData({
@@ -70,19 +92,17 @@ Page({
             console.log(err);
         });
     },
-    // 传过来的关键词是电台或者节目的方法
-    radioPro() {
-        api.detailByDjProgram(this.data.ids).then(res => {
-            if (res.code === 200) {
-                wx.hideLoading();
-                console.log(res);
-            } else {
-                wx.hideLoading();
-            }
-        }).catch(err => {
-            wx.hideLoading();
-            console.log(err);
-        });
+    // 收藏次数的计算方法
+    collCounts(items) {
+        if (items.subscribedCount >= 100000000) {
+            let one = (items.subscribedCount / 100000000).toFixed(2)
+            return items.subscribedCount = `${one}亿`
+        } else if (items.subscribedCount < 100000000 && items.subscribedCount >= 10000) {
+            let one = (items.subscribedCount / 10000).toFixed(1)
+            return items.subscribedCount = `${one}万`
+        } else {
+            return items.subscribedCount = `${items.subscribedCount}`
+        }
     },
     /**
      * 生命周期函数--监听页面加载
@@ -95,8 +115,6 @@ Page({
         if (this.data.navName !== '') {
             this.getMainData();
         }
-        // console.log(this.data.ids);
-        // console.log(this.data.navName);
     },
 
     /**

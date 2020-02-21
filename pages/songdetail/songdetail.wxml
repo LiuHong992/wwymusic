@@ -2,10 +2,114 @@
 <scroll-view class="detail-content w-100 p-r" scroll-y="{{true}}">
     <!-- 虚化背景图 -->
     <view class="w-100 bgs p-a" wx:if="{{bgImg!==null}}" style="background:url({{bgImg}})"></view>
-    <view class="w-100 bgs p-a" wx:else style="background:#f46f46">
-        
-    </view>
-      
+    <view class="w-100 bgs p-a" wx:else style="background:#f46f46"></view>
     <!-- 自定义导航栏2 -->
     <navBarTwo navName="{{navName}}"></navBarTwo>
+    <!-- 歌单相关信息以及歌单创造者相关信息 -->
+    <view class="list-content p-10 m-t-10">
+        <!-- 上部分 -->
+        <view class="up-content fl">
+            <!-- 左上部分歌单封面图 -->
+            <view class="left-cover">
+                <image class="img imges" src="{{briefObj.coverImgUrl || briefObj.blurPicUrl}}"></image>
+            </view>
+            <!-- 右上部分相关信息 -->
+            <view class="right-info m-l-15">
+                <!-- 歌单名 -->
+                <view class="listname t-over-2 f-w f-s-22 fl-w">{{briefObj.name}}</view>
+                <!-- 歌单创造者 -->
+                <view class="listcreator fl m-t-10" wx:if="{{briefObj.creator}}">
+                    <!-- 头像 -->
+                    <view class="headimg">
+                        <image class="i-circle" src="{{briefObj.creator.avatarUrl}}"></image>
+                    </view>
+                    <!-- 用户名 -->
+                    <view class="names f-s-15">{{briefObj.creator.nickname}}</view>
+                    <!-- 更多按钮 -->
+                    <view class="morebtn user-btn">
+                        <image class="img" src="../../assets/images/right.png"></image>
+                    </view>
+                </view>
+                <view class="listcreator fl m-t-10" wx:else>
+                    <!-- 头像 -->
+                    <view class="headimg">
+                        <image class="i-circle" src="{{briefObj.artist.picUrl}}"></image>
+                    </view>
+                    <!-- 用户名 -->
+                    <view class="names f-s-15">{{briefObj.artist.name}}</view>
+                    <!-- 更多按钮 -->
+                    <view class="morebtn user-btn">
+                        <image class="img" src="../../assets/images/right.png"></image>
+                    </view>
+                </view>
+                <!-- 歌单简介 -->
+                <view class="listinfo fl s-b m-t-10">
+                    <!-- 简介内容 -->
+                    <view class="main-info t-over-2 f-s-12">{{briefObj.description}}</view>
+                    <!-- 更多按钮 -->
+                    <view class="morebtn listbtn">
+                        <image class="img" src="../../assets/images/right.png"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 下部分内容 -->
+        <view class="bottom-content fl s-a m-t-20">
+            <view class="nav-model t-center" wx:for="{{navArr}}" wx:key="index">
+                <!-- 导航栏图片 -->
+                <view class="item-image">
+                    <image class="img" src="{{item.pathes}}"></image>
+                </view>
+                <view class="item-info" wx:if="{{briefObj.commentCount && index===0}}">
+                    {{briefObj.commentCount}}
+                </view>
+                <view class="item-info" wx:elif="{{briefObj.info.commentCount && index===0}}">
+                    {{briefObj.info.commentCount}}
+                </view>
+                <view class="item-info" wx:elif="{{briefObj.shareCount && index===1}}">
+                    {{briefObj.shareCount}}
+                </view>
+                <view class="item-info" wx:elif="{{briefObj.info.shareCount && index===1}}">
+                    {{briefObj.info.shareCount}}
+                </view>
+                <view class="item-info" wx:else>{{item.titles}}</view>
+            </view>
+        </view>
+    </view>
+    <!-- 歌单内具体的歌曲内容 -->
+    <view class="songs-content">
+        <!-- 内容头 -->
+        <view class="songs-header p-r fl m-b-10">
+            <!-- 左部分 -->
+            <view class="left-cont fl">
+                <view class="play-image">
+                    <image class="img" src="../../assets/images/detail-play.png"></image>
+                </view>
+                <view class="songcount m-l-10">
+                    播放全部
+                    <text class="cl">(共{{albumsArr.length}}首)</text>
+                </view>
+            </view>
+            <!-- 右边收藏数 -->
+            <view class="collect-cont p-a fl">
+                <view class="addimg">
+                    <image class="img" src="../../assets/images/add.png"></image>
+                </view>
+                <!-- 收藏数 -->
+                <view wx:if="{{briefObj.subscribedCount>0}}" class="collectnum f-s-13">
+                    收藏({{briefObj.subscribedCount}})
+                </view>
+                <view class="collectnum f-s-13" wx:else>暂无收藏</view>
+            </view>
+        </view>
+        <!-- 下方具体歌曲内容 -->
+        <scroll-view scroll-y="{{true}}" class="songs-maincont">
+            <!-- <view class="songs-maincont"> -->
+            <!-- 歌曲模板 -->
+            <view class="song-item" wx:for="{{albumsArr}}" wx:key="index">
+                <songDetailModel songMain="{{item}}" songIndex="{{index+1}}"></songDetailModel>
+            </view>
+            <!-- </view> -->
+        </scroll-view>
+    </view>
 </scroll-view>

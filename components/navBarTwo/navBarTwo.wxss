@@ -1,5 +1,5 @@
 .nav-header-two {
-    height: 150rpx;
+    height: 10.51vh;
 }
 
 .hole-left {
@@ -8,12 +8,12 @@
 }
 
 .back-image {
-    width: 60rpx;
-    height: 60rpx;
+    width: 50rpx;
+    height: 50rpx;
 }
 
 .header-text {
-    margin-top: 8rpx;
+    margin-top: 4rpx;
     color: rgb(29, 28, 28);
 }
 

@@ -1,0 +1,35 @@
+.item-model {
+    padding: 30rpx 10rpx;
+}
+
+
+/* 音乐下标 */
+
+.song-index {
+    line-height: 100rpx;
+}
+
+.song-singer {
+    max-width: 460rpx;
+}
+
+.song-info {
+    color: black;
+}
+
+
+/* 按钮 */
+
+.play-more {
+    top: 50rpx;
+    right: 0;
+}
+
+
+/* 播放按钮 */
+
+.play-btn,
+.more-btn {
+    width: 48rpx;
+    height: 48rpx;
+}
