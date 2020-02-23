@@ -50,3 +50,63 @@ swiper-item {
     border-radius: 30rpx;
     background-color: #E1E1E0;
 }
+
+
+/* 搜索页 */
+
+.backs,
+.singer-image {
+    width: 50rpx;
+    height: 50rpx;
+    margin-top: 16rpx;
+}
+
+.search-header {
+    background-color: #fff;
+}
+
+
+/* 搜索框 */
+
+.search-cont {
+    min-width: 580rpx;
+}
+
+
+/* 搜索联想框 */
+
+.association {
+    top: 110rpx;
+    width: 620rpx;
+    max-height: 660rpx;
+    background-color: #fff;
+    box-shadow: 0 0 16rpx rgb(170, 168, 168);
+    border-radius: 10rpx;
+}
+
+
+/* 联想框公共样式 */
+
+.commons {
+    padding: 20rpx 10rpx;
+    border-bottom: 2rpx solid #ccc;
+}
+
+.search-msg {
+    color: skyblue;
+}
+
+
+/* 搜索小图标 */
+
+.search-image {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+
+/* 热搜榜内容 */
+
+.empty-value-content {
+    margin-top: 50rpx;
+}

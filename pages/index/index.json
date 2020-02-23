@@ -1,6 +1,7 @@
 {
     "usingComponents": {
         "vant-search": "../../lib/vant/search/index",
-        "commonModel": "../../components/commonmodel/commonmodel"
+        "commonModel": "../../components/commonmodel/commonmodel",
+        "hotSearch": "../../components/search/hotSearch/hotSearch"
     }
 }

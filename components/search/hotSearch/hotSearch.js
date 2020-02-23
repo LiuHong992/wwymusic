@@ -1,14 +1,10 @@
-// components/djproDetail/mainDetail/mainDetail.js
+// components/search/hotSearch/hotSearch.js
 Component({
     /**
      * 组件的属性列表
      */
     properties: {
-        detailObj: {
-            type: Object,
-            value: () => {}
-        },
-        hotComment: {
+        hotArr: {
             type: Array,
             value: () => []
         }

@@ -22,7 +22,9 @@
 
 /* 主播名 */
 
-.name-info {}
+.name-info {
+    max-width: 400rpx;
+}
 
 
 /* 订阅数 */
@@ -49,7 +51,7 @@
 /* 下方内容层 */
 
 .bottom-content {
-    /* padding: 20rpx 20rpx 20rpx 40rpx; */
+    height: 60.7vh;
     border-top-left-radius: 40rpx;
     border-top-right-radius: 40rpx;
     background-color: #fff;

@@ -7,7 +7,7 @@
         <!-- 主播名和订阅数 -->
         <view class="name-sub">
             <!-- 主播名 -->
-            <view class="name-info f-w f-s-18">{{detailObj.radio.name}}</view>
+            <view class="name-info t-over f-w f-s-18">{{detailObj.dj.nickname}}</view>
             <!-- 订阅数 -->
             <view class="subcount" wx:if="{{detailObj.likedCount>0}}">
                 {{detailObj.likedCount}}已订阅
@@ -26,30 +26,32 @@
     <view class="bottom-content">
         <!-- 标签栏头部 -->
         <view class="tags-header h-40 l-h-40 fl w-100 t-center">
+            <!-- 详情 -->
             <view class="details-left f-1 p-r">
                 <view class="det-text {{djNum===0?'red-text':''}}" bind:tap="changeNum">详情</view>
                 <!-- 下方横线 -->
                 <view class="lines p-a" wx:if="{{djNum===0}}"></view>
             </view>
+            <!-- 节目 -->
             <view class="programs-right f-1 p-r">
                 <view class="pro-text {{djNum===1?'red-text':''}}" bind:tap="changeNums">
                     节目
                     <!-- 节目数 -->
-                    <text class="pronum">{{detailObj.trackCount}}</text>
+                    <text class="pronum">{{songsArr.length}}</text>
                 </view>
                 <!-- 下方横线 -->
                 <view class="lines p-a" wx:if="{{djNum===1}}"></view>
             </view>
         </view>
         <!-- 标签栏内容层 -->
-        <view class="tags-content p-10">
+        <view class="tags-content p-15">
             <!-- 详情内容层 -->
             <scroll-view scroll-y="{{true}}" class="common-scroll main-detail" wx:if="{{djNum===0}}">
-                <mainDetail detailObj="{{detailObj}}"></mainDetail>
+                <mainDetail hotComment="{{hotComment}}" detailObj="{{detailObj}}"></mainDetail>
             </scroll-view>
             <!-- 节目内容层 -->
             <scroll-view scroll-y="{{true}}" class="common-scroll pro-detail" wx:if="{{djNum===1}}">
-                <proDetail songsArr="{{songsArr}}" songsCount="{{detailObj.trackCount}}"></proDetail>
+                <proDetail songsArr="{{songsArr}}" songsCount="{{songsArr.length}}"></proDetail>
             </scroll-view>
         </view>
     </view>

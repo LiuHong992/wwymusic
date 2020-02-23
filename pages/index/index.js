@@ -1,10 +1,26 @@
 import api from '../../http/api'
-Page({
-
+import store from '../../store/index'
+import create from '../../utils/store/create'
+create.Page(store, {
+    use: ['typeNum'],
     /**
      * 页面的初始数据
      */
     data: {
+        // 控制首页显示的参数
+        flag: false,
+        // 接收默认搜索关键词对象
+        defalutObj: {},
+        // 搜索框的值
+        sValue: '',
+        // 接收热搜榜的数组
+        hotArr: [],
+        // 控制搜索与否的参数
+        searchNum: 0,
+        // 控制搜索联想框的显示与否
+        connectNum: 0,
+        // 接收联想词的数组
+        connectArr: [],
         // 接收轮播图数据数组
         banners: [],
         // 导航栏数据
@@ -43,8 +59,100 @@ Page({
         radioArr: [],
         // 接收推荐节目的数组
         programArr: []
-            // phones: 13981419660,
-            // password: 'huanghe719'
+    },
+    // 搜索框聚焦时改变indexNum
+    changeFlag() {
+        this.setData({
+            flag: !this.data.flag,
+            searchNum: 0,
+            connectNum: 0,
+            sValue: '',
+            connectArr: []
+        })
+    },
+    // 默认搜索关键词
+    defaultKeyword() {
+        api.defaultKeyword().then(res => {
+            if (res.code === 200) {
+                this.data.defalutObj = res.data
+                this.setData({
+                    defalutObj: this.data.defalutObj
+                })
+            }
+        }).catch(err => {
+
+        });
+    },
+    // 获取热搜榜数据
+    getHot() {
+        api.hotSearchList().then((res) => {
+            if (res.code === 200) {
+                this.data.hotArr = res.data
+                this.setData({
+                    hotArr: this.data.hotArr
+                })
+                console.log(this.data.hotArr);
+            }
+        }).catch((err) => {
+            console.log(err);
+        });
+    },
+    // 获取联想词的方法
+    connectWord(keys) {
+        api.searchSuggest(keys).then(res => {
+            if (res.code === 200) {
+                this.data.connectArr = res.result.allMatch
+                this.setData({
+                    connectArr: this.data.connectArr
+                })
+            }
+        }).catch((err) => {
+
+        });
+    },
+    // 输入框值发生变化时触发
+    changeValue(e) {
+        this.setData({
+            sValue: e.detail
+        })
+        if (this.data.sValue.trim() !== '') {
+            this.connectWord(this.data.sValue.trim())
+        } else {
+            this.setData({
+                connectArr: []
+            })
+        }
+    },
+    // 输入关键词按下确定键时的方法
+    goToSearch() {
+        this.setData({
+            searchNum: 1,
+            connectNum: 1
+        })
+        if (this.data.sValue.trim() === '') {
+            this.setData({
+                sValue: this.data.defalutObj.realkeyword
+            })
+            this.connectWord(this.data.sValue.trim())
+        }
+    },
+    // 搜索事件
+    searchResult() {
+
+    },
+    // 搜索之后获取输入框焦点显示搜索联想框
+    showConnect() {
+        this.setData({
+            connectNum: 0
+        })
+    },
+    // 失去焦点则隐藏
+    hideConnect() {
+        setTimeout(() => {
+            this.setData({
+                connectNum: 1
+            })
+        }, 50)
     },
     // 请求轮播图数据
     getBanners() {
@@ -176,21 +284,12 @@ Page({
             return items.playCount = `${items.playCount}次`
         }
     },
-    // login() {
-    //     api.loginbyTel(this.data.phones, this.data.password).then(res => {
-    //         if (res.code === 200) {
-    //             console.log(res);
-    //         } else {
-    //             console.log(res);
-    //         }
-    //     }).catch(err => {
-    //         console.log(err);
-    //     });
-    // },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        this.defaultKeyword();
+        this.getHot();
         this.getBanners();
         this.getRecommend();
         this.getNewdish();

@@ -1,6 +1,9 @@
 import api from '../../http/api'
-Page({
-
+var time = require('../../utils/util');
+import store from '../../store/index'
+import create from '../../utils/store/create'
+create.Page(store, {
+    use: ['commentLimit'],
     /**
      * 页面的初始数据
      */
@@ -12,9 +15,11 @@ Page({
         // 接收请求出来的数据
         detailObj: {},
         // 控制点击的详情还是节目的参数(同时控制下划线的出现)
-        djNum: 1,
+        djNum: 0,
         // 接收歌曲详情的数组
-        songsArr: []
+        songsArr: [],
+        // 接收精彩评论的数组
+        hotComment: []
     },
     // 传过来的关键词是电台或者节目的方法
     radioPro() {
@@ -22,17 +27,52 @@ Page({
             if (res.code === 200) {
                 wx.hideLoading();
                 this.data.detailObj = res.program
-                this.data.songsArr = this.properties.detailObj.songs
+                if (res.program.songs.length > 0) {
+                    this.data.songsArr = res.program.songs
+                } else {
+                    this.data.songsArr.push(res.program.mainSong)
+                }
+                if (this.data.songsArr.length > 0) {
+                    this.data.songsArr.map(item => {
+                        if (item.album.publishTime > 0) {
+                            item.album.publishTime = time.formatTimeTwo(item.album.publishTime, 'Y-M-D')
+                        } else {
+                            item.album.publishTime = '暂无发布时间'
+                        }
+                        item.bMusic.playTime = time.formatTimeTwo(item.bMusic.playTime, 'm:s')
+                    })
+                }
                 this.setData({
                     detailObj: this.data.detailObj,
                     songsArr: this.data.songsArr
                 })
-                console.log(this.data.songsArr);
+                console.log(this.data.detailObj);
             } else {
                 wx.hideLoading();
             }
         }).catch(err => {
             wx.hideLoading();
+            console.log(err);
+        });
+    },
+    // 传过来的id请求相应的评论
+    getComment() {
+        api.djproComment(this.data.ids, this.store.data.commentLimit).then(res => {
+            if (res.code === 200) {
+                if (res.hotComments.length > 0) {
+                    this.data.hotComment = res.hotComments
+                } else {
+                    this.data.hotComment = res.comments
+                }
+                this.data.hotComment.map(item => {
+                    item.time = time.formatTimeTwo(item.time, 'Y-M-D h:m:s')
+                })
+                this.setData({
+                    hotComment: this.data.hotComment
+                })
+                console.log(this.data.hotComment);
+            }
+        }).catch(err => {
             console.log(err);
         });
     },
@@ -61,6 +101,7 @@ Page({
         })
         if (this.data.navName !== '') {
             this.radioPro();
+            this.getComment();
         }
     },
 

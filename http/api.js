@@ -196,6 +196,12 @@ export default ({
     detailByDjProgram(id) {
         return fly.get(`/dj/program/detail?id=${id}`)
     },
+    // 电台节目详情的精彩评论的接口
+    // 返回的hotComments字段为热门评论，如果hotComments数组为空则取comments作为热门评论展示
+    // PS:推荐节目中的id为对象最外层id，不要用mainSong里面提供的id(404警告)
+    djproComment(id, limit) {
+        return fly.get(`/comment/dj?id=${id}&limit=${limit}`)
+    },
     // 获取相关音乐的Url(点击相关歌曲时先获取到相关的url再跳转到播放页面,
     // 如果要请求多个id则是播放歌单的功能,多个id则用逗号隔开,例如：id=12345,54321)
     getMusicUrl(id) {
@@ -245,11 +251,22 @@ export default ({
     hotSearchList() {
         return fly.get(`/search/hot/detail`)
     },
+
+    // 歌手路由相关接口
+
     //歌手分类列表
     // limit为上拉加载时所需要数据
     // cat : 即 category Code,歌手类型,默认 1001,返回华语男歌手数据
     // initial: 按首字母索引查找参数
     artist(limit, Code, initial) {
         return fly.get(`/artist/list?limit=${limit}&cat=${Code}&initial=${initial}`)
+    },
+    //获取歌手歌曲和歌手信息
+    getSong(id) {
+        return fly.get(`/artists?id=${id}`)
+    },
+    //获取歌手视频
+    getMv(id) {
+        return fly.get(`/artist/mv?id=${id}`)
     },
 })

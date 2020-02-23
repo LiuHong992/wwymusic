@@ -1,1 +1,79 @@
-/* components/djproDetail/mainDetail/mainDetail.wxss */
+/* 头像 */
+
+.liver-image {
+    width: 104rpx;
+    height: 104rpx;
+    border-radius: 50%;
+    background-color: #ccc;
+}
+
+
+/* 主播名字和简介 */
+
+.name-item {
+    max-width: 350rpx;
+}
+
+.dec-item {
+    max-width: 350rpx;
+    margin-top: 14rpx;
+    color: rgb(114, 110, 110);
+}
+
+
+/* 赞赏按钮 */
+
+.admire-btn {
+    height: 40rpx;
+    margin: auto 0;
+    padding: 10rpx 40rpx;
+    border-radius: 30rpx;
+    border: 2rpx solid red;
+    color: red;
+}
+
+
+/* 电台内容简介 */
+
+.category-text {
+    padding: 2rpx;
+    border: 2rpx solid red;
+    border-radius: 6rpx;
+    color: red;
+}
+
+.shortdec-item {
+    max-width: 250rpx;
+    color: rgb(121, 119, 119);
+}
+
+
+/* 电台精彩评论 */
+
+.hd-image {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+}
+
+.uname {
+    line-height: 60rpx;
+}
+
+
+/* 评论具体内容 */
+
+.comment-cont {
+    margin-left: 80rpx;
+}
+
+
+/* 评论时间 */
+
+.comment-time {
+    margin-left: 80rpx;
+    padding-bottom: 30rpx;
+    border-bottom: 2rpx solid #ccc;
+    color: rgb(97, 97, 97);
+    text-align: end;
+}

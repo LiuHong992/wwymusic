@@ -1,5 +1,5 @@
 <!-- 节目头部 -->
-<view class="pro-header sticky fl s-b h-40 l-h-40">
+<view class="pro-header fl s-b h-40 l-h-40">
     <!-- 共几期节目 -->
     <view class="pro-num f-w f-s-22">共{{songsCount}}期</view>
     <!-- 排序和多选按钮 -->
@@ -26,15 +26,21 @@
 </view>
 <!-- 节目具体内容 -->
 <view class="pro-content" wx:if="{{songsArr.length>0}}">
-    <view class="pro-model fl p-r" wx:for="{{songsArr}}" wx:key="index">
+    <view class="pro-model fl p-r m-b-15 m-t-15" wx:for="{{songsArr}}" wx:key="index">
         <!-- 歌曲下标 -->
         <view class="song-index">{{index+1}}</view>
         <!-- 歌曲名和歌手名 -->
         <view class="song-singer m-l-20">
             <!-- 歌曲名 -->
             <view class="song-info f-s-15 t-over f-w">{{item.name}}</view>
-            <!-- 发布时间 -->
-            <!-- <view class="singer-info t-over m-t-10">{{songMain.ar[0].name}}</view> -->
+            <!-- 发布时间和时长 -->
+            <view class="song-infos fl m-t-10">
+                <view class="song-pub">{{item.album.publishTime}}</view>
+                <view class="song-play m-l-10">
+                    {{item.bMusic.playTime}}
+                </view>
+                  
+            </view>
             <!-- 播放和更多按钮 -->
             <view class="p-a play-more">
                 <!-- 更多按钮 -->

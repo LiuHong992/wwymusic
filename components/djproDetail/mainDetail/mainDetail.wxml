@@ -1,2 +1,58 @@
-<!--components/djproDetail/mainDetail/mainDetail.wxml-->
-<text>components/djproDetail/mainDetail/mainDetail.wxml</text>
+<!-- 主播名 -->
+<view class="liver-name m-b-20">
+    <view class="liver-header f-s-15 f-w">主播</view>
+    <!-- 主播名内容层 -->
+    <view class="liver-content fl s-b m-t-10">
+        <!-- 左边部分 -->
+        <view class="left-item fl">
+            <!-- 头像 -->
+            <view class="liver-image">
+                <image class="i-circle" src="{{detailObj.dj.avatarUrl}}"></image>
+            </view>
+            <!-- 主播名字和主播简介 -->
+            <view class="name-dec m-l-20">
+                <view class="name-item f-s-18 t-over" wx:if="{{detailObj.dj.brand !== ''}}">
+                    {{detailObj.dj.brand}}
+                </view>
+                <view class="name-item f-s-18 t-over" wx:else>{{detailObj.dj.nickname}}</view>
+                <view class="dec-item t-over">{{detailObj.dj.signature}}</view>
+            </view>
+        </view>
+        <!-- 右边赞赏按钮 -->
+        <view class="admire-btn">赞赏</view>
+    </view>
+</view>
+<!-- 电台内容简介 -->
+<view class="radio-infos m-b-20">
+    <view class="radio-header f-s-15 f-w m-b-10">电台内容简介</view>
+    <!-- 分类 -->
+    <view class="category-item fl m-b-10">
+        分类：
+        <view class="category-text f-s-12">{{detailObj.radio.category}}</view>
+    </view>
+    <!-- 简介内容 -->
+    <view class="shortdec-item f-s-14 t-over-3">{{detailObj.radio.desc}}</view>
+</view>
+<!-- 精彩评论 -->
+<view class="hot-comment">
+    <view class="comment-header f-s-15 f-w">精彩评论</view>
+    <!-- 评论内容层 -->
+    <view class="comment-content">
+        <!-- 评论模板 -->
+        <view class="comment-model m-t-10 m-b-10" wx:for="{{hotComment}}" wx:key="index">
+            <!-- 头像用户名 -->
+            <view class="image-uname fl">
+                <!-- 头像 -->
+                <view class="hd-image">
+                    <image class="i-circle" src="{{item.user.avatarUrl}}"></image>
+                </view>
+                <!-- 用户名 -->
+                <view class="uname m-l-10">{{item.user.nickname}}</view>
+            </view>
+            <!-- 评论内容 -->
+            <view class="comment-cont m-t-10">{{item.content}}</view>
+            <!-- 评论时间 -->
+            <view class="comment-time m-t-10">{{item.time}}</view>
+        </view>
+    </view>
+</view>

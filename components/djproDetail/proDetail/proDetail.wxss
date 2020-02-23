@@ -1,7 +1,6 @@
 /* 节目的期数 */
 
 .pro-header {
-    background-color: #fff;
     color: black;
 }
 
@@ -20,7 +19,7 @@
 /* 节目内容层 */
 
 .pro-content {
-    padding: 20rpx 10rpx 16rpx 30rpx;
+    padding: 14rpx 10rpx 16rpx 20rpx;
 }
 
 .song-index {
@@ -31,8 +30,8 @@
     max-width: 460rpx;
 }
 
-.song-info {
-    color: black;
+.song-infos {
+    color: rgb(133, 131, 131);
 }
 
 .play-more {
