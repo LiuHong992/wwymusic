@@ -240,8 +240,8 @@ export default ({
         return fly.get(`/search/multimatch?keywords=${keyword}`)
     },
     // 综合搜索
-    keywordSearch(keyword, type = 1018) {
-        return fly.get(`/search?keywords=${keyword}&type=${type}`)
+    keywordSearches(keyword, type, limits) {
+        return fly.get(`/search?keywords=${keyword}&type=${type}&limits=${limits}`)
     },
     //默认搜索关键词
     defaultKeyword() {

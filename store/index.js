@@ -5,7 +5,7 @@ export default {
     data: {
         // 评论上拉加载参数
         commentLimit: 20,
-        // 控制搜索后展示的是综合单曲还是其他的参数
-        typeNum: 1018
+        // 搜索上拉加载参数
+        searchLimit: 30,
     }
 }

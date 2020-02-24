@@ -1,12 +1,12 @@
-// components/search/hotSearch/hotSearch.js
+// components/search/multiple/multiple.js
 Component({
     /**
      * 组件的属性列表
      */
     properties: {
-        hotArr: {
-            type: Array,
-            value: () => []
+        sResult: {
+            type: Object,
+            value: () => {}
         }
     },
 
@@ -22,10 +22,6 @@ Component({
      * 组件的方法列表
      */
     methods: {
-        // 子组件分发事件回给子组件
-        changeValues(e) {
-            let { item } = e.currentTarget.dataset
-            this.triggerEvent('changeValues', item.searchWord)
-        }
+
     }
 })

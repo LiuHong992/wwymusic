@@ -77,7 +77,7 @@
     </view>
 </view>
 <!-- 搜索框内容层 -->
-<view class="search-content p-10" wx:if="{{!flag}}">
+<view class="search-content p-10" wx:if="{{!flag && searchNum === 0}}">
     <!-- 搜索框头部 -->
     <view class="search-header sticky z-99 fl p-r">
         <!-- 返回按钮 -->
@@ -96,9 +96,9 @@
     <!-- 搜索联想框 -->
     <view class="association p-a z-99" wx:if="{{connectNum === 0 && connectArr.length>0}}">
         <!-- 搜索内容 -->
-        <view class="search-msg commons">搜索"{{sValue}}"</view>
+        <view class="search-msg commons" bind:tap="valueSearch">搜索"{{sValue}}"</view>
         <!-- 搜索联想词模板 -->
-        <view class="connect-model fl commons" wx:for="{{connectArr}}" wx:key="index">
+        <view class="connect-model fl commons" wx:for="{{connectArr}}" wx:key="index" bind:tap="changesValue" data-item="{{item}}">
             <!-- 搜索小图标 -->
             <view class="search-image">
                 <image class="img" src="../../assets/images/search.png"></image>
@@ -107,10 +107,52 @@
         </view>
     </view>
     <!-- 搜索框内没有值时显示的内容层 -->
-    <view class="empty-value-content" wx:if="{{searchNum === 0}}">
+    <view class="empty-value-content">
         <!-- 热搜组件 -->
-        <hotSearch hotArr="{{hotArr}}"></hotSearch>
+        <hotSearch hotArr="{{hotArr}}" bind:changeValues="changeValues"></hotSearch>
     </view>
-    <!-- 点击搜索之后显示的内容层 -->
-    <view class="after-content" wx:if="{{searchNum === 1}}">123</view>
 </view>
+<!-- 点击搜索之后显示的内容层 -->
+<view class="after-content p-10" wx:if="{{!flag && searchNum === 1}}">
+    <!-- 搜索框头部 -->
+    <view class="search-header sticky z-99 fl p-r">
+        <!-- 返回按钮 -->
+        <view class="backs m-b-10 m-r-10" bind:tap="afterChange">
+            <image class="img" src="../../assets/images/back.png"></image>
+        </view>
+        <!-- 搜索框 -->
+        <view class="search-cont">
+            <vant-search bind:search="goToSearch" bind:change="changeValue" bind:blur="hideConnect" bind:focus="showConnect" value="{{sValue}}" placeholder="{{defalutObj.realkeyword}}"></vant-search>
+        </view>
+        <!-- 歌手图标 -->
+        <view class="singer-image" wx:if="{{searchNum===0}}">
+            <image class="img" src="../../assets/images/searchSinger.png"></image>
+        </view>
+    </view>
+    <!-- 搜索联想框 -->
+    <view class="association p-a z-99" wx:if="{{connectNum === 0 && connectArr.length>0}}">
+        <!-- 搜索内容 -->
+        <view class="search-msg commons" bind:tap="valueSearch">搜索"{{sValue}}"</view>
+        <!-- 搜索联想词模板 -->
+        <view class="connect-model fl commons" wx:for="{{connectArr}}" wx:key="index" bind:tap="changesValue" data-item="{{item}}">
+            <!-- 搜索小图标 -->
+            <view class="search-image">
+                <image class="img" src="../../assets/images/search.png"></image>
+            </view>
+            <view class="item-msg m-l-10 l-h-20">{{item.keyword}}</view>
+        </view>
+    </view>
+    <vant-tabs active="{{ active }}" bind:change="changeActive" sticky="{{true}}" animated="{{true}}">
+        <vant-tab title="{{item.name}}" name="{{item.id}}" wx:for="{{typeArr}}" wx:key="index">
+            <multiple sResult="{{sResult}}" wx:if="{{active===1018}}"></multiple>
+            <single ssR="{{sResultArr}}" wx:if="{{active===1}}"></single>
+            <video ssR="{{sResultArr}}" wx:if="{{active===1014}}"></video>
+            <singer ssR="{{sResultArr}}" wx:if="{{active===100}}"></singer>
+            <album ssR="{{sResultArr}}" wx:if="{{active===10}}"></album>
+            <songlist ssR="{{sResultArr}}" wx:if="{{active===1000}}"></songlist>
+            <radio ssR="{{sResultArr}}" wx:if="{{active===1009}}"></radio>
+            <user ssR="{{sResultArr}}" wx:if="{{active===1002}}"></user>
+            <mv ssR="{{sResultArr}}" wx:if="{{active===1004}}"></mv>
+        </vant-tab>
+    </vant-tabs>
+</view> 

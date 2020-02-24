@@ -1,0 +1,19 @@
+/* 你可能感兴趣 */
+
+
+/* 歌曲封面 */
+
+.album-image {
+    width: 190rpx;
+    height: 190rpx;
+    background-color: #ccc;
+}
+
+.album-pub {
+    height: 120rpx;
+    margin: auto 30rpx;
+}
+
+.album-pubs {
+    color: rgb(173, 173, 173);
+}

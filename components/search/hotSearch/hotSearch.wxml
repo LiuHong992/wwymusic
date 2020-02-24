@@ -7,7 +7,7 @@
     <!-- 热搜榜标题 -->
     <view class="hot-header f-w f-s-18">热搜榜</view>
     <!-- 热搜榜内容模板 -->
-    <view class="hot-model fl" wx:for="{{hotArr}}" wx:key="index">
+    <view class="hot-model fl" wx:for="{{hotArr}}" wx:key="index" bind:tap="changeValues" data-item="{{item}}">
         <!-- 排行名次 -->
         <view class="hot-rank {{index+1<4?'red-text':''}}">{{index+1}}</view>
         <!-- 热搜关键词和热搜内容 -->
@@ -17,7 +17,7 @@
                 <!-- 热搜词 -->
                 <view class="hot-cont">{{item.searchWord}}</view>
                 <!-- 热搜图片(有的含有) -->
-                <view class="{{item.iconType===1?'hot-images':'up-images'}} m-l-10" wx:if="{{item.iconType !== 0}}">
+                <view class="{{item.iconType===5?'up-images':'hot-images'}} m-l-10" wx:if="{{item.iconType !== 0}}">
                     <image class="img" src="{{item.iconUrl}}"></image>
                 </view>
                 <!-- 热搜次数 -->

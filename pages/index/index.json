@@ -2,6 +2,17 @@
     "usingComponents": {
         "vant-search": "../../lib/vant/search/index",
         "commonModel": "../../components/commonmodel/commonmodel",
-        "hotSearch": "../../components/search/hotSearch/hotSearch"
+        "hotSearch": "../../components/search/hotSearch/hotSearch",
+        "vant-tab": "../../lib/vant/tab/index",
+        "vant-tabs": "../../lib/vant/tabs/index",
+        "multiple": "../../components/search/multiple/multiple",
+        "single": "../../components/search/single/single",
+        "video": "../../components/search/video/video",
+        "singer": "../../components/search/singer/singer",
+        "album": "../../components/search/album/album",
+        "songlist": "../../components/search/songlist/songlist",
+        "radio": "../../components/search/radio/radio",
+        "user": "../../components/search/user/user",
+        "mv": "../../components/search/mv/mv"
     }
 }

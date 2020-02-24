@@ -82,8 +82,6 @@ Page({
                     albumsArr: this.data.albumsArr,
                     bgImg: this.data.bgImg
                 })
-                console.log(this.data.briefObj);
-                console.log(this.data.albumsArr);
             } else {
                 wx.hideLoading();
             }

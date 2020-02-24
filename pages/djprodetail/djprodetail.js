@@ -39,14 +39,14 @@ create.Page(store, {
                         } else {
                             item.album.publishTime = '暂无发布时间'
                         }
-                        item.bMusic.playTime = time.formatTimeTwo(item.bMusic.playTime, 'm:s')
+                        item.bMusic.playTime = time.formatTimeTwo((item.bMusic.playTime) * 1000, 'm:s')
                     })
                 }
                 this.setData({
                     detailObj: this.data.detailObj,
                     songsArr: this.data.songsArr
                 })
-                console.log(this.data.detailObj);
+                console.log(this.data.songsArr);
             } else {
                 wx.hideLoading();
             }

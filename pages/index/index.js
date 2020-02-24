@@ -2,7 +2,7 @@ import api from '../../http/api'
 import store from '../../store/index'
 import create from '../../utils/store/create'
 create.Page(store, {
-    use: ['typeNum'],
+    use: ['searchLimit'],
     /**
      * 页面的初始数据
      */
@@ -12,15 +12,23 @@ create.Page(store, {
         // 接收默认搜索关键词对象
         defalutObj: {},
         // 搜索框的值
-        sValue: '',
+        sValue: '陈奕迅',
         // 接收热搜榜的数组
         hotArr: [],
         // 控制搜索与否的参数
-        searchNum: 0,
+        searchNum: 1,
         // 控制搜索联想框的显示与否
         connectNum: 0,
         // 接收联想词的数组
         connectArr: [],
+        // 接收搜索页tabs数据的数组
+        typeArr: [],
+        // 当前标签栏选中的项
+        active: 1018,
+        // 接收搜索出来的数据的对象(综合栏)
+        sResult: {},
+        // 接收搜索出来的数据的数组(除综合外)
+        sResultArr: [],
         // 接收轮播图数据数组
         banners: [],
         // 导航栏数据
@@ -66,8 +74,21 @@ create.Page(store, {
             flag: !this.data.flag,
             searchNum: 0,
             connectNum: 0,
+            active: 1018,
             sValue: '',
-            connectArr: []
+            connectArr: [],
+            sResult: {}
+        })
+    },
+    // 搜索后返回按钮方法
+    afterChange() {
+        this.setData({
+            searchNum: 0,
+            connectNum: 0,
+            active: 1018,
+            sValue: '',
+            connectArr: [],
+            sResult: {}
         })
     },
     // 默认搜索关键词
@@ -91,7 +112,6 @@ create.Page(store, {
                 this.setData({
                     hotArr: this.data.hotArr
                 })
-                console.log(this.data.hotArr);
             }
         }).catch((err) => {
             console.log(err);
@@ -109,6 +129,23 @@ create.Page(store, {
         }).catch((err) => {
 
         });
+    },
+    // 点击联想词的方法
+    changesValue(e) {
+        let { item } = e.currentTarget.dataset
+        this.setData({
+            searchNum: 1,
+            sValue: item.keyword
+        })
+        this.searchResult(this.data.sValue)
+    },
+    // 热搜子组件分发回父组件的方法
+    changeValues(e) {
+        this.setData({
+            searchNum: 1,
+            sValue: e.detail
+        })
+        this.searchResult(this.data.sValue)
     },
     // 输入框值发生变化时触发
     changeValue(e) {
@@ -134,11 +171,68 @@ create.Page(store, {
                 sValue: this.data.defalutObj.realkeyword
             })
             this.connectWord(this.data.sValue.trim())
+            this.searchResult(this.data.sValue.trim())
+        } else {
+            this.searchResult(this.data.sValue.trim())
         }
     },
-    // 搜索事件
-    searchResult() {
-
+    // 搜索事件(综合栏)
+    searchResult(keywords) {
+        wx.showLoading({
+            title: '搜索中...'
+        });
+        api.keywordSearches(keywords, this.data.active).then(res => {
+            if (res.code === 200) {
+                wx.hideLoading();
+                this.data.sResult = res.result
+                this.setData({
+                    sResult: this.data.sResult
+                })
+                console.log(this.data.sResult);
+            } else {
+                wx.hideLoading();
+            }
+        }).catch(err => {
+            wx.hideLoading();
+            console.log(err);
+        });
+    },
+    // 搜索事件(除综合栏其他的标签栏)
+    searchOthers(keywords) {
+        let sR = this.data.sResultArr
+        wx.showLoading({
+            title: '搜索中...'
+        });
+        api.keywordSearches(keywords, this.data.active, this.store.data.limits).then(res => {
+            if (res.code === 200) {
+                wx.hideLoading();
+                this.data.active === 1 ? sR.push(...res.result.songs) : ''
+                this.data.active === 1014 ? sR.push(...res.result.videos) : ''
+                this.data.active === 100 ? sR.push(...res.result.artists) : ''
+                this.data.active === 10 ? sR.push(...res.result.albums) : ''
+                this.data.active === 1000 ? sR.push(...res.result.playlists) : ''
+                this.data.active === 1009 ? sR.push(...res.result.djRadios) : ''
+                this.data.active === 1002 ? sR.push(...res.result.userprofiles) : ''
+                this.data.active === 1004 ? sR.push(...res.result.mvs) : ''
+                this.setData({
+                    sR: sR
+                })
+                console.log(sR);
+            } else {
+                wx.hideLoading();
+            }
+        }).catch(err => {
+            wx.hideLoading();
+            console.log(err);
+        });
+    },
+    // 搜索框内有值后点击联想词盒子第一项触发的方法
+    valueSearch() {
+        this.setData({
+            searchNum: 1,
+            connectNum: 1
+        })
+        this.searchResult(this.data.sValue)
     },
     // 搜索之后获取输入框焦点显示搜索联想框
     showConnect() {
@@ -154,6 +248,18 @@ create.Page(store, {
             })
         }, 50)
     },
+    // 更改标签栏active
+    changeActive(e) {
+        this.setData({
+            active: e.detail.name,
+            sResultArr: []
+        })
+        if (this.data.active === 1018) {
+            this.searchResult(this.data.sValue)
+        } else {
+            this.searchOthers(this.data.sValue)
+        }
+    },
     // 请求轮播图数据
     getBanners() {
         wx.showLoading({
@@ -162,7 +268,8 @@ create.Page(store, {
         api.getIndexBanner().then(res => {
             if (res.code === 200) {
                 this.setData({
-                    banners: res.banners
+                    banners: res.banners,
+                    typeArr: api.searchType
                 })
                 wx.hideLoading();
             } else {
@@ -296,6 +403,7 @@ create.Page(store, {
         this.getNewsongs();
         this.getRadio();
         this.getProgram();
+        this.searchResult(this.data.sValue)
     },
 
     /**

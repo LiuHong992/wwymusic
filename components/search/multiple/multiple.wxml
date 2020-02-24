@@ -1,0 +1,30 @@
+<!-- 综合搜索栏内容层 -->
+<scroll-view scroll-y="{{true}}">
+    <!-- 你可能感兴趣(取album数组的第一个专辑和artists数组第一个歌手进行展示) -->
+    <view class="interested">
+        <!-- 头部 -->
+        <view class="interest-header m-t-20 m-b-10 f-w f-s-18">你可能感兴趣</view>
+        <!-- 内容 -->
+        <view class="interest-infos">
+            <!-- 第一个专辑 -->
+            <view class="album-item fl" wx:if="{{sResult.album.albums.length>0}}">
+                <!-- 专辑封面 -->
+                <view class="album-image">
+                    <image class="img" src="{{sResult.album.albums[0].picUrl}}"></image>
+                </view>
+                <!-- 专辑名和发布时间 -->
+                <view class="album-pub f-s-12">
+                    <!-- 专辑名 -->
+                    <view class="album-name">{{sResult.album.albums[0].name}}</view>
+                    <!-- 专辑发布时间 -->
+                    <view class="album-pubs m-t-10 fl">
+                        <view class="artist-name">{{sResult.album.albums[0].artist.name}}</view>
+                        <view class="pubs m-l-10">{{sResult.album.albums[0].publishTime}}</view>
+                    </view>
+                </view>
+            </view>
+            <!-- 歌手第一个 -->
+            <view class="artist-item" wx:if="{{sResult.artist.artists.length>0}}"></view>
+        </view>
+    </view>
+</scroll-view>
