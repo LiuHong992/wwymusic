@@ -644,3 +644,40 @@
 .l-h-40 {
     line-height: 80rpx;
 }
+
+
+/* 本项目一些公用css(网易云音乐小程序) */
+
+
+/* 公用的图片(处理后的) */
+
+.common-image {
+    width: 140rpx;
+    height: 140rpx;
+    border-radius: 10rpx;
+}
+
+.common-img {
+    border-radius: 10rpx;
+}
+
+
+/* 圆形图片 */
+
+.circle-image {
+    width: 140rpx;
+    height: 140rpx;
+    border-radius: 50%;
+}
+
+
+/* 亮灰色字体 */
+
+.light-gray {
+    color: rgb(133, 130, 130);
+}
+
+.album-pub {
+    height: 120rpx;
+    margin: auto 30rpx;
+}

@@ -1,19 +1,15 @@
-/* 你可能感兴趣 */
+/* 查看更多 */
 
-
-/* 歌曲封面 */
-
-.album-image {
-    width: 190rpx;
-    height: 190rpx;
-    background-color: #ccc;
+.look-more {
+    color: rgb(133, 130, 130);
 }
 
-.album-pub {
-    height: 120rpx;
-    margin: auto 30rpx;
-}
 
-.album-pubs {
-    color: rgb(173, 173, 173);
+/* 相关搜素 */
+
+.about-model {
+    margin-right: 16rpx;
+    padding: 10rpx 16rpx;
+    border-radius: 26rpx;
+    background-color: rgb(184, 181, 181);
 }

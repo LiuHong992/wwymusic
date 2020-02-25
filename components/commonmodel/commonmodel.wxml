@@ -7,7 +7,7 @@
                 <view class="play-image">
                     <image class="img" src="../../assets/images/playcount.png"></image>
                 </view>
-                <view class="play-count f-s-12">{{item.playCount}}</view>
+                <view class="play-count f-s-12">{{item.playCount}}次</view>
             </view>
         </view>
         <view class="model-text f-s-13 t-over-2">{{item.name}}</view>

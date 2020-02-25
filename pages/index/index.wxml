@@ -113,7 +113,7 @@
     </view>
 </view>
 <!-- 点击搜索之后显示的内容层 -->
-<view class="after-content p-10" wx:if="{{!flag && searchNum === 1}}">
+<view class="after-content" wx:if="{{!flag && searchNum === 1}}">
     <!-- 搜索框头部 -->
     <view class="search-header sticky z-99 fl p-r">
         <!-- 返回按钮 -->
@@ -125,8 +125,8 @@
             <vant-search bind:search="goToSearch" bind:change="changeValue" bind:blur="hideConnect" bind:focus="showConnect" value="{{sValue}}" placeholder="{{defalutObj.realkeyword}}"></vant-search>
         </view>
         <!-- 歌手图标 -->
-        <view class="singer-image" wx:if="{{searchNum===0}}">
-            <image class="img" src="../../assets/images/searchSinger.png"></image>
+        <view class="singer-image">
+            <image wx:if="{{searchNum===1}}" class="img" src="../../assets/images/cancel.png"></image>
         </view>
     </view>
     <!-- 搜索联想框 -->
@@ -142,7 +142,7 @@
             <view class="item-msg m-l-10 l-h-20">{{item.keyword}}</view>
         </view>
     </view>
-    <vant-tabs active="{{ active }}" bind:change="changeActive" sticky="{{true}}" animated="{{true}}">
+    <vant-tabs active="{{ active }}" bind:change="changeActive" animated="{{true}}">
         <vant-tab title="{{item.name}}" name="{{item.id}}" wx:for="{{typeArr}}" wx:key="index">
             <multiple sResult="{{sResult}}" wx:if="{{active===1018}}"></multiple>
             <single ssR="{{sResultArr}}" wx:if="{{active===1}}"></single>
@@ -155,4 +155,4 @@
             <mv ssR="{{sResultArr}}" wx:if="{{active===1004}}"></mv>
         </vant-tab>
     </vant-tabs>
-</view> 
+</view>

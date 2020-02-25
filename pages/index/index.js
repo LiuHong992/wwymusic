@@ -1,4 +1,5 @@
 import api from '../../http/api'
+var time = require('../../utils/util');
 import store from '../../store/index'
 import create from '../../utils/store/create'
 create.Page(store, {
@@ -185,6 +186,25 @@ create.Page(store, {
             if (res.code === 200) {
                 wx.hideLoading();
                 this.data.sResult = res.result
+                    // 处理专辑发布时间
+                if (res.result.album.albums.length > 0) {
+                    res.result.album.albums.map(item => {
+                        item.publishTime = time.formatTimeTwo((item.publishTime), 'Y-M-D')
+                    })
+                }
+                // 处理歌单播放次数
+                if (res.result.playList.playLists.length > 0) {
+                    res.result.playList.playLists.map(item => {
+                        item.playCount = this.playCounts(item.playCount)
+                    })
+                }
+                // 处理视频播放时间以及播放次数
+                if (res.result.video.videos.length > 0) {
+                    res.result.video.videos.map(item => {
+                        item.durationms = time.formatTimeTwo(item.durationms, 'm:s')
+                        item.playTime = this.playCounts(item.playTime)
+                    })
+                }
                 this.setData({
                     sResult: this.data.sResult
                 })
@@ -285,6 +305,11 @@ create.Page(store, {
         api.getIndexRec().then(res => {
             if (res.code === 200) {
                 this.grounps(res.result, this.data.recArr)
+                if (this.data.recArr.length > 0) {
+                    this.data.recArr.map(item => {
+                        item.playCount = this.playCounts(item.playCount)
+                    })
+                }
                 this.setData({
                     recArr: this.data.recArr
                 })
@@ -368,12 +393,7 @@ create.Page(store, {
                 }
             })
             if (flag) {
-                if (!dataArr[num].playCount) {
-                    reciveArr.push(dataArr[num])
-                } else {
-                    this.playCounts(dataArr[num])
-                    reciveArr.push(dataArr[num])
-                }
+                reciveArr.push(dataArr[num])
             } else {
                 i--
             }
@@ -381,20 +401,38 @@ create.Page(store, {
     },
     // 播放次数的计算方法
     playCounts(items) {
-        if (items.playCount >= 100000000) {
-            let one = (items.playCount / 100000000).toFixed(2)
-            return items.playCount = `${one}亿次`
-        } else if (items.playCount < 100000000 && items.playCount >= 10000) {
-            let one = parseInt(items.playCount / 10000)
-            return items.playCount = `${one}万次`
+        if (items >= 100000000) {
+            let one = (items / 100000000).toFixed(2)
+            return items = `${one}亿`
+        } else if (items < 100000000 && items >= 10000) {
+            let one = parseInt(items / 10000)
+            return items = `${one}万`
         } else {
-            return items.playCount = `${items.playCount}次`
+            return items = `${items}`
         }
+    },
+    // 滚到底部
+    toBottom() {
+        console.log(111);
+        wx.showToast({
+            title: '已经到最底部啦~'
+        });
+    },
+    // 动态获取高度
+    getHeight() {
+        var me = this;
+        const query = wx.createSelectorQuery().in(me);
+        query.select('#mcontents').boundingClientRect(function(res) {
+            me.setData({
+                contentHeight: wx.getSystemInfoSync().windowHeight - res.top
+            })
+        }).exec()
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        this.getHeight();
         this.defaultKeyword();
         this.getHot();
         this.getBanners();

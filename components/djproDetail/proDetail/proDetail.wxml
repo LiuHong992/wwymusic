@@ -38,8 +38,7 @@
                 <view class="song-pub">{{item.album.publishTime}}</view>
                 <view class="song-play m-l-10">
                     {{item.bMusic.playTime}}
-                </view>
-                  
+                </view>   
             </view>
             <!-- 播放和更多按钮 -->
             <view class="p-a play-more">

@@ -1,0 +1,21 @@
+<!-- 歌单内容层 -->
+<view class="list-content" wx:if="{{playlists.length>0}}">
+    <!-- 歌单模板 -->
+    <view class="list-model fl m-b-15" wx:for="{{playlists}}" wx:key="index">
+        <!-- 歌单图片 -->
+        <view class="list-image">
+            <image class="list-img img" src="{{item.coverImgUrl}}"></image>
+        </view>
+        <!-- 歌单名等众多内容 -->
+        <view class="list-infos">
+            <!-- 歌单名 -->
+            <view class="list-name">{{item.name}}</view>
+            <!-- 歌单歌曲首数歌单创建者以及播放量 -->
+            <view class="more-infos fl f-s-13 m-t-10">
+                <view class="list-count">{{item.trackCount}}首</view>
+                <view class="list-creator">by {{item.creator.nickname}},</view>
+                <view class="play-counts">播放{{item.playCount}}</view>
+            </view>
+        </view>
+    </view>
+</view>

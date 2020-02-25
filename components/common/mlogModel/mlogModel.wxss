@@ -1,0 +1,35 @@
+/* Mlog模板 */
+
+.mlog-model {
+    width: 46%;
+    margin: 0 2%;
+    border-radius: 10rpx;
+    box-shadow: 0 0 16rpx rgb(175, 174, 174);
+}
+
+.mlog-cover {
+    height: 400rpx;
+    border-top-right-radius: 10rpx;
+    border-top-left-radius: 10rpx;
+}
+
+.mlog-img {
+    border-top-right-radius: 10rpx;
+    border-top-left-radius: 10rpx;
+}
+
+.mlog-cont {
+    margin: 20rpx 10rpx;
+}
+
+.user-infos {
+    margin: 10rpx;
+    color: rgb(133, 130, 130);
+}
+
+.user-image {
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 50%;
+    margin-right: 10rpx;
+}

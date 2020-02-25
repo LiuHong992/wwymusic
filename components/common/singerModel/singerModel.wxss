@@ -1,0 +1,9 @@
+/* 歌手封面 */
+
+.singer-model {
+    line-height: 140rpx;
+}
+
+.nickname {
+    margin-left: 6rpx;
+}

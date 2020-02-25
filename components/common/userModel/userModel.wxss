@@ -1,0 +1,21 @@
+/* 用户 */
+
+.sexes {
+    width: 36rpx;
+    height: 36rpx;
+    margin-left: 10rpx;
+}
+
+.follow-btn {
+    top: 40rpx;
+    right: 20rpx;
+    padding: 10rpx 16rpx;
+    border-radius: 30rpx;
+    border: 2rpx solid red;
+    color: red;
+}
+
+.add-icon {
+    width: 24rpx;
+    height: 24rpx;
+}

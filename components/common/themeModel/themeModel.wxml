@@ -1,0 +1,22 @@
+<!-- 主题内容层 -->
+<view class="theme-content m-b-15" wx:if="{{themes.length>0}}">
+    <!-- 主题模板 -->
+    <view class="theme-model fl m-b-10" wx:for="{{themes}}" wx:key="index">
+        <!-- 主题封面 -->
+        <view class="common-image">
+            <image class="img common-img" src="{{item.shareCover.url}}"></image>
+        </view>
+        <!-- 主题名字关注人数和参与人数 -->
+        <view class="theme-infos m-l-10 m-t-10">
+            <!-- 主题名字 -->
+            <view class="theme-name"># {{item.talkName}}</view>
+            <!-- 主题关注人数和参与人数 -->
+            <view class="light-gray fl f-s-13 m-t-10">
+                <!-- 关注人数 -->
+                <view class="follow-count">{{item.follows}}人关注</view>
+                <!-- 参与人数 -->
+                <view class="join-count m-l-15">{{item.participations}}人参与</view>
+            </view>
+        </view>
+    </view>
+</view>

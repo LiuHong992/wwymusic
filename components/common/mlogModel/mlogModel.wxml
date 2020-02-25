@@ -1,0 +1,26 @@
+<!-- Mlog内容层 -->
+<view class="mlogs-content m-b-15 fl" wx:if="{{mlogs.length>0}}">
+    <!-- mlog模板 -->
+    <view class="mlog-model" wx:for="{{mlogs}}" wx:key="index">
+        <!-- Mlog封面图 -->
+        <view class="mlog-cover w-100 p-r">
+            <image class="img mlog-img" src="{{item.resource.mlogBaseData.coverUrl}}"></image>
+        </view>
+        <!-- mlog内容 -->
+        <view class="mlog-cont t-over-2 f-s-12">{{item.resource.mlogBaseData.text}}</view>
+        <!-- 用户信息 -->
+        <view class="user-infos fl s-b f-s-12 l-h-20">
+            <!-- 用户头像用户名 -->
+            <view class="image-name fl">
+                <!-- 用户头像 -->
+                <view class="user-image">
+                    <image class="i-circle" src="{{item.resource.userProfile.avatarUrl}}"></image>
+                </view>
+                <!-- 用户名 -->
+                <view class="user-name">{{item.resource.userProfile.nickname}}</view>
+            </view>
+            <!-- 获赞数 -->
+            <view class="support-count">{{item.resource.mlogExtVO.likedCount}}赞</view>
+        </view>
+    </view>
+</view>

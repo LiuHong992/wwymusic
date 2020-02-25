@@ -1,0 +1,29 @@
+<!-- 单曲内容层 -->
+<view class="songs-content" wx:if="{{songes.length>0}}">
+    <!-- 单曲模板 -->
+    <view class="song-model fl s-b m-b-10" wx:for="{{songes}}" wx:key="index">
+        <!-- 左边内容层 -->
+        <view class="song-left">
+            <!-- 歌曲名 -->
+            <view class="song-name">{{item.name}}</view>
+            <!-- 歌手和专辑 -->
+            <view class="singer-album fl f-s-13">
+                <!-- 歌手 -->
+                <view class="singers">{{item.ar[0].name}}</view>
+                <!-- 专辑名 -->
+                <view class="albums-name">-{{item.al.name}}</view>
+            </view>
+        </view>
+        <!-- 右边内容层 -->
+        <view class="song-right fl s-b">
+            <!-- 播放按钮 -->
+            <view class="play-btn common-btns">
+                <image class="img" src="../../../assets/images/detail-play.png"></image>
+            </view>
+            <!-- 更多按钮 -->
+            <view class="more-btn common-btns">
+                <image class="img" src="../../../assets/images/more.png"></image>
+            </view>
+        </view>
+    </view>
+</view>

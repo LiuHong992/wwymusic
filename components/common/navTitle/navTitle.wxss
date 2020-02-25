@@ -1,0 +1,9 @@
+.titles {
+    line-height: 60rpx;
+}
+
+.play-all {
+    padding: 10rpx 16rpx;
+    border: 2rpx solid #ccc;
+    border-radius: 30rpx;
+}

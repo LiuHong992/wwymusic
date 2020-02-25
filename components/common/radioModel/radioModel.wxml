@@ -1,0 +1,16 @@
+<view class="radio-content" wx:if="{{radios.length>0}}">
+    <!-- 电台模板 -->
+    <view class="album-model fl m-b-10" wx:for="{{radios}}" wx:key="index">
+        <!-- 电台封面 -->
+        <view class="common-image">
+            <image class="img common-img" src="{{item.picUrl}}"></image>
+        </view>
+        <!-- 电台名、主播 -->
+        <view class="album-pub">
+            <!-- 电台名 -->
+            <view class="album-name">{{item.name}}</view>
+            <!-- 主播 -->
+            <view class="light-gray fl m-t-10 f-s-13">{{item.dj.nickname}}</view>
+        </view>
+    </view>
+</view>

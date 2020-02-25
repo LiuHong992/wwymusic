@@ -1,0 +1,19 @@
+<view class="album-content" wx:if="{{albums.length>0}}">
+    <!-- 专辑模板 -->
+    <view class="album-model fl m-b-10" wx:for="{{albums}}" wx:key="index">
+        <!-- 专辑封面 -->
+        <view class="common-image">
+            <image class="img common-img" src="{{item.picUrl}}"></image>
+        </view>
+        <!-- 专辑名、作者和发布时间 -->
+        <view class="album-pub">
+            <!-- 专辑名 -->
+            <view class="album-name">{{item.name}}</view>
+            <!-- 专辑作者和发布时间 -->
+            <view class="light-gray fl m-t-10 f-s-13">
+                <view class="artist-name">{{item.artist.name}}</view>
+                <view class="pubs m-l-10">{{item.publishTime}}</view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,4 +1,16 @@
 {
-  "component": true,
-  "usingComponents": {}
+    "component": true,
+    "usingComponents": {
+        "navTitle": "../../common/navTitle/navTitle",
+        "intrested": "../../common/intrested/intrested",
+        "singleModel": "../../common/singerModel/singerModel",
+        "albumModel": "../../common/albumModel/albumModel",
+        "playlistModel": "../../common/playlistModel/playlistModel",
+        "mlogModel": "../../common/mlogModel/mlogModel",
+        "themeModel": "../../common/themeModel/themeModel",
+        "singerModel": "../../common/singerModel/singerModel",
+        "radioModel": "../../common/radioModel/radioModel",
+        "userModel": "../../common/userModel/userModel",
+        "videoModel": "../../common/videoModel/videoModel"
+    }
 }

@@ -1,0 +1,28 @@
+/* 歌曲封面 */
+
+.album-image {
+    min-width: 190rpx;
+    height: 190rpx;
+    background-color: #ccc;
+}
+
+
+/* 歌手 */
+
+.artist-item {
+    line-height: 190rpx;
+}
+
+.artist-image {
+    min-width: 190rpx;
+    height: 190rpx;
+    border-radius: 50%;
+}
+
+
+/* 别名 */
+
+.other-names {
+    margin-left: 6rpx;
+    color: rgb(133, 132, 132);
+}

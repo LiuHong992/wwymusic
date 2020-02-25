@@ -1,0 +1,5 @@
+<!-- 单曲头部 -->
+<view class="songs-header fl s-b m-b-20">
+    <view class="titles f-w f-s-18">{{titles}}</view>
+    <view class="play-all f-w f-s-13" wx:if="{{rightT !== ''}}">{{rightT}}</view>
+</view>

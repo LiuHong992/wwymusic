@@ -1,0 +1,36 @@
+/* 单曲 */
+
+.singer-album {
+    margin-top: 10rpx;
+}
+
+.singers {
+    color: skyblue;
+}
+
+.albums-name {
+    margin-left: 10rpx;
+    color: rgb(126, 125, 125);
+}
+
+
+/* 按钮公共样式 */
+
+.common-btns {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+
+/* 播放按钮 */
+
+.play-btn {
+    margin: auto 0;
+}
+
+
+/* 更多按钮 */
+
+.more-btn {
+    margin: auto 0 auto 20rpx;
+}

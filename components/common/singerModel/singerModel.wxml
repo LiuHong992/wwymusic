@@ -1,0 +1,18 @@
+<view class="singer-content" wx:if="{{singers.length>0}}">
+    <!-- 歌手模板 -->
+    <view class="singer-model fl m-b-10" wx:for="{{singers}}" wx:key="index">
+        <!-- 歌手封面图 -->
+        <view class="circle-image">
+            <image class="i-circle" src="{{item.picUrl}}"></image>
+        </view>
+        <!-- 歌手名字和别名 -->
+        <view class="name-nickname fl m-l-15">
+            <!-- 歌手名字 -->
+            <view class="singer-name">{{item.name}}</view>
+            <!-- 昵称 -->
+            <view class="nickname light-gray" wx:if="{{item.alias.length>0}}">
+                ({{item.alias[0]}})
+            </view>
+        </view>
+    </view>
+</view>

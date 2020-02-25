@@ -110,3 +110,14 @@ swiper-item {
 .empty-value-content {
     margin-top: 50rpx;
 }
+
+.van-sticky {
+    position: sticky !important;
+    top: 84rpx !important;
+    z-index: 99 !important;
+    background-color: #fff !important;
+}
+
+.after-content {
+    padding: 0 20rpx 20rpx;
+}

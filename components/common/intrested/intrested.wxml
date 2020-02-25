@@ -1,0 +1,32 @@
+<view class="interest-infos">
+    <!-- 第一个专辑 -->
+    <view class="album-item fl m-b-20">
+        <!-- 专辑封面 -->
+        <view class="album-image">
+            <image class="img" src="{{firstAlbum.picUrl}}"></image>
+        </view>
+        <!-- 专辑名和发布时间 -->
+        <view class="album-pub f-s-12">
+            <!-- 专辑名 -->
+            <view class="album-name">{{firstAlbum.name}}</view>
+            <!-- 专辑发布时间 -->
+            <view class="light-gray m-t-10 fl">
+                <view class="artist-name">{{firstAlbum.artist.name}}</view>
+                <view class="pubs m-l-10">{{firstAlbum.publishTime}}</view>
+            </view>
+        </view>
+    </view>
+    <!-- 歌手第一个 -->
+    <view class="artist-item fl">
+        <!-- 头像 -->
+        <view class="artist-image">
+            <image class="i-circle" src="{{firstArtist.picUrl}}"></image>
+        </view>
+        <!-- 歌手名 -->
+        <view class="artist-names m-l-10">{{firstArtist.name}}</view>
+        <!-- 别名 -->
+        <view class="other-names" wx:if="{{firstArtist.alia.length>0}}">
+            ({{firstArtist.alia[0]}})
+        </view>
+    </view>
+</view>

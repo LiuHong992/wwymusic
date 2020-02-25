@@ -1,0 +1,26 @@
+/* 歌单 */
+
+.list-image {
+    min-width: 190rpx;
+    height: 190rpx;
+    border-radius: 30rpx;
+}
+
+.list-img {
+    border-radius: 30rpx;
+}
+
+
+/* 歌单内容 */
+
+.list-infos {
+    padding: 20rpx 0 0 10rpx;
+}
+
+.more-infos {
+    color: rgb(133, 130, 130);
+}
+
+.list-count {
+    margin-right: 10rpx;
+}

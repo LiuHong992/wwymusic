@@ -1,0 +1,31 @@
+<view class="user-content" wx:if="{{users.length>0}}">
+    <!-- 用户模板 -->
+    <view class="user-model fl m-b-10 p-r" wx:for="{{users}}" wx:key="index">
+        <!-- 用户头像 -->
+        <view class="circle-image">
+            <image class="i-circle" src="{{item.avatarUrl}}"></image>
+        </view>
+        <!-- 用户名、简介 -->
+        <view class="user-names m-t-10 m-l-10">
+            <!-- 用户名性别 -->
+            <view class="name-sex fl">
+                <!-- 用户名 -->
+                <view class="name-item">{{item.nickname}}</view>
+                <!-- 性别 -->
+                <view class="sexes">
+                    <image wx:if="{{item.gender===1}}" class="img" src="../../../assets/images/male.png"></image>
+                    <image wx:if="{{item.gender===2}}" class="img" src="../../../assets/images/female.png"></image>
+                </view>
+            </view>
+            <!-- 简介 -->
+            <view class="dec f-s-13 m-t-10 light-gray">{{item.signature}}</view>
+        </view>
+        <!-- 关注按钮 -->
+        <view class="follow-btn fl p-a">
+            <view class="add-icon">
+                <image class="img" src="../../../assets/images/add-red.png"></image>
+            </view>
+            <view class="follow-txt">关注</view>
+        </view>
+    </view>
+</view>
