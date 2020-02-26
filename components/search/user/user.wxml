@@ -1,2 +1,6 @@
-<!--components/search/user/user.wxml-->
-<text>components/search/user/user.wxml</text>
+<!-- 内容层 -->
+<view class="user-contents m-t-10" id="userconts" wx:if="{{$.afterSearch.length>0}}">
+    <scroll-view class="scroll-view-container" scroll-y="{{true}}" bindscrolltolower="toBottom">
+        <userModel users="{{$.afterSearch}}"></userModel>
+    </scroll-view>
+</view>

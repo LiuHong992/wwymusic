@@ -1,2 +1,6 @@
-<!--components/search/radio/radio.wxml-->
-<text>components/search/radio/radio.wxml</text>
+<!-- 内容层 -->
+<view class="radio-contents m-t-10" id="radioconts" wx:if="{{$.afterSearch.length>0}}">
+    <scroll-view class="scroll-view-container" scroll-y="{{true}}" bindscrolltolower="toBottom">
+        <radioModel radios="{{$.afterSearch}}"></radioModel>
+    </scroll-view>
+</view>

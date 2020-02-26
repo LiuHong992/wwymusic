@@ -1,4 +1,8 @@
 {
-    "usingComponents": {},
+    "usingComponents": {
+        "vant-tab": "../../lib/vant/tab/index",
+        "vant-tabs": "../../lib/vant/tabs/index",
+        "singerModel": "../../components/common/singerModel/singerModel"
+    },
     "navigationBarTitleText": "歌手"
 }

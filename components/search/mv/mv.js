@@ -1,13 +1,11 @@
-Component({
+import store from '../../../store/index'
+import create from '../../../utils/store/create'
+create.Component(store, {
+    use: ['afterSearch'],
     /**
      * 组件的属性列表
      */
-    properties: {
-        ssR: {
-            type: Array,
-            value: () => []
-        }
-    },
+    properties: {},
 
     /**
      * 组件的初始数据
@@ -21,6 +19,9 @@ Component({
      * 组件的方法列表
      */
     methods: {
-
+        // 滚到底部
+        toBottom() {
+            this.triggerEvent('toBottom', true)
+        },
     }
 })

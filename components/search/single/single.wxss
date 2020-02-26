@@ -1,1 +1,16 @@
-/* components/search/single/single.wxss */
+/* 播放全部按钮 */
+
+.playall-btn,
+.check-btn {
+    width: 48rpx;
+    height: 48rpx;
+}
+
+.header-right {
+    line-height: 52rpx;
+}
+
+.check-text {
+    margin-left: 10rpx;
+    margin-right: 10rpx;
+}

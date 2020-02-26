@@ -1,1 +1,8 @@
-/* pages/singer/singer.wxss */
+.indexes {
+    background-color: #fff;
+}
+
+.indexes-model {
+    padding: 10rpx;
+    color: black;
+}

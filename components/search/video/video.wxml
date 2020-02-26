@@ -1,2 +1,9 @@
-<!--components/search/video/video.wxml-->
-<text>components/search/video/video.wxml</text>
+<!-- 内容层 -->
+<view class="video-contents m-t-10" id="videoconts" wx:if="{{$.afterSearch.length>0}}">
+    <scroll-view class="scroll-view-container" scroll-y="{{true}}" bindscrolltolower="toBottom">
+        <videoModel videos="{{$.afterSearch}}"></videoModel>
+    </scroll-view>
+</view>
+<!-- <view class="video-contents m-t-10" wx:else>
+    <view class="t-center f-s-22 f-w">暂无相关视频信息~</view>
+</view> -->

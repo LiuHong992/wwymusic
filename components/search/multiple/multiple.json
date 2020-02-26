@@ -3,7 +3,7 @@
     "usingComponents": {
         "navTitle": "../../common/navTitle/navTitle",
         "intrested": "../../common/intrested/intrested",
-        "singleModel": "../../common/singerModel/singerModel",
+        "singleModel": "../../common/singleModel/singleModel",
         "albumModel": "../../common/albumModel/albumModel",
         "playlistModel": "../../common/playlistModel/playlistModel",
         "mlogModel": "../../common/mlogModel/mlogModel",

@@ -70,6 +70,13 @@
 					"pathName": "pages/djprodetail/djprodetail",
 					"query": "id=2065012554&detailname=电台",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/singer/singer",
+					"pathName": "pages/singer/singer",
+					"query": "id=2065012554&detailname=电台",
+					"scene": null
 				}
 			]
 		}

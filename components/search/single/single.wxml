@@ -1,2 +1,26 @@
-<!--components/search/single/single.wxml-->
-<text>components/search/single/single.wxml</text>
+<!-- 内容层 -->
+<view class="single-contents m-t-10" id="singleconts" wx:if="{{$.afterSearch.length>0}}">
+    <scroll-view class="scroll-view-container" scroll-y="{{true}}" bindscrolltolower="toBottom">
+        <!-- 头部(播放全部) -->
+        <view class="single-header fl s-b m-b-15">
+            <!-- 头部左边 -->
+            <view class="header-left fl">
+                <!-- 播放按钮 -->
+                <view class="playall-btn">
+                    <image class="img" src="../../../assets/images/detail-play.png"></image>
+                </view>
+                <!-- 文字 -->
+                <view class="playall-text m-l-10">播放全部</view>
+            </view>
+            <!-- 头部右边(多选) -->
+            <view class="header-right fl">
+                <view class="check-btn">
+                    <image class="img" src="../../../assets/images/pro-check.png"></image>
+                </view>
+                <!-- 文字 -->
+                <view class="check-text f-s-13">多选</view>
+            </view>
+        </view>
+        <singleModel songes="{{$.afterSearch}}"></singleModel>
+    </scroll-view>
+</view>

@@ -573,6 +573,13 @@
 }
 
 
+/* 红色背景色 */
+
+.red-bg {
+    background-color: #CB1C36;
+}
+
+
 /* #CB1C36颜色字体（适用于本书城项目） */
 
 .red-text {
@@ -590,7 +597,7 @@
 /* 白色字体 */
 
 .wh-text {
-    color: #ffffff;
+    color: #ffffff !important;
 }
 
 
@@ -643,6 +650,29 @@
 
 .l-h-40 {
     line-height: 80rpx;
+}
+
+
+/* 竖向scroll-view */
+
+.scroll-view-container {
+    height: 100vh;
+}
+
+
+/* 横向scroll-view */
+
+.scroll-view-X {
+    width: 100vw;
+}
+
+
+/* 隐藏scroll-view的滚动条 */
+
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
 }
 
 

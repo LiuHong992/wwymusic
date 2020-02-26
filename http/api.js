@@ -5,82 +5,66 @@ export default ({
     "typeList": [{
             id: '5001',
             name: '入驻歌手',
-            initial: ["热", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
         },
         {
             id: '1001',
             name: '华语男歌手',
-            initial: ["热", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
         },
         {
             id: '1002',
             name: '华语女歌手',
-            initial: ["热", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
         },
         {
             id: '1003',
             name: '华语组合/乐队',
-            initial: ["热", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
         },
         {
             id: '2001',
             name: '欧美男歌手',
-            initial: ["热", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
         },
         {
             id: '2002',
             name: '欧美女歌手',
-            initial: ["热", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
         },
         {
             id: '2003',
             name: '欧美组合/乐队',
-            initial: ["热", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
         },
         {
             id: '6001',
             name: '日本男歌手',
-            initial: ["热", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
         },
         {
             id: '6002',
             name: '日本女歌手',
-            initial: ["热", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
         },
         {
             id: '6003',
             name: '日本组合/乐队',
-            initial: ["热", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
         },
         {
             id: '7001',
             name: '韩国男歌手',
-            initial: ["热", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
         },
         {
             id: '7002',
             name: '韩国女歌手',
-            initial: ["热", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
         },
         {
             id: '7003',
             name: '韩国组合/乐队',
-            initial: ["热", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
         },
         {
             id: '4001',
             name: '其他男歌手',
-            initial: ["热", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
         },
         {
             id: '4002',
             name: '其他女歌手',
-            initial: ["热", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
         },
         {
             id: '4003',
             name: '其他组合/乐队',
-            initial: ["热", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
         },
     ],
     "searchType": [
@@ -241,7 +225,7 @@ export default ({
     },
     // 综合搜索
     keywordSearches(keyword, type, limits) {
-        return fly.get(`/search?keywords=${keyword}&type=${type}&limits=${limits}`)
+        return fly.get(`/search?keywords=${keyword}&type=${type}&limit=${limits}`)
     },
     //默认搜索关键词
     defaultKeyword() {

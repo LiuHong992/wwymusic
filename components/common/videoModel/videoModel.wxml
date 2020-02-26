@@ -4,26 +4,26 @@
     <view class="video-model fl m-b-15" wx:for="{{videos}}" wx:key="index">
         <!-- 视频封面图 -->
         <view class="video-cover p-r">
-            <image class="img video-img" src="{{item.coverUrl}}"></image>
+            <image class="img video-img" src="{{item.coverUrl || item.cover}}"></image>
             <!-- 视频播放次数 -->
             <view class="play-count fl p-a">
                 <!-- 播放小图标 -->
                 <view class="play-icon">
                     <image class="img" src="../../../assets/images/playcount.png"></image>
                 </view>
-                <view class="plays f-s-12">{{item.playTime}}</view>
+                <view class="plays f-s-12">{{item.playTime || item.playCount}}</view>
             </view>
         </view>
         <!-- 视频名播放时长以及视频收藏者 -->
         <view class="video-infos m-l-10">
             <!-- 视频名 -->
-            <view class="video-name t-over-2">{{item.title}}</view>
+            <view class="video-name t-over-2">{{item.title || item.name}}</view>
             <!-- 视频时长和收藏者 -->
             <view class="tiem-coll fl f-s-13">
                 <!-- 视频时长 -->
-                <view class="video-time">{{item.durationms}}</view>
+                <view class="video-time">{{item.durationms || item.duration}}</view>
                 <!-- 视频收藏者 -->
-                <view class="video-coll">by {{item.creator[0].userName}}</view>
+                <view class="video-coll">by {{item.creator[0].userName || item.artistName}}</view>
             </view>
         </view>
     </view>

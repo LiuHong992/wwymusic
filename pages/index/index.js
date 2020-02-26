@@ -3,21 +3,21 @@ var time = require('../../utils/util');
 import store from '../../store/index'
 import create from '../../utils/store/create'
 create.Page(store, {
-    use: ['searchLimit'],
+    use: ['searchLimit', 'afterSearch'],
     /**
      * 页面的初始数据
      */
     data: {
         // 控制首页显示的参数
-        flag: false,
+        flag: true,
         // 接收默认搜索关键词对象
         defalutObj: {},
         // 搜索框的值
-        sValue: '陈奕迅',
+        sValue: '',
         // 接收热搜榜的数组
         hotArr: [],
         // 控制搜索与否的参数
-        searchNum: 1,
+        searchNum: 0,
         // 控制搜索联想框的显示与否
         connectNum: 0,
         // 接收联想词的数组
@@ -29,7 +29,7 @@ create.Page(store, {
         // 接收搜索出来的数据的对象(综合栏)
         sResult: {},
         // 接收搜索出来的数据的数组(除综合外)
-        sResultArr: [],
+        // sResultArr: [],
         // 接收轮播图数据数组
         banners: [],
         // 导航栏数据
@@ -182,7 +182,7 @@ create.Page(store, {
         wx.showLoading({
             title: '搜索中...'
         });
-        api.keywordSearches(keywords, this.data.active).then(res => {
+        api.keywordSearches(keywords, this.data.active, this.store.data.searchLimit).then(res => {
             if (res.code === 200) {
                 wx.hideLoading();
                 this.data.sResult = res.result
@@ -208,7 +208,6 @@ create.Page(store, {
                 this.setData({
                     sResult: this.data.sResult
                 })
-                console.log(this.data.sResult);
             } else {
                 wx.hideLoading();
             }
@@ -219,25 +218,45 @@ create.Page(store, {
     },
     // 搜索事件(除综合栏其他的标签栏)
     searchOthers(keywords) {
-        let sR = this.data.sResultArr
+        let sR = this.store.data
         wx.showLoading({
-            title: '搜索中...'
+            title: '加载中...'
         });
-        api.keywordSearches(keywords, this.data.active, this.store.data.limits).then(res => {
+        api.keywordSearches(keywords, this.data.active, this.store.data.searchLimit).then(res => {
             if (res.code === 200) {
                 wx.hideLoading();
-                this.data.active === 1 ? sR.push(...res.result.songs) : ''
-                this.data.active === 1014 ? sR.push(...res.result.videos) : ''
-                this.data.active === 100 ? sR.push(...res.result.artists) : ''
-                this.data.active === 10 ? sR.push(...res.result.albums) : ''
-                this.data.active === 1000 ? sR.push(...res.result.playlists) : ''
-                this.data.active === 1009 ? sR.push(...res.result.djRadios) : ''
-                this.data.active === 1002 ? sR.push(...res.result.userprofiles) : ''
-                this.data.active === 1004 ? sR.push(...res.result.mvs) : ''
-                this.setData({
-                    sR: sR
-                })
-                console.log(sR);
+                // 处理专辑发布时间
+                if (this.data.active === 10 && res.result.albums.length > 0) {
+                    res.result.albums.map(item => {
+                        item.publishTime = time.formatTimeTwo((item.publishTime), 'Y-M-D')
+                    })
+                }
+                // 处理歌单播放次数
+                if (this.data.active === 1000 && res.result.playlists.length > 0) {
+                    res.result.playlists.map(item => {
+                        item.playCount = this.playCounts(item.playCount)
+                    })
+                }
+                // 处理视频播放时间以及播放次数
+                if (this.data.active === 1014 && res.result.videos.length > 0) {
+                    res.result.videos.map(item => {
+                        item.durationms = time.formatTimeTwo(item.durationms, 'm:s')
+                        item.playTime = this.playCounts(item.playTime)
+                    })
+                } else if (this.data.active === 1004 && res.result.mvs.length > 0) {
+                    res.result.mvs.map(item => {
+                        item.duration = time.formatTimeTwo(item.duration, 'm:s')
+                        item.playCount = this.playCounts(item.playCount)
+                    })
+                }
+                this.data.active === 1 ? sR.afterSearch = res.result.songs : ''
+                this.data.active === 1014 ? sR.afterSearch = res.result.videos : ''
+                this.data.active === 100 ? sR.afterSearch = res.result.artists : ''
+                this.data.active === 10 ? sR.afterSearch = res.result.albums : ''
+                this.data.active === 1000 ? sR.afterSearch = res.result.playlists : ''
+                this.data.active === 1009 ? sR.afterSearch = res.result.djRadios : ''
+                this.data.active === 1002 ? sR.afterSearch = res.result.userprofiles : ''
+                this.data.active === 1004 ? sR.afterSearch = res.result.mvs : ''
             } else {
                 wx.hideLoading();
             }
@@ -270,9 +289,10 @@ create.Page(store, {
     },
     // 更改标签栏active
     changeActive(e) {
+        this.store.data.afterSearch = []
+        this.store.data.searchLimit = 30
         this.setData({
             active: e.detail.name,
-            sResultArr: []
         })
         if (this.data.active === 1018) {
             this.searchResult(this.data.sValue)
@@ -411,28 +431,24 @@ create.Page(store, {
             return items = `${items}`
         }
     },
-    // 滚到底部
-    toBottom() {
-        console.log(111);
-        wx.showToast({
-            title: '已经到最底部啦~'
-        });
-    },
-    // 动态获取高度
-    getHeight() {
-        var me = this;
-        const query = wx.createSelectorQuery().in(me);
-        query.select('#mcontents').boundingClientRect(function(res) {
-            me.setData({
-                contentHeight: wx.getSystemInfoSync().windowHeight - res.top
-            })
-        }).exec()
+    // 子组件分发回父组件的事件(上拉加载数据)
+    toBottom(e) {
+        if (e.detail) {
+            this.store.data.searchLimit += 10
+            if (this.store.data.searchLimit > 100) {
+                wx.showToast({
+                    title: '没有更多数据了~',
+                    icon: 'none',
+                });
+            } else {
+                this.searchOthers(this.data.sValue)
+            }
+        }
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        this.getHeight();
         this.defaultKeyword();
         this.getHot();
         this.getBanners();
@@ -441,7 +457,6 @@ create.Page(store, {
         this.getNewsongs();
         this.getRadio();
         this.getProgram();
-        this.searchResult(this.data.sValue)
     },
 
     /**

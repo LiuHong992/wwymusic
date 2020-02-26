@@ -1,2 +1,6 @@
-<!--components/search/mv/mv.wxml-->
-<text>components/search/mv/mv.wxml</text>
+<!-- 内容层 -->
+<view class="mv-contents m-t-10" id="mvconts" wx:if="{{$.afterSearch.length>0}}">
+    <scroll-view class="scroll-view-container" scroll-y="{{true}}" bindscrolltolower="toBottom">
+        <videoModel videos="{{$.afterSearch}}"></videoModel>
+    </scroll-view>
+</view>

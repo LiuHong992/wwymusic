@@ -1,2 +1,6 @@
-<!--components/search/album/album.wxml-->
-<text>components/search/album/album.wxml</text>
+<!-- 内容层 -->
+<view class="album-contents m-t-10" id="albumconts" wx:if="{{$.afterSearch.length>0}}">
+    <scroll-view class="scroll-view-container" scroll-y="{{true}}" bindscrolltolower="toBottom">
+        <albumModel albums="{{$.afterSearch}}"></albumModel>
+    </scroll-view>
+</view>

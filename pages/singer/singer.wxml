@@ -1,0 +1,26 @@
+<!-- 用于吸顶的大盒子 -->
+<view class="sticky">
+    <!-- 横向大分类(vant组件) -->
+    <view class="vanttabs">
+        <vant-tabs active="{{count}}" bind:change="changeCountss">
+            <vant-tab title="{{item.name}}" name="{{item.id}}" wx:for="{{$.bigArr}}" wx:key="index"></vant-tab>
+        </vant-tabs>
+    </view>
+    <!-- 横向索引栏 -->
+    <view class="indexes" wx:if="{{count!=='5001'}}">
+        <scroll-view class="scroll-view-X" scroll-x="{{true}}" scroll-into-view="{{startTo}}">
+            <!-- 内容层 -->
+            <view class="indexes-content fl">
+                <!-- 索引栏模板 -->
+                <view id="{{index===0?'starts':''}}" class="indexes-model {{indexNum===index?'wh-text red-bg':''}}" wx:for="{{$.initial}}" wx:key="index" data-item="{{item}}" data-index="{{index}}" bind:tap="changeNum">
+                    {{item}}
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+<!-- 下方具体歌手内容 -->
+<view class="singer-mainconts p-20" wx:if="{{singerArr.length>0}}">
+    <!-- 歌手子组件 -->
+    <singerModel singers="{{singerArr}}" singerNum="{{1}}"></singerModel>
+</view>

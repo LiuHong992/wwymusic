@@ -9,9 +9,9 @@
             <!-- 歌手和专辑 -->
             <view class="singer-album fl f-s-13">
                 <!-- 歌手 -->
-                <view class="singers">{{item.ar[0].name}}</view>
+                <view class="singers">{{item.ar[0].name || item.artists[0].name}}</view>
                 <!-- 专辑名 -->
-                <view class="albums-name">-{{item.al.name}}</view>
+                <view class="albums-name">-{{item.al.name || item.album.name}}</view>
             </view>
         </view>
         <!-- 右边内容层 -->

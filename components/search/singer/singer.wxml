@@ -1,2 +1,6 @@
-<!--components/search/singer/singer.wxml-->
-<text>components/search/singer/singer.wxml</text>
+<!-- 内容层 -->
+<view class="singer-contents m-t-10" id="singerconts" wx:if="{{$.afterSearch.length>0}}">
+    <scroll-view class="scroll-view-container" scroll-y="{{true}}" bindscrolltolower="toBottom">
+        <singerModel singers="{{$.afterSearch}}"></singerModel>
+    </scroll-view>
+</view>

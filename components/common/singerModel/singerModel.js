@@ -6,6 +6,10 @@ Component({
         singers: {
             type: Array,
             value: () => []
+        },
+        singerNum: {
+            type: Number,
+            value: 0
         }
     },
 

@@ -1,2 +1,6 @@
-<!--components/search/songlist/songlist.wxml-->
-<text>components/search/songlist/songlist.wxml</text>
+<!-- 内容层 -->
+<view class="playlist-contents m-t-10" id="playlistconts" wx:if="{{$.afterSearch.length>0}}">
+    <scroll-view class="scroll-view-container" scroll-y="{{true}}" bindscrolltolower="toBottom">
+        <playlistModel playlists="{{$.afterSearch}}"></playlistModel>
+    </scroll-view>
+</view>

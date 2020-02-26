@@ -143,16 +143,16 @@
         </view>
     </view>
     <vant-tabs active="{{ active }}" bind:change="changeActive" animated="{{true}}">
-        <vant-tab title="{{item.name}}" name="{{item.id}}" wx:for="{{typeArr}}" wx:key="index">
+        <vant-tab class="heiauto" title="{{item.name}}" name="{{item.id}}" wx:for="{{typeArr}}" wx:key="index">
             <multiple sResult="{{sResult}}" wx:if="{{active===1018}}"></multiple>
-            <single ssR="{{sResultArr}}" wx:if="{{active===1}}"></single>
-            <video ssR="{{sResultArr}}" wx:if="{{active===1014}}"></video>
-            <singer ssR="{{sResultArr}}" wx:if="{{active===100}}"></singer>
-            <album ssR="{{sResultArr}}" wx:if="{{active===10}}"></album>
-            <songlist ssR="{{sResultArr}}" wx:if="{{active===1000}}"></songlist>
-            <radio ssR="{{sResultArr}}" wx:if="{{active===1009}}"></radio>
-            <user ssR="{{sResultArr}}" wx:if="{{active===1002}}"></user>
-            <mv ssR="{{sResultArr}}" wx:if="{{active===1004}}"></mv>
+            <single bind:toBottom="toBottom" wx:if="{{active===1}}"></single>
+            <videos bind:toBottom="toBottom" wx:if="{{active===1014}}"></videos>
+            <singer bind:toBottom="toBottom" wx:if="{{active===100}}"></singer>
+            <album bind:toBottom="toBottom" wx:if="{{active===10}}"></album>
+            <songlist bind:toBottom="toBottom" wx:if="{{active===1000}}"></songlist>
+            <radio bind:toBottom="toBottom" wx:if="{{active===1009}}"></radio>
+            <user bind:toBottom="toBottom" wx:if="{{active===1002}}"></user>
+            <mv bind:toBottom="toBottom" wx:if="{{active===1004}}"></mv>
         </vant-tab>
     </vant-tabs>
 </view>
