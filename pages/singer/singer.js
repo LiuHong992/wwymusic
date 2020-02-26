@@ -11,6 +11,8 @@ create.Page(store, {
         count: '5001',
         // 用于滚动到头部的参数
         startTo: '',
+        // 接收小类的参数
+        littleC: '',
         // 控制小分类的参数
         indexNum: 0,
         // 用于接收歌手数据的数组
@@ -47,7 +49,8 @@ create.Page(store, {
         this.setData({
             count: e.detail.name,
             indexNum: 0,
-            startTo: 'starts'
+            startTo: 'starts',
+            littleC: ''
         })
         this.bigClassfys('')
     },
@@ -59,12 +62,13 @@ create.Page(store, {
         });
         let { item, index } = e.currentTarget.dataset
         this.setData({
-            indexNum: index
+            indexNum: index,
+            littleC: item
         })
         if (index === 0) {
             this.bigClassfys('')
         } else {
-            this.bigClassfys(item)
+            this.bigClassfys(this.data.littleC)
         }
     },
     /**
@@ -115,7 +119,19 @@ create.Page(store, {
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function() {
-
+        this.store.data.searchLimit += 23
+        if (this.store.data.searchLimit < 100) {
+            if (this.data.indexNum === 0) {
+                this.bigClassfys('')
+            } else {
+                this.bigClassfys(this.data.littleC)
+            }
+        } else {
+            wx.showToast({
+                title: '没有更多数据了哦~',
+                icon: 'none'
+            });
+        }
     },
 
     /**
