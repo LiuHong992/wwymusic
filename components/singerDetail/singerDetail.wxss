@@ -1,0 +1,22 @@
+.hot-image {
+    width: 48rpx;
+    height: 48rpx;
+}
+
+.songs-contents {
+    margin-top: 30rpx;
+    padding: 10rpx;
+}
+
+.more-hots {
+    max-width: 180rpx;
+    margin: 30rpx auto;
+}
+
+
+/* 右箭头 */
+
+.arrow-image {
+    width: 40rpx;
+    height: 40rpx;
+}

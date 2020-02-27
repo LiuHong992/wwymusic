@@ -1,0 +1,43 @@
+<!-- 头部排序 -->
+<view class="rank-header fl s-b m-t-15 m-b-15">
+    <!-- 左边排序方式 -->
+    <view class="time-rank f-w">按发行时间排序</view>
+    <!-- 右边排序方式选择 -->
+    <view class="rank-func fl">
+        <!-- 左边排序小图标 -->
+        <view class="rank-icon">
+            <image class="img" src="../../assets/images/rank-album.png"></image>
+        </view>
+        <!-- 文字 -->
+        <view class="rank-text">排序</view>
+    </view>
+</view>
+<!-- 下方内容层 -->
+<view class="album-conts">
+    <!-- 专辑模板 -->
+    <view class="album-models fl" wx:for="{{albumsArr}}" wx:key="index">
+        <!-- 左边专辑封面图 -->
+        <view class="left-cover">
+            <image class="img left-img" src="{{item.picUrl}}"></image>
+        </view>
+        <!-- 右边内容层 -->
+        <view class="right-infos m-t-10 m-l-10">
+            <!-- 头部专辑名和别名 -->
+            <view class="names-header fl">
+                <!-- 专辑名 -->
+                <view class="aname-item">{{item.name}}</view>
+                <!-- 别名 -->
+                <view class="other-name f-1 light-gray t-over" wx:if="{{item.alias.length>0}}">
+                    ({{item.alias[0]}})
+                </view>
+            </view>
+            <!-- 发布时间和歌曲数量 -->
+            <view class="pub-size fl light-gray f-s-12 m-t-10">
+                <!-- 发布时间 -->
+                <view class="pub-time">{{item.publishTime}}</view>
+                <!-- 歌曲数量 -->
+                <view class="sizes">歌曲{{item.size}}</view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,13 +1,14 @@
+// components/singerMvDetail/singerMvDetail.js
 Component({
     /**
      * 组件的属性列表
      */
     properties: {
-        singers: {
+        videoMvs: {
             type: Array,
             value: () => []
         },
-        singerNum: {
+        mvSize: {
             type: Number,
             value: 0
         }
@@ -25,12 +26,6 @@ Component({
      * 组件的方法列表
      */
     methods: {
-        // 跳转歌手详情页
-        goTosingerD(e) {
-            let { item } = e.currentTarget.dataset
-            wx.navigateTo({
-                url: `/pages/siingerdetail/siingerdetail?id=${item.id}&name=${item.name}`
-            });
-        }
+
     }
 })

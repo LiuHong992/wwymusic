@@ -205,10 +205,6 @@ export default ({
     getSongdetail(id) {
         return fly.get(`/song/detail?ids=${id}`)
     },
-    //获取歌手专辑 
-    getAlbum(id, limit) {
-        return fly.get(`/artist/album?id=${id}&limit=${limit}`)
-    },
     //关键字搜索
     // limit : 返回数量 , 默认为 30 offset : 偏移数量，用于分页 , 如 : 如 :( 页数 -1)*30, 其中 30 为 limit 的值 
     // type: 搜索类型；默认为 1 即单曲 , 取值意义 : 1: 单曲, 10: 专辑, 100: 歌手, 1000: 歌单, 1002: 用户, 1004: MV, 1006: 歌词, 1009: 电台, 1014: 视频, 1018:综合
@@ -249,8 +245,24 @@ export default ({
     getSong(id) {
         return fly.get(`/artists?id=${id}`)
     },
+    //获取歌手专辑 
+    getAlbum(id, offset) {
+        return fly.get(`/artist/album?id=${id}&offset=${offset}`)
+    },
     //获取歌手视频
     getMv(id) {
         return fly.get(`/artist/mv?id=${id}`)
+    },
+    // 播放次数的计算方法
+    playCounts(items) {
+        if (items >= 100000000) {
+            let one = (items / 100000000).toFixed(2)
+            return items = `${one}亿`
+        } else if (items < 100000000 && items >= 10000) {
+            let one = parseInt(items / 10000)
+            return items = `${one}万`
+        } else {
+            return items = `${items}`
+        }
     },
 })

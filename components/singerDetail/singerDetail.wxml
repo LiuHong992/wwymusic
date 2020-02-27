@@ -1,0 +1,26 @@
+<!-- 播放热门头部 -->
+<view class="playhot-header fl m-t-10">
+    <view class="hot-image">
+        <image class="img" src="../../assets/images/detail-play.png"></image>
+    </view>
+    <view class="pl-text m-l-10 f-w f-s-18">播放热门50</view>
+</view>
+<!-- 热歌前五首 -->
+<view class="songs-contents">
+    <singleModel songes="{{fiveSongs}}"></singleModel>
+    <!-- 更多热歌 -->
+    <view class="more-hots fl" bind:tap="changeNumOne">
+        <view class="more-text">更多热歌</view>
+        <!-- 箭头符号 -->
+        <view class="arrow-image">
+            <image class="img" src="../../assets/images/right-arrow.png"></image>
+        </view>
+    </view>
+</view>
+<!-- 歌手简介 -->
+<view class="singersinfo-content m-b-20">
+    <!-- 简介头部标题栏 -->
+    <view class="singerinfo-header f-w m-t-15 m-b-15 f-s-18">歌手简介</view>
+    <!-- 简介内容层 -->
+    <view class="desc-content t-over-4">{{singerinfo.briefDesc}}</view>
+</view>

@@ -573,6 +573,17 @@
 }
 
 
+/* 文字超过四排显示省略号 */
+
+.t-over-4 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+
 /* 红色背景色 */
 
 .red-bg {

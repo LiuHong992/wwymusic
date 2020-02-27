@@ -1,6 +1,6 @@
 <view class="singer-content" wx:if="{{singers.length>0}}">
     <!-- 歌手模板 -->
-    <view class="singer-model fl m-b-10 {{singerNum===1?'border-b':''}}" wx:for="{{singers}}" wx:key="index">
+    <view class="singer-model fl m-b-10 {{singerNum===1?'border-b':''}}" wx:for="{{singers}}" wx:key="index" bind:tap="goTosingerD" data-item="{{item}}">
         <!-- 歌手封面图 -->
         <view class="circle-image">
             <image class="i-circle" src="{{item.picUrl}}"></image>

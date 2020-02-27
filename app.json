@@ -5,6 +5,7 @@
         "pages/my/my",
         "pages/songdetail/songdetail",
         "pages/djprodetail/djprodetail",
+        "pages/siingerdetail/siingerdetail",
         "pages/login/login",
         "pages/register/register"
     ],

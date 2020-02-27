@@ -1,0 +1,41 @@
+<!-- mv头部 -->
+<view class="mv-headers fl s-b m-t-10 m-b-10">
+    <!-- 左边mv数量 -->
+    <view class="mv-counts fl">
+        <view class="mv-text f-w">MV</view>
+        <view class="mvcount light-gray f-s-12">(共{{mvSize}}个)</view>
+    </view>
+    <!-- 右边切换 -->
+    <view class="changes fl">
+        <view class="alls">全部</view>
+        <view class="vertical"></view>
+        <view class="mves red-text">MV</view>
+    </view>
+</view>
+<!-- 下方内容层 -->
+<view class="mvs-conts">
+    <!-- mv模板 -->
+    <view class="mv-models fl" wx:for="{{videoMvs}}" wx:key="index">
+        <!-- 左边封面 -->
+        <view class="left-covers p-r">
+            <image class="img common-img" src="{{item.imgurl16v9}}"></image>
+            <!-- 播放次数 -->
+            <view class="playcounts fl p-a">
+                <view class="play-image">
+                    <image class="img" src="../../assets/images/playcount.png"></image>
+                </view>
+                <view class="countes wh-text f-s-12">{{item.playCount}}</view>
+            </view>
+        </view>
+        <!-- 右边内容层 -->
+        <view class="right-conts m-l-10 m-t-10">
+            <!-- 第一层(mv标签和mv名字) -->
+            <view class="first-conts fl">
+                <view class="tagg f-s-12">MV</view>
+                <view class="mv-names f-s-14 t-over-2">{{item.name}}</view>
+            </view>
+            <!-- 第二层(mv发布时间) -->
+            <view class="sec-conts f-s-12 light-gray">{{item.publishTime}}</view>
+        </view>
+    </view>
+</view>

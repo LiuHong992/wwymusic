@@ -77,6 +77,13 @@
 					"pathName": "pages/singer/singer",
 					"query": "id=2065012554&detailname=电台",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/siingerdetail/siingerdetail",
+					"pathName": "pages/siingerdetail/siingerdetail",
+					"query": "id=2116&name=陈奕迅",
+					"scene": null
 				}
 			]
 		}

@@ -1,15 +1,16 @@
+// components/singerDetail/singerDetail.js
 Component({
     /**
      * 组件的属性列表
      */
     properties: {
-        singers: {
+        fiveSongs: {
             type: Array,
             value: () => []
         },
-        singerNum: {
-            type: Number,
-            value: 0
+        singerinfo: {
+            type: Object,
+            value: () => {}
         }
     },
 
@@ -25,12 +26,9 @@ Component({
      * 组件的方法列表
      */
     methods: {
-        // 跳转歌手详情页
-        goTosingerD(e) {
-            let { item } = e.currentTarget.dataset
-            wx.navigateTo({
-                url: `/pages/siingerdetail/siingerdetail?id=${item.id}&name=${item.name}`
-            });
+        // 子组件分发回父组件的跳转操作事件
+        changeNumOne() {
+            this.triggerEvent('changeNumOne', 1)
         }
     }
 })

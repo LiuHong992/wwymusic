@@ -1,0 +1,33 @@
+<!-- 收藏热门 -->
+<view class="collect-hots fl s-b m-t-10">
+    <!-- 左边内容 -->
+    <view class="left-conts fl">
+        <!-- 小图标 -->
+        <view class="coll-icon m-r-10">
+            <image class="img" src="../../assets/images/collect.png"></image>
+        </view>
+        <!-- 文字 -->
+        <view class="coll-text f-w f-s-18">收藏热门50</view>
+    </view>
+    <!-- 右边内容 -->
+    <view class="right-conts fl">
+        <!-- 管理小图标 -->
+        <view class="manage-icon">
+            <image class="img" src="../../assets/images/manage.png"></image>
+        </view>
+        <!-- 文字内容 -->
+        <view class="manage-text">管理</view>
+    </view>
+</view>
+<!-- 歌曲内容层 -->
+<view class="hotsongs-content">
+    <singleModel songes="{{hSongArr}}"></singleModel>
+    <!-- 全部歌曲 -->
+    <view class="more-hots fl" bind:tap="chooseAll">
+        <view class="more-text">全部歌曲</view>
+        <!-- 箭头符号 -->
+        <view class="arrow-image">
+            <image class="img" src="../../assets/images/right-arrow.png"></image>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,56 @@
+<!-- 最外层的内容层 -->
+<view class="outer-content">
+    <!-- 背景图层 -->
+    <view class="back-content p-r">
+        <!-- 背景图 -->
+        <view class="bac-image">
+            <image class="img" src="{{singerinfo.picUrl}}"></image>
+        </view>
+        <!-- 歌手名字和关注私信按钮 -->
+        <view class="singerinfo-btn fl s-b p-a">
+            <!-- 歌手名 -->
+            <view class="singer-name wh-text f-s-20 f-w">{{singerinfo.name}}</view>
+            <!-- 右边按钮层 -->
+            <view class="right-btns fl wh-text">
+                <!-- 关注按钮 -->
+                <view class="amire-btn c-btn fl">
+                    <view class="btns">
+                        <image class="img" src="../../assets/images/add.png"></image>
+                    </view>
+                    <view class="txts">关注</view>
+                </view>
+                <!-- 私信按钮 -->
+                <view class="send-btn c-btn fl">
+                    <view class="btns">
+                        <image class="img" src="../../assets/images/send.png"></image>
+                    </view>
+                    <view class="txts">发私信</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 下方标签栏和内容层 -->
+    <view class="bottom-content p-a">
+        <scroll-view class="scroll-view-containers" scroll-y="{{true}}">
+            <!-- 标签栏 -->
+            <view class="tabs-header fl s-b">
+                <!-- 标签模板 -->
+                <view class="tab-model {{item.ide==='2'?'fl':''}} {{singertabNum===index?'red-text f-w':''}}" data-index="{{index}}" bind:tap="changeOne" wx:for="{{tabsArr}}" wx:key="index">
+                    {{item.titles}}
+                    <view class="numbers" wx:if="{{index === 2}}">{{singerinfo.albumSize}}</view>
+                    <view class="numbers" wx:if="{{index === 3}}">{{singerinfo.mvSize}}</view>
+                    <!-- 下划线 -->
+                    <view class="under-line p-a" wx:if="{{singertabNum===index && item.ide==='1'}}"></view>
+                    <view class="under-lines p-a" wx:if="{{singertabNum===index && item.ide==='2'}}"></view>
+                </view>
+            </view>
+            <!-- 下方具体的内容层 -->
+            <view class="singerinfo-content p-10">
+                <singerDetail bind:changeNumOne="changeNumOne" fiveSongs="{{fiveSongs}}" singerinfo="{{singerinfo}}" wx:if="{{singertabNum===0}}"></singerDetail>
+                <singerDetailTwo hSongArr="{{hSongArr}}" wx:if="{{singertabNum===1}}"></singerDetailTwo>
+                <singerAlbumDetail albumsArr="{{albumsArr}}" wx:if="{{singertabNum===2}}"></singerAlbumDetail>
+                <singerMvDetail mvSize="{{singerinfo.mvSize}}" videoMvs="{{videoMvs}}" wx:if="{{singertabNum===3}}"></singerMvDetail>
+            </view>
+        </scroll-view>
+    </view>
+</view>

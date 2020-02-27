@@ -1,0 +1,58 @@
+.mvcount {
+    margin-left: 10rpx;
+}
+
+.mv-models {
+    margin: 26rpx 0;
+}
+
+
+/* 竖线 */
+
+.vertical {
+    width: 2rpx;
+    height: 80%;
+    background-color: rgb(49, 48, 48);
+    margin: 6rpx 20rpx 0;
+}
+
+.left-covers {
+    min-width: 260rpx;
+    height: 140rpx;
+    border-radius: 10rpx;
+}
+
+
+/* 播放次数 */
+
+.playcounts {
+    right: 6rpx;
+    top: 6rpx;
+}
+
+.play-image {
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 6rpx;
+}
+
+.countes {
+    line-height: 40rpx;
+}
+
+
+/* mv标签 */
+
+.tagg {
+    max-height: 30rpx;
+    margin-right: 10rpx;
+    padding: 6rpx 8rpx;
+    border-radius: 6rpx;
+    border: 2rpx solid red;
+    color: red;
+}
+
+.sec-conts {
+    margin-left: 66rpx;
+    margin-top: 10rpx;
+}

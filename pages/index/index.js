@@ -71,6 +71,7 @@ create.Page(store, {
     },
     // 搜索框聚焦时改变indexNum
     changeFlag() {
+        this.store.data.searchLimit = 30
         this.setData({
             flag: !this.data.flag,
             searchNum: 0,
@@ -83,6 +84,7 @@ create.Page(store, {
     },
     // 搜索后返回按钮方法
     afterChange() {
+        this.store.data.searchLimit = 30
         this.setData({
             searchNum: 0,
             connectNum: 0,
@@ -195,14 +197,14 @@ create.Page(store, {
                 // 处理歌单播放次数
                 if (res.result.playList.playLists.length > 0) {
                     res.result.playList.playLists.map(item => {
-                        item.playCount = this.playCounts(item.playCount)
+                        item.playCount = api.playCounts(item.playCount)
                     })
                 }
                 // 处理视频播放时间以及播放次数
                 if (res.result.video.videos.length > 0) {
                     res.result.video.videos.map(item => {
                         item.durationms = time.formatTimeTwo(item.durationms, 'm:s')
-                        item.playTime = this.playCounts(item.playTime)
+                        item.playTime = api.playCounts(item.playTime)
                     })
                 }
                 this.setData({
@@ -234,19 +236,19 @@ create.Page(store, {
                 // 处理歌单播放次数
                 if (this.data.active === 1000 && res.result.playlists.length > 0) {
                     res.result.playlists.map(item => {
-                        item.playCount = this.playCounts(item.playCount)
+                        item.playCount = api.playCounts(item.playCount)
                     })
                 }
                 // 处理视频播放时间以及播放次数
                 if (this.data.active === 1014 && res.result.videos.length > 0) {
                     res.result.videos.map(item => {
                         item.durationms = time.formatTimeTwo(item.durationms, 'm:s')
-                        item.playTime = this.playCounts(item.playTime)
+                        item.playTime = api.playCounts(item.playTime)
                     })
                 } else if (this.data.active === 1004 && res.result.mvs.length > 0) {
                     res.result.mvs.map(item => {
                         item.duration = time.formatTimeTwo(item.duration, 'm:s')
-                        item.playCount = this.playCounts(item.playCount)
+                        item.playCount = api.playCounts(item.playCount)
                     })
                 }
                 this.data.active === 1 ? sR.afterSearch = res.result.songs : ''
@@ -327,7 +329,7 @@ create.Page(store, {
                 this.grounps(res.result, this.data.recArr)
                 if (this.data.recArr.length > 0) {
                     this.data.recArr.map(item => {
-                        item.playCount = this.playCounts(item.playCount)
+                        item.playCount = api.playCounts(item.playCount)
                     })
                 }
                 this.setData({
@@ -417,18 +419,6 @@ create.Page(store, {
             } else {
                 i--
             }
-        }
-    },
-    // 播放次数的计算方法
-    playCounts(items) {
-        if (items >= 100000000) {
-            let one = (items / 100000000).toFixed(2)
-            return items = `${one}亿`
-        } else if (items < 100000000 && items >= 10000) {
-            let one = parseInt(items / 10000)
-            return items = `${one}万`
-        } else {
-            return items = `${items}`
         }
     },
     // 子组件分发回父组件的事件(上拉加载数据)

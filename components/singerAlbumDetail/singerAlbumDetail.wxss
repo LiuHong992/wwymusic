@@ -1,0 +1,31 @@
+.rank-icon {
+    width: 34rpx;
+    height: 34rpx;
+    margin-top: 6rpx;
+    margin-right: 10rpx;
+}
+
+.album-models {
+    margin: 20rpx 0;
+}
+
+
+/* 封面图 */
+
+.left-cover {
+    min-width: 130rpx;
+    height: 130rpx;
+    border-radius: 10rpx;
+}
+
+.left-img {
+    border-radius: 10rpx;
+}
+
+.other-name {
+    min-width: 0;
+}
+
+.sizes {
+    margin-left: 10rpx;
+}

@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "singerDetail": "../../components/singerDetail/singerDetail",
+        "singerDetailTwo": "../../components/singerDetailTwo/singerDetailTwo",
+        "singerAlbumDetail": "../../components/singerAlbumDetail/singerAlbumDetail",
+        "singerMvDetail": "../../components/singerMvDetail/singerMvDetail"
+    }
+}

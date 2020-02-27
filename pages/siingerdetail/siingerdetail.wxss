@@ -1,0 +1,95 @@
+.back-content {
+    width: 100vw;
+    height: 45vh;
+}
+
+.bac-image {
+    width: 100vw;
+    height: 100%;
+}
+
+.bottom-content {
+    width: 100vw;
+    margin-top: -60rpx;
+    background-color: #FEFEFD;
+    border-top-right-radius: 40rpx;
+    border-top-left-radius: 40rpx;
+}
+
+.scroll-view-containers {
+    height: 100%;
+}
+
+
+/* 歌手名和相关按钮 */
+
+.singerinfo-btn {
+    bottom: 80rpx;
+    width: 94vw;
+    padding: 20rpx 3vw 0;
+}
+
+
+/* 按钮公共样式 */
+
+.c-btn {
+    padding: 10rpx 16rpx;
+    border-radius: 30rpx;
+}
+
+.btns {
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 10rpx;
+}
+
+.amire-btn {
+    background-color: #BD341A;
+    margin-right: 10rpx;
+}
+
+.send-btn {
+    background-color: rgba(192, 192, 192, .7);
+}
+
+
+/* 标签栏头部 */
+
+.tabs-header {
+    border-bottom: 2rpx solid #ccc;
+}
+
+.tab-model {
+    position: relative;
+    text-align: center;
+    flex: 1;
+    padding: 20rpx;
+}
+
+.numbers {
+    margin-left: 6rpx;
+    font-size: 26rpx;
+    color: rgb(133, 130, 130);
+    line-height: 48rpx;
+}
+
+
+/* 下划线 */
+
+.under-line {
+    bottom: 0;
+    left: 50%;
+    margin-left: -45rpx;
+    width: 50%;
+    height: 6rpx;
+    background-color: red;
+}
+
+.under-lines {
+    bottom: 0;
+    left: 50%;
+    margin-left: -75rpx;
+    width: 60%;
+    height: 6rpx;
+    background-color: red;
+}

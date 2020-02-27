@@ -7,6 +7,8 @@ export default {
         commentLimit: 20,
         // 搜索上拉加载参数
         searchLimit: 30,
+        // 歌手详情页专辑的上拉加载参数
+        singerOffset: 0,
         // 接收搜索出来的结果的数组(除综合栏)
         afterSearch: [],
         // 接收大分类数组

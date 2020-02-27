@@ -1,0 +1,31 @@
+.coll-icon {
+    width: 48rpx;
+    height: 48rpx;
+}
+
+.manage-icon {
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 10rpx;
+}
+
+.hotsongs-content {
+    margin-top: 30rpx;
+    padding: 10rpx;
+}
+
+
+/* 全部歌曲 */
+
+.more-hots {
+    max-width: 180rpx;
+    margin: 30rpx auto 0;
+}
+
+
+/* 右箭头 */
+
+.arrow-image {
+    width: 40rpx;
+    height: 40rpx;
+}

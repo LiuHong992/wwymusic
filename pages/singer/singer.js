@@ -46,6 +46,7 @@ create.Page(store, {
             scrollTop: 0,
             duration: 300
         });
+        this.store.data.searchLimit = 30
         this.setData({
             count: e.detail.name,
             indexNum: 0,
@@ -60,6 +61,7 @@ create.Page(store, {
             scrollTop: 0,
             duration: 300
         });
+        this.store.data.searchLimit = 30
         let { item, index } = e.currentTarget.dataset
         this.setData({
             indexNum: index,
@@ -76,7 +78,6 @@ create.Page(store, {
      */
     onLoad: function(options) {
         this.store.data.bigArr = api.typeList
-        this.store.data.searchLimit = 30
         this.bigClassfys('')
     },
 
