@@ -31,7 +31,6 @@ create.Page(store, {
                 this.setData({
                     singerArr: this.data.singerArr
                 })
-                console.log(this.data.singerArr);
             } else {
                 wx.hideLoading();
             }

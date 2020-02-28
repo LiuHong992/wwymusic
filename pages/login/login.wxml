@@ -1,2 +1,33 @@
-<!--pages/login/login.wxml-->
-<text>pages/login/login.wxml</text>
+<view class="login-content">
+    <van-tabs active="{{ active }}" bind:change="changeActive">
+        <van-tab title="手机号登录"></van-tab>
+        <van-tab title="邮箱登录"></van-tab>
+    </van-tabs>
+    <!-- 下方内容层 -->
+    <view class="mobile-email">
+        <!-- 不同的登录方式 -->
+        <view class="two-logins m-t-10 m-b-10">
+            <!-- 手机号登录 -->
+            <view class="mobile-login" wx:if="{{active===0}}">
+                <!-- 手机号 -->
+                <van-field required clearable error-message="{{mobileMsg}}" left-icon="phone-o" label="手机号" value="{{telNum}}" placeholder="请输入手机号" bind:blur="mobileVerify" bind:change="onChangeNum"></van-field>
+                <!-- 密码 -->
+                <van-field required clearable password left-icon="lock" label="密码" value="{{password}}" placeholder="请输入密码" bind:change="onChangePass"></van-field>
+            </view>
+            <!-- 邮箱登录 -->
+            <view class="email-login" wx:if="{{active===1}}">
+                <!-- 手机号 -->
+                <van-field required clearable error-message="{{emailMsg}}" left-icon="envelop-o" label="邮箱" value="{{emails}}" placeholder="请输入邮箱" bind:blur="emailVerify" bind:change="onChangeEmail"></van-field>
+                <!-- 密码 -->
+                <van-field required clearable password error-message="{{passMsg}}" left-icon="lock" label="密码" value="{{password}}" placeholder="请输入密码" bind:change="onChangePass"></van-field>
+            </view>
+        </view>
+        <!-- 公共的登录按钮 -->
+        <view class="common-loginbtns fl">
+            <!-- 前往注册 -->
+            <view class="commons goto-register" bind:tap="goToRegister">前往注册</view>
+            <!-- 立即登录 -->
+            <view class="commons goto-login" bind:tap="login">立即登录</view>
+        </view>
+    </view>
+</view>

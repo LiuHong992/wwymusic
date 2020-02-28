@@ -15,7 +15,7 @@
 <!-- 下方内容层 -->
 <view class="album-conts">
     <!-- 专辑模板 -->
-    <view class="album-models fl" wx:for="{{albumsArr}}" wx:key="index">
+    <view class="album-models fl" wx:for="{{albumsArr}}" wx:key="index" data-item="{{item}}" bind:tap="goToAlbum">
         <!-- 左边专辑封面图 -->
         <view class="left-cover">
             <image class="img left-img" src="{{item.picUrl}}"></image>

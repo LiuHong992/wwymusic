@@ -73,16 +73,30 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/singer/singer",
-					"pathName": "pages/singer/singer",
-					"query": "id=2065012554&detailname=电台",
+					"name": "pages/siingerdetail/siingerdetail",
+					"pathName": "pages/siingerdetail/siingerdetail",
+					"query": "id=2116&name=陈奕迅",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "pages/siingerdetail/siingerdetail",
-					"pathName": "pages/siingerdetail/siingerdetail",
+					"name": "pages/my/my",
+					"pathName": "pages/my/my",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/login/login",
+					"pathName": "pages/login/login",
 					"query": "id=2116&name=陈奕迅",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/register/register",
+					"pathName": "pages/register/register",
+					"query": "",
 					"scene": null
 				}
 			]

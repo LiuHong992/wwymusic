@@ -1,1 +1,86 @@
-/* pages/my/my.wxss */
+.biggest-box {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.no-login-content {
+    margin-top: 500rpx;
+}
+
+.gologin-btn {
+    width: 40vw;
+    margin: 20rpx auto;
+    padding: 30rpx 60rpx;
+    background-color: skyblue;
+    color: white;
+}
+
+
+/* 登录后 */
+
+
+/* 用户头像 */
+
+.user-image {
+    width: 170rpx;
+    height: 170rpx;
+    border-radius: 50%;
+}
+
+.username-level {
+    max-width: 350rpx;
+}
+
+
+/* 用户等级 */
+
+.user-level {
+    width: 60rpx;
+    padding: 10rpx 16rpx;
+    margin-top: 20rpx;
+    background-color: #E0E0DF;
+    border-radius: 30rpx;
+}
+
+
+/* 签到按钮 */
+
+.signin {
+    top: 46rpx;
+    right: 40rpx;
+    width: 100rpx;
+    height: 32rpx;
+    padding: 16rpx 0;
+    color: #fff;
+    background-color: #C0C2C1;
+    border-radius: 40rpx;
+}
+
+
+/* 第二层 */
+
+.sec-model {
+    width: 20%;
+}
+
+.common-title {
+    margin-top: 16rpx;
+}
+
+.edit-icon {
+    width: 32rpx;
+    height: 32rpx;
+    margin: 8rpx auto 0;
+}
+
+
+/* 第三层 */
+
+.login-out {
+    width: 180rpx;
+    margin: 30rpx auto 0;
+    padding: 20rpx 30rpx;
+    border-radius: 10rpx;
+    background-color: #F77626;
+    color: #fff;
+}

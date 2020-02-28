@@ -1,1 +1,53 @@
-
+<!-- 最外层盒子 -->
+<view class="biggest-box w-100">
+    <!-- 未登录显示内容 -->
+    <view class="no-login-content t-center" wx:if="{{$.myUid === ''}}">
+        <!-- 未登录文字 -->
+        <view class="nologin-txt f-s-20">您还没有登录哦</view>
+        <!-- 登录按钮 -->
+        <view class="gologin-btn f-w" bind:tap="gotoLogin">立即登录</view>
+    </view>
+    <!-- 登录过后显示的内容 -->
+    <view class="login-after p-20" wx:else>
+        <!-- 第一层(头像、名字、等级、签到按钮) -->
+        <view class="first-content fl p-r">
+            <!-- 最左边的头像 -->
+            <view class="user-image">
+                <image class="i-circle" src="{{userInfo.avatarUrl}}"></image>
+            </view>
+            <!-- 中间的用户名和等级 -->
+            <view class="username-level m-l-15 m-t-10 t-over">
+                <!-- 用户名 -->
+                <view class="username-item f-s-18 f-w">{{userInfo.nickname}}</view>
+                <!-- 用户等级 -->
+                <view class="user-level t-center">Lv:{{userLevel}}</view>
+            </view>
+            <!-- 签到按钮 -->
+            <view class="signin t-center f-s-12 p-a">签到</view>
+        </view>
+        <!-- 第二层 -->
+        <view class="second-content fl s-b p-20 t-center">
+            <!-- 模板 -->
+            <view class="sec-model" wx:for="{{secBar}}" wx:key="index">
+                <!-- 上面的数据 -->
+                <!-- 动态数 -->
+                <view class="eventcount" wx:if="{{index === 0}}">{{userInfo.eventCount}}</view>
+                <!-- 关注数 -->
+                <view class="followcount" wx:if="{{index === 1}}">{{userInfo.follows}}</view>
+                <!-- 粉丝数 -->
+                <view class="followedcount" wx:if="{{index === 2}}">{{userInfo.followeds}}</view>
+                <!-- 编辑资料icon -->
+                <view class="edit-icon" wx:if="{{index === 3}}">
+                    <image class="img" src="../../assets/images/edits.png"></image>
+                </view>
+                <!-- 下面的文字 -->
+                <view class="common-title light-gray">{{item.titles}}</view>
+            </view>
+        </view>
+        <!-- 第三层(退出登录按钮) -->
+        <view class="third-content">
+            <!-- 退出登录 -->
+            <view class="login-out t-center f-s-18 f-w" bind:tap="loginOut">退出登录</view>
+        </view>
+    </view>
+</view>

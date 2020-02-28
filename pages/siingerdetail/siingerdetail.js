@@ -8,6 +8,8 @@ create.Page(store, {
      * 页面的初始数据
      */
     data: {
+        // 接收获取到的高度
+        // scrollheightL: 0,
         // 接收歌手页传过来的id
         singerid: '',
         // 接收歌手信息的对象
@@ -39,7 +41,7 @@ create.Page(store, {
             },
         ],
         // 控制下划线和字体变红的参数
-        singertabNum: 3
+        singertabNum: 0
     },
     // 请求歌手的热门歌曲和相关信息
     getSongArtist() {
@@ -53,13 +55,13 @@ create.Page(store, {
                 this.data.hSongArr = res.hotSongs
                 this.data.fiveSongs = res.hotSongs.slice(0, 5)
                 this.setData({
-                    singerinfo: this.data.singerinfo,
-                    hSongArr: this.data.hSongArr,
-                    fiveSongs: this.data.fiveSongs
-                })
-                console.log(this.data.singerinfo);
-                // console.log(this.data.hSongArr);
-                // console.log(this.data.fiveSongs);
+                        singerinfo: this.data.singerinfo,
+                        hSongArr: this.data.hSongArr,
+                        fiveSongs: this.data.fiveSongs
+                    })
+                    // console.log(this.data.singerinfo);
+                    // console.log(this.data.hSongArr);
+                    // console.log(this.data.fiveSongs);
             } else {
                 wx.hideLoading();
             }
@@ -80,6 +82,7 @@ create.Page(store, {
                     albumsArr: this.data.albumsArr
                 })
             }
+            console.log(this.data.albumsArr);
         }).catch(err => {
             console.log(err);
         });
@@ -93,9 +96,9 @@ create.Page(store, {
                     item.playCount = api.playCounts(item.playCount)
                 })
                 this.setData({
-                    videoMvs: this.data.videoMvs
-                })
-                console.log(this.data.videoMvs);
+                        videoMvs: this.data.videoMvs
+                    })
+                    // console.log(this.data.videoMvs);
             }
         }).catch(err => {
             console.log(err);
@@ -114,10 +117,28 @@ create.Page(store, {
             singertabNum: e.detail
         })
     },
+    // 动态获取高度
+    // getHeights() {
+    //     var me = this;
+    //     wx.getSystemInfo({
+    //         success: function(res) {
+    //             me.setData({
+    //                 scrollheight: res.windowHeight
+    //             })
+    //         }
+    //     })
+    //     console.log(this.data.scrollheightL);
+    // },
+    // 对scroll-view的监听
+    // changeFlags(e) {
+    //     console.log(e.detail);
+    // },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        // this.getHeights()
+        this.store.data.singerOffset = 0
         wx.setNavigationBarTitle({
             title: options.name
         });

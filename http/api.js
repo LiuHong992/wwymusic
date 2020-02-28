@@ -101,7 +101,7 @@ export default ({
         return fly.get(`/captcha/verify?phone=${phone}&captcha=${captcha}`)
     },
     // 注册(captcha: 验证码,phone : 手机号码,password: 密码,nickname: 昵称)
-    register(captcha, phone, password, nickname) {
+    register(phone, password, captcha, nickname) {
         return fly.get(`/register/cellphone?phone=${phone}&password=${password}&captcha=${captcha}&nickname=${nickname}`)
     },
     // 检测手机是否已被注册(phone: 手机号)

@@ -22,6 +22,12 @@ Component({
      * 组件的方法列表
      */
     methods: {
-
+        // 跳转专辑详情页
+        goToAlbum(e) {
+            let { item } = e.currentTarget.dataset
+            wx.navigateTo({
+                url: `/pages/songdetail/songdetail?id=${item.id}&detailname=专辑`
+            });
+        }
     }
 })

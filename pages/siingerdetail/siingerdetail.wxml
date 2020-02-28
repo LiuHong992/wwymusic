@@ -31,20 +31,20 @@
     </view>
     <!-- 下方标签栏和内容层 -->
     <view class="bottom-content p-a">
-        <scroll-view class="scroll-view-containers" scroll-y="{{true}}">
-            <!-- 标签栏 -->
-            <view class="tabs-header fl s-b">
-                <!-- 标签模板 -->
-                <view class="tab-model {{item.ide==='2'?'fl':''}} {{singertabNum===index?'red-text f-w':''}}" data-index="{{index}}" bind:tap="changeOne" wx:for="{{tabsArr}}" wx:key="index">
-                    {{item.titles}}
-                    <view class="numbers" wx:if="{{index === 2}}">{{singerinfo.albumSize}}</view>
-                    <view class="numbers" wx:if="{{index === 3}}">{{singerinfo.mvSize}}</view>
-                    <!-- 下划线 -->
-                    <view class="under-line p-a" wx:if="{{singertabNum===index && item.ide==='1'}}"></view>
-                    <view class="under-lines p-a" wx:if="{{singertabNum===index && item.ide==='2'}}"></view>
-                </view>
+        <!-- 标签栏 -->
+        <view class="tabs-header fl s-b">
+            <!-- 标签模板 -->
+            <view class="tab-model {{item.ide==='2'?'fl':''}} {{singertabNum===index?'red-text f-w':''}}" data-index="{{index}}" bind:tap="changeOne" wx:for="{{tabsArr}}" wx:key="index">
+                {{item.titles}}
+                <view class="numbers" wx:if="{{index === 2}}">{{singerinfo.albumSize}}</view>
+                <view class="numbers" wx:if="{{index === 3}}">{{singerinfo.mvSize}}</view>
+                <!-- 下划线 -->
+                <view class="under-line p-a" wx:if="{{singertabNum===index && item.ide==='1'}}"></view>
+                <view class="under-lines p-a" wx:if="{{singertabNum===index && item.ide==='2'}}"></view>
             </view>
-            <!-- 下方具体的内容层 -->
+        </view>
+        <!-- 下方具体的内容层 -->
+        <scroll-view class="scroll-view-containers" bind:scroll="changeFlags" scroll-y="{{true}}">
             <view class="singerinfo-content p-10">
                 <singerDetail bind:changeNumOne="changeNumOne" fiveSongs="{{fiveSongs}}" singerinfo="{{singerinfo}}" wx:if="{{singertabNum===0}}"></singerDetail>
                 <singerDetailTwo hSongArr="{{hSongArr}}" wx:if="{{singertabNum===1}}"></singerDetailTwo>

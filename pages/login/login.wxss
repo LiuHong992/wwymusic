@@ -1,1 +1,14 @@
-/* pages/login/login.wxss */
+.commons {
+    margin: 0 auto;
+    padding: 16rpx 24rpx;
+    border-radius: 10rpx;
+    color: #fff;
+}
+
+.goto-register {
+    background-color: #F8A16E;
+}
+
+.goto-login {
+    background-color: #F76147;
+}
