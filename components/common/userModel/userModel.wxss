@@ -19,3 +19,7 @@
     width: 24rpx;
     height: 24rpx;
 }
+
+.user-names {
+    max-width: 400rpx;
+}

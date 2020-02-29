@@ -154,41 +154,49 @@ Page({
     // 注册按钮
     registers() {
         let that = this.data
-        api.register(that.telNum, that.password, that.captchas, that.nickname).then(res => {
-            if (res.code === 200) {
-                wx.showToast({
-                    title: '注册成功',
-                    icon: 'none'
-                });
-                this.setData({
-                    telNum: null,
-                    password: '',
-                    captchas: null,
-                    nickname: ''
-                })
-                wx.navigateTo({
-                    url: '../login/login'
-                });
-            }
-        }).catch(err => {
-            if (err.response.data.code === 505) {
-                wx.showToast({
-                    title: err.response.data.message,
-                    icon: 'none'
-                });
-                this.setData({
-                    nickname: ''
-                })
-            } else if (err.response.data.code === 503) {
-                wx.showToast({
-                    title: err.response.data.message,
-                    icon: 'none'
-                });
-                this.setData({
-                    captchas: null
-                })
-            }
-        });
+        if (that.telNum !== null && that.password.trim() !== '' && that.captchas !== null && that.nickname.trim() !== '') {
+            api.register(that.telNum, that.password, that.captchas, that.nickname).then(res => {
+                if (res.code === 200) {
+                    wx.showToast({
+                        title: '注册成功',
+                        icon: 'none'
+                    });
+                    this.setData({
+                        telNum: null,
+                        password: '',
+                        captchas: null,
+                        nickname: ''
+                    })
+                    wx.navigateTo({
+                        url: '../login/login'
+                    });
+                }
+            }).catch(err => {
+                if (err.response.data.code === 505) {
+                    wx.showToast({
+                        title: err.response.data.message,
+                        icon: 'none'
+                    });
+                    this.setData({
+                        nickname: ''
+                    })
+                } else if (err.response.data.code === 503) {
+                    wx.showToast({
+                        title: err.response.data.message,
+                        icon: 'none'
+                    });
+                    this.setData({
+                        captchas: null
+                    })
+                }
+            });
+        } else {
+            wx.showToast({
+                title: '请输入完整信息',
+                icon: 'none'
+            });
+        }
+
     },
     /**
      * 生命周期函数--监听页面加载

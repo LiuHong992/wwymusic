@@ -25,6 +25,17 @@ Component({
      * 组件的方法列表
      */
     methods: {
-
+        // 跳转到专辑
+        goToAlbumOne() {
+            wx.navigateTo({
+                url: `/pages/songdetail/songdetail?id=${this.data.firstAlbum.id}&detailname=专辑`
+            });
+        },
+        // 跳转到歌手详情页
+        goToSingerD() {
+            wx.navigateTo({
+                url: `/pages/siingerdetail/siingerdetail?id=${this.data.firstArtist.id}&name=${this.data.firstArtist.name}`
+            });
+        }
     }
 })

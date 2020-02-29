@@ -98,6 +98,20 @@
 					"pathName": "pages/register/register",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "pages/infochange/infochange",
+					"pathName": "pages/infochange/infochange",
+					"query": "uid=3224859166",
+					"scene": null
+				},
+				{
+					"id": 7,
+					"name": "pages/playdetail/playdetail",
+					"pathName": "pages/playdetail/playdetail",
+					"query": "sid=1424766676",
+					"scene": null
 				}
 			]
 		}

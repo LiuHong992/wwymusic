@@ -37,7 +37,7 @@
                 <!-- 粉丝数 -->
                 <view class="followedcount" wx:if="{{index === 2}}">{{userInfo.followeds}}</view>
                 <!-- 编辑资料icon -->
-                <view class="edit-icon" wx:if="{{index === 3}}">
+                <view class="edit-icon" wx:if="{{index === 3}}" bind:tap="goToChangeinfo">
                     <image class="img" src="../../assets/images/edits.png"></image>
                 </view>
                 <!-- 下面的文字 -->

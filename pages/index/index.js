@@ -159,7 +159,7 @@ create.Page(store, {
             this.connectWord(this.data.sValue.trim())
         } else {
             this.setData({
-                connectArr: []
+                connectArr: [],
             })
         }
     },

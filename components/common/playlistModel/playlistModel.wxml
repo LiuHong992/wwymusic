@@ -1,7 +1,7 @@
 <!-- 歌单内容层 -->
 <view class="list-content" wx:if="{{playlists.length>0}}">
     <!-- 歌单模板 -->
-    <view class="list-model fl m-b-15" wx:for="{{playlists}}" wx:key="index">
+    <view class="list-model fl m-b-15" wx:for="{{playlists}}" wx:key="index" data-item="{{item}}" bind:tap="goToPlaylists">
         <!-- 歌单图片 -->
         <view class="list-image">
             <image class="list-img img" src="{{item.coverImgUrl}}"></image>

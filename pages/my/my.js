@@ -52,16 +52,18 @@ create.Page(store, {
         wx.removeStorageSync('uid');
         this.store.data.myUid = ''
     },
+    // 跳转到修改个人信息页
+    goToChangeinfo() {
+        wx.navigateTo({
+            url: `../infochange/infochange?uid=${this.store.data.myUid}`
+        });
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        // if (!wx.getStorageSync('uid')) {
-        //     wx.setStorageSync('uid', '');
-        // } else 
         if (this.store.data.myUid === '') {
             this.store.data.myUid = wx.getStorageSync('uid');
-            console.log(this.store.data.myUid);
             if (this.store.data.myUid !== '') {
                 this.getUserInfo()
             }

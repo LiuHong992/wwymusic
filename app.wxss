@@ -693,7 +693,7 @@
 /* 公用的图片(处理后的) */
 
 .common-image {
-    width: 140rpx;
+    min-width: 140rpx;
     height: 140rpx;
     border-radius: 10rpx;
 }
@@ -706,7 +706,7 @@
 /* 圆形图片 */
 
 .circle-image {
-    width: 140rpx;
+    min-width: 140rpx;
     height: 140rpx;
     border-radius: 50%;
 }

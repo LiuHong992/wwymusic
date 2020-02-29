@@ -1,6 +1,6 @@
 <view class="album-content" wx:if="{{albums.length>0}}">
     <!-- 专辑模板 -->
-    <view class="album-model fl m-b-10" wx:for="{{albums}}" wx:key="index">
+    <view class="album-model fl m-b-10" wx:for="{{albums}}" wx:key="index" data-item="{{item}}" bind:tap="goToAlbums">
         <!-- 专辑封面 -->
         <view class="common-image">
             <image class="img common-img" src="{{item.picUrl}}"></image>

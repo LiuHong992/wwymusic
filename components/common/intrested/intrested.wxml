@@ -1,6 +1,6 @@
 <view class="interest-infos">
     <!-- 第一个专辑 -->
-    <view class="album-item fl m-b-20">
+    <view class="album-item fl m-b-20" bind:tap="goToAlbumOne">
         <!-- 专辑封面 -->
         <view class="album-image">
             <image class="img" src="{{firstAlbum.picUrl}}"></image>
@@ -17,7 +17,7 @@
         </view>
     </view>
     <!-- 歌手第一个 -->
-    <view class="artist-item fl">
+    <view class="artist-item fl" bind:tap="goToSingerD">
         <!-- 头像 -->
         <view class="artist-image">
             <image class="i-circle" src="{{firstArtist.picUrl}}"></image>

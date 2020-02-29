@@ -1,0 +1,73 @@
+<!-- 信息修改页面 -->
+<view class="infos-change">
+    <!-- 昵称 -->
+    <view class="nick-item fl s-b p-20 f-s-18">
+        <!-- 左边的label -->
+        <view class="left-label">昵称</view>
+        <!-- 右边的input框 -->
+        <view class="right-input t-over">
+            <input value="{{infoNick}}" placeholder="请输入昵称" bindblur="changeNick" />
+        </view>
+    </view>
+    <!-- 性别 -->
+    <view class="sex-item fl s-b p-20 f-s-18">
+        <!-- 左边的label -->
+        <view class="left-label">性别</view>
+        <!-- 右边的修改选项 -->
+        <view class="right-change fl" bind:tap="showSheet">
+            <!-- 内容层 -->
+            <view class="sex-text" wx:if="{{infoGender === 0}}">保密</view>
+            <view class="sex-text" wx:if="{{infoGender === 1}}">男</view>
+            <view class="sex-text" wx:if="{{infoGender === 2}}">女</view>
+            <!-- 右箭头 -->
+            <view class="right-arrow">
+                <image class="img" src="../../assets/images/right-arrow.png"></image>
+            </view>
+        </view>
+    </view>
+    <!-- 生日 -->
+    <view class="birth-item fl s-b p-20 f-s-18">
+        <!-- 左边的label -->
+        <view class="left-label">生日</view>
+        <!-- 右边内容层 -->
+        <view class="right-change fl" bind:tap="showDatas">
+            <!-- 具体内容 -->
+            <view class="birth-cont">{{infoBirth}}</view>
+            <!-- 右箭头 -->
+            <view class="right-arrow">
+                <image class="img" src="../../assets/images/right-arrow.png"></image>
+            </view>
+        </view>
+    </view>
+    <!-- 城市 -->
+    <view class="city-item fl s-b p-20 f-s-18">
+        <!-- 左边的label -->
+        <view class="left-label">城市</view>
+        <!-- 右边内容层 -->
+        <view class="right-change fl" bind:tap="showCity">
+            <!-- 具体内容 -->
+            <view class="birth-cont">{{province}}{{city}}</view>
+            <!-- 右箭头 -->
+            <view class="right-arrow">
+                <image class="img" src="../../assets/images/right-arrow.png"></image>
+            </view>
+        </view>
+    </view>
+    <!-- 签名 -->
+    <view class="desc-item p-20 f-s-18">
+        <!-- 左边的label -->
+        <view class="left-label m-b-10">签名</view>
+        <van-field value="{{ shortDesc }}" bind:change="changeSignature" type="textarea" placeholder="请输入签名" clearable autosize border="{{ false }}"></van-field>
+    </view>
+    <!-- 保存修改 -->
+    <view class="saves t-center" bind:tap="saveAll">保存修改</view>
+</view>
+<!-- 下方弹出的内容 -->
+<view class="bottom-eject w-100 p-a z-99">
+    <!-- 性别修改器 -->
+    <van-action-sheet show="{{ sexShow }}" actions="{{ actions }}" cancel-text="取消" bind:click-overlay="onClose" bind:cancel="onClose" bind:select="onSelect" />
+    <!-- 时间选择器 -->
+    <van-datetime-picker wx:if="{{showDate}}" type="date" bind:confirm="dateConfirm" bind:cancel="dateCancel" visible-item-count="{{3}}" value="{{ currentDate }}" max-date="{{ maxDate }}" min-date="{{ minDate }}" formatter="{{ formatter }}"></van-datetime-picker>
+    <!-- 地区选择器 -->
+    <van-area wx:if="{{showCitys}}" area-list="{{ areaList }}" columns-num="{{2}}" bind:confirm="areaConfirm" bind:cancel="areaCancel"></van-area>
+</view>

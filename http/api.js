@@ -119,7 +119,7 @@ export default ({
     // gender: 性别 0:保密 1:男性 2:女性;birthday: 出生日期,时间戳 unix timestamp
     // nickname: 用户昵称; province: 省份id; city: 城市id; signature：用户签名
     updateUserInfo(gender, birthday, nickname, province, city, signature) {
-        return fly.get(`/user/update?gender=${gender}&signature=${signature}&city=${city}&nickname=${nickname}&birthday=${birthday}&province=${province}`)
+        return fly.get(`/user/update?gender=${gender}&birthday=${birthday}&nickname=${nickname}&province=${province}&city=${city}&signature=${signature}`)
     },
     // 退出登录
     loginOut() {

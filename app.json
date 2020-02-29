@@ -7,7 +7,9 @@
         "pages/djprodetail/djprodetail",
         "pages/siingerdetail/siingerdetail",
         "pages/login/login",
-        "pages/register/register"
+        "pages/register/register",
+        "pages/infochange/infochange",
+        "pages/playdetail/playdetail"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -41,5 +43,6 @@
             }
         ]
     },
-    "sitemapLocation": "sitemap.json"
+    "sitemapLocation": "sitemap.json",
+    "requiredBackgroundModes": ["audio"]
 }

@@ -38,7 +38,10 @@ Component({
                     url: `../../pages/djprodetail/djprodetail?id=${item.id}&detailname=${this.properties.detailname}`
                 });
             } else {
-
+                console.log(item);
+                wx.navigateTo({
+                    url: `../../pages/playdetail/playdetail?sid=${item.id}`
+                });
             }
         }
     }

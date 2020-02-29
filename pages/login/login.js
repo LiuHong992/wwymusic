@@ -21,7 +21,6 @@ create.Page(store, {
         // 密码表单验证错误文案
         // passMsg: ''
         // phones: 13981419660,
-
     },
     // 标签栏选中的方法
     changeActive(e) {

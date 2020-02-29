@@ -16,6 +16,8 @@ export default {
         // 索引栏
         initial: ["热", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
         // 我的页面接收到的uid
-        myUid: ''
+        myUid: '',
+        // 音乐(音源数组)
+        songsources: []
     }
 }

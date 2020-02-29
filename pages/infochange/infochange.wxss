@@ -1,0 +1,26 @@
+.right-input {
+    max-width: 250rpx;
+}
+
+.right-arrow {
+    width: 44rpx;
+    height: 44rpx;
+    margin-top: 4rpx;
+    margin-left: 10rpx;
+}
+
+.bottom-eject {
+    bottom: 0;
+}
+
+
+/* 保存修改按钮 */
+
+.saves {
+    width: 160rpx;
+    margin: 30rpx auto 0;
+    padding: 16rpx 24rpx;
+    border-radius: 10rpx;
+    background-color: #F97126;
+    color: #fff;
+}

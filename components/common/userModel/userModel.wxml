@@ -18,7 +18,7 @@
                 </view>
             </view>
             <!-- 简介 -->
-            <view class="dec f-s-13 m-t-10 light-gray">{{item.signature}}</view>
+            <view class="dec f-s-13 m-t-10 light-gray t-over-2">{{item.signature}}</view>
         </view>
         <!-- 关注按钮 -->
         <view class="follow-btn fl p-a">
