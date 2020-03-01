@@ -1,1 +1,13 @@
-/* pages/playdetail/playdetail.wxss */
+.song-singername {
+    margin: 0 auto 100rpx;
+    padding-top: 50rpx;
+}
+
+
+/* 唱片盘 */
+
+.circle-cover {
+    width: 180rpx;
+    height: 180rpx;
+    border-radius: 50%;
+}

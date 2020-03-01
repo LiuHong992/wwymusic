@@ -2,8 +2,32 @@
 <view class="hot-image w-100">
     <!-- <image class="" src=""></image> -->
 </view>
+<!-- 搜索历史盒子 -->
+<view class="history-content" wx:if="{{$.searchH.length>0}}">
+    <!-- 搜索历史头部 -->
+    <view class="history-header m-b-15 fl s-b f-s-13">
+        <!-- 头部左边 -->
+        <view class="left-header">搜索历史</view>
+        <!-- 头部右边 -->
+        <view class="right-header fl" bind:tap="delHistory">
+            <view class="del-text">删除历史</view>
+            <view class="del-icon">
+                <image class="img" src="../../../assets/images/del.png"></image>
+            </view>
+        </view>
+    </view>
+    <!-- 搜索历史内容 -->
+    <view class="s-history w-100">
+        <scroll-view scroll-x="{{true}}">
+            <!-- 搜索历史模板 -->
+            <view class="search-model i-block f-s-12 t-center" wx:for="{{$.searchH}}" wx:key="index" data-item="{{item}}" bind:tap="chooseHistory">
+                {{item}}
+            </view>
+        </scroll-view>
+    </view>
+</view>
 <!-- 热搜榜 -->
-<view class="hot-content" wx:if="{{hotArr.length>0}}">
+<view class="hot-content m-t-20" wx:if="{{hotArr.length>0}}">
     <!-- 热搜榜标题 -->
     <view class="hot-header f-w f-s-18">热搜榜</view>
     <!-- 热搜榜内容模板 -->

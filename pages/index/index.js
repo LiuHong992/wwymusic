@@ -3,7 +3,7 @@ var time = require('../../utils/util');
 import store from '../../store/index'
 import create from '../../utils/store/create'
 create.Page(store, {
-    use: ['searchLimit', 'afterSearch'],
+    use: ['searchLimit', 'afterSearch', 'searchH'],
     /**
      * 页面的初始数据
      */
@@ -28,8 +28,6 @@ create.Page(store, {
         active: 1018,
         // 接收搜索出来的数据的对象(综合栏)
         sResult: {},
-        // 接收搜索出来的数据的数组(除综合外)
-        // sResultArr: [],
         // 接收轮播图数据数组
         banners: [],
         // 导航栏数据
@@ -68,6 +66,24 @@ create.Page(store, {
         radioArr: [],
         // 接收推荐节目的数组
         programArr: []
+    },
+    // 一进首页就从Storage中获取搜索历史的数组
+    getHistorys() {
+        if (!wx.getStorageSync('sHistory')) {
+            wx.setStorageSync('sHistory', []);
+        } else {
+            this.store.data.searchH = wx.getStorageSync('sHistory');
+        }
+    },
+    // 存储数据到搜索历史中
+    saveStorages(itemS) {
+        let that = this.store.data
+        that.searchH.unshift(itemS)
+        that.searchH = that.searchH.filter((item, index, arr) => {
+            return arr.indexOf(item) === index
+        })
+        wx.setStorageSync('sHistory', that.searchH);
+        console.log(that.searchH);
     },
     // 搜索框聚焦时改变indexNum
     changeFlag() {
@@ -140,15 +156,28 @@ create.Page(store, {
             searchNum: 1,
             sValue: item.keyword
         })
+        this.saveStorages(this.data.sValue)
         this.searchResult(this.data.sValue)
     },
-    // 热搜子组件分发回父组件的方法
+    // 热搜子组件分发回父组件的方法(以下两个方法)
     changeValues(e) {
         this.setData({
             searchNum: 1,
+            connectNum: 1,
+            sValue: e.detail
+        })
+        this.saveStorages(this.data.sValue)
+        this.searchResult(this.data.sValue)
+        this.connectWord(this.data.sValue)
+    },
+    chooseHistory(e) {
+        this.setData({
+            searchNum: 1,
+            connectNum: 1,
             sValue: e.detail
         })
         this.searchResult(this.data.sValue)
+        this.connectWord(this.data.sValue)
     },
     // 输入框值发生变化时触发
     changeValue(e) {
@@ -173,9 +202,11 @@ create.Page(store, {
             this.setData({
                 sValue: this.data.defalutObj.realkeyword
             })
+            this.saveStorages(this.data.sValue)
             this.connectWord(this.data.sValue.trim())
             this.searchResult(this.data.sValue.trim())
         } else {
+            this.saveStorages(this.data.sValue)
             this.searchResult(this.data.sValue.trim())
         }
     },
@@ -273,6 +304,7 @@ create.Page(store, {
             searchNum: 1,
             connectNum: 1
         })
+        this.saveStorages(this.data.sValue)
         this.searchResult(this.data.sValue)
     },
     // 搜索之后获取输入框焦点显示搜索联想框
@@ -371,9 +403,10 @@ create.Page(store, {
             if (res.code === 200) {
                 this.grounps(res.result, this.data.newsongArr)
                 this.setData({
-                    newsongArr: this.data.newsongArr,
-                    newpowerArr: this.data.newpowerArr
-                })
+                        newsongArr: this.data.newsongArr,
+                        newpowerArr: this.data.newpowerArr
+                    })
+                    // console.log(this.data.newsongArr);
             }
         }).catch(err => {
             console.log(err);
@@ -435,10 +468,12 @@ create.Page(store, {
             }
         }
     },
+
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        this.getHistorys();
         this.defaultKeyword();
         this.getHot();
         this.getBanners();

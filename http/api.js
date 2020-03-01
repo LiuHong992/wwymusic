@@ -265,4 +265,35 @@ export default ({
             return items = `${items}`
         }
     },
+    // 将请求出来的音乐将其音源src获取到
+    getSrces(itemes) {
+        // 先检测歌曲有无版权
+        this.checkMusicPlay(itemes.id).then(res => {
+            if (res.success) {
+                // 添加版权鉴别信息
+                itemes.copyright = true
+                    // 有版权再对音源进行请求
+                this.getMusicUrl(itemes.id).then(res => {
+                    if (res.code === 200) {
+                        itemes.srcs = res.data[0].url
+                    }
+                }).catch(err => {
+                    console.log(err);
+                });
+            } else {
+                itemes.copyright = false
+            }
+        }).catch(err => {
+            console.log(err);
+        });
+    },
+    // 存vuex的去重操作
+    filterSongs(objs, arrs) {
+        arrs.push(objs)
+            // new Set数组去重升级版
+        const res = new Map();
+        arrs = arrs.filter((items) => {
+            return !res.has(items.id) && res.set(items.id, 1)
+        })
+    },
 })

@@ -1,5 +1,8 @@
-// components/Index/commonmodel/commonmodel.js
-Component({
+import create from '../../utils/store/create'
+import store from '../../store/index'
+import api from '../../http/api'
+create.Component(store, {
+    use: ['songsources'],
     /**
      * 组件的属性列表
      */
@@ -38,11 +41,41 @@ Component({
                     url: `../../pages/djprodetail/djprodetail?id=${item.id}&detailname=${this.properties.detailname}`
                 });
             } else {
-                console.log(item);
-                wx.navigateTo({
-                    url: `../../pages/playdetail/playdetail?sid=${item.id}`
-                });
+                let that = this.store.data
+                let hadFlag = true
+                that.songsources.map(itemOne => {
+                    if (itemOne.id === item.id) {
+                        hadFlag = false
+                    }
+                })
+                if (hadFlag) {
+                    api.getSrces(item)
+                    setTimeout(() => {
+                        if (item.copyright) {
+                            // 点击的是音源时将歌曲信息存入vuex中(音源src请求好了放进去)
+                            that.songsources.push(item)
+                                // api.filterSongs(item, that.songsources)
+                            wx.navigateTo({
+                                url: `../../pages/playdetail/playdetail?sid=1`
+                            });
+                        } else {
+                            wx.showToast({
+                                title: '该歌曲暂无版权哦~',
+                                icon: 'none'
+                            });
+                        }
+                    }, 400)
+                } else {
+                    wx.navigateTo({
+                        url: `../../pages/playdetail/playdetail?sid=${item.id}`
+                    });
+                }
             }
         }
+    },
+    lifetimes: {
+        attached: function() {
+            // 在组件实例进入页面节点树时执行
+        },
     }
 })

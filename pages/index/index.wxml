@@ -94,7 +94,7 @@
         </view>
     </view>
     <!-- 搜索联想框 -->
-    <view class="association p-a z-99" wx:if="{{connectNum === 0 && connectArr.length>0}}">
+    <view class="association p-a z-999" wx:if="{{connectNum === 0 && connectArr.length>0}}">
         <!-- 搜索内容 -->
         <view class="search-msg commons" bind:tap="valueSearch">搜索"{{sValue}}"</view>
         <!-- 搜索联想词模板 -->
@@ -109,13 +109,13 @@
     <!-- 搜索框内没有值时显示的内容层 -->
     <view class="empty-value-content">
         <!-- 热搜组件 -->
-        <hotSearch hotArr="{{hotArr}}" bind:changeValues="changeValues"></hotSearch>
+        <hotSearch hotArr="{{hotArr}}" bind:chooseHistory="chooseHistory" bind:changeValues="changeValues"></hotSearch>
     </view>
 </view>
 <!-- 点击搜索之后显示的内容层 -->
 <view class="after-content" wx:if="{{!flag && searchNum === 1}}">
     <!-- 搜索框头部 -->
-    <view class="search-header sticky z-99 fl p-r">
+    <view class="search-header sticky z-999 fl p-r">
         <!-- 返回按钮 -->
         <view class="backs m-b-10 m-r-10" bind:tap="afterChange">
             <image class="img" src="../../assets/images/back.png"></image>
@@ -130,7 +130,7 @@
         </view>
     </view>
     <!-- 搜索联想框 -->
-    <view class="association p-a z-99" wx:if="{{connectNum === 0 && connectArr.length>0}}">
+    <view class="association p-a z-999" wx:if="{{connectNum === 0 && connectArr.length>0}}">
         <!-- 搜索内容 -->
         <view class="search-msg commons" bind:tap="valueSearch">搜索"{{sValue}}"</view>
         <!-- 搜索联想词模板 -->

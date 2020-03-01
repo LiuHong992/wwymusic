@@ -11,6 +11,8 @@ export default {
         singerOffset: 0,
         // 接收搜索出来的结果的数组(除综合栏)
         afterSearch: [],
+        // 搜索历史数组
+        searchH: [],
         // 接收大分类数组
         bigArr: [],
         // 索引栏

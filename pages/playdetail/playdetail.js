@@ -1,48 +1,55 @@
 import api from '../../http/api'
-Page({
-
+import create from '../../utils/store/create'
+import store from '../../store/index'
+create.Page(store, {
+    use: ['songsources'],
     /**
      * 页面的初始数据
      */
     data: {
-        // 接收传过来的id值
-        playId: '',
-        // 接收请求出来的音源信息
+        // 接收vuex中音源src
+        playSrc: '',
+        // 接收vuex中音源信息
         songRes: {}
-    },
-    // 根据传过来的id请求音源
-    getSongres() {
-        api.getMusicUrl(this.data.playId).then(res => {
-            if (res.code === 200) {
-                this.setData({
-                        songRes: res.data[0]
-                    })
-                    // console.log(this.data.songRes);
-                this.getPlayer(this.data.songRes)
-            }
-        }).catch(err => {
-            console.log(err);
-        });
     },
     // 获取音乐播放实例
     getPlayer(items) {
         const backgroundAudioManager = wx.getBackgroundAudioManager()
-        backgroundAudioManager.title = '测试'
-        backgroundAudioManager.epname = '测试'
-        backgroundAudioManager.singer = '毛不易'
-        backgroundAudioManager.coverImgUrl = 'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000'
+            // 歌曲名
+        backgroundAudioManager.title = items.name
+            // 专辑名
+        backgroundAudioManager.epname = items.album.name
+            // 歌手名
+        backgroundAudioManager.singer = items.artists[0].name
+            // 封面图
+        backgroundAudioManager.coverImgUrl = items.album.blurPicUrl
             // 设置了 src 之后会自动播放
-        backgroundAudioManager.src = items.url
+            // 音源
+        backgroundAudioManager.src = this.data.playSrc
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        this.setData({
-            playId: options.sid
-        })
-        if (this.data.playId !== '') {
-            this.getSongres()
+        let that = this.store.data
+        if (options.sid === '1') {
+            this.setData({
+                playSrc: that.songsources[that.songsources.length - 1].srcs,
+                songRes: that.songsources[that.songsources.length - 1].song
+            })
+        } else {
+            that.songsources.map(item => {
+                if (item.id == options.sid) {
+                    this.setData({
+                        playSrc: item.srcs,
+                        songRes: item.song
+                    })
+                }
+            })
+        }
+        console.log(this.data.songRes);
+        if (this.data.songRes.id) {
+            this.getPlayer(this.data.songRes)
         }
     },
 

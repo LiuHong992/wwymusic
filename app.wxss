@@ -722,3 +722,14 @@
     height: 120rpx;
     margin: auto 30rpx;
 }
+
+
+/* 背景虚化 */
+
+.bgs {
+    z-index: -1;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: blur(40rpx);
+}

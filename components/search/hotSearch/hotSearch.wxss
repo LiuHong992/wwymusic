@@ -5,6 +5,33 @@
     background-color: skyblue;
 }
 
+.s-history {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.s-history scroll-view {
+    width: auto;
+    overflow: hidden;
+}
+
+
+/* 搜索历史模板 */
+
+.search-model {
+    padding: 10rpx 16rpx;
+    margin: 0 16rpx;
+    border-radius: 8rpx;
+    background-color: rgb(184, 182, 182);
+    color: #fff;
+}
+
+.del-icon {
+    width: 40rpx;
+    height: 40rpx;
+    margin-left: 10rpx;
+}
+
 
 /* 热搜内容模板 */
 

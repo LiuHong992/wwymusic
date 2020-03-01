@@ -3,14 +3,6 @@
     color: #b8b3b3;
 }
 
-.bgs {
-    z-index: -1;
-    height: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    filter: blur(40rpx);
-}
-
 .list-content {
     height: 35.74vh;
 }

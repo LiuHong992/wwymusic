@@ -26,7 +26,7 @@
             <view class="signin t-center f-s-12 p-a">签到</view>
         </view>
         <!-- 第二层 -->
-        <view class="second-content fl s-b p-20 t-center">
+        <view class="second-content fl s-b p-15 t-center">
             <!-- 模板 -->
             <view class="sec-model" wx:for="{{secBar}}" wx:key="index">
                 <!-- 上面的数据 -->
