@@ -1,6 +1,5 @@
 import create from '../../utils/store/create'
 import store from '../../store/index'
-import api from '../../http/api'
 create.Component(store, {
     use: ['songsources'],
     /**
@@ -49,22 +48,21 @@ create.Component(store, {
                     }
                 })
                 if (hadFlag) {
-                    api.getSrces(item)
-                    setTimeout(() => {
-                        if (item.copyright) {
-                            // 点击的是音源时将歌曲信息存入vuex中(音源src请求好了放进去)
-                            that.songsources.push(item)
-                                // api.filterSongs(item, that.songsources)
-                            wx.navigateTo({
-                                url: `../../pages/playdetail/playdetail?sid=1`
-                            });
-                        } else {
-                            wx.showToast({
-                                title: '该歌曲暂无版权哦~',
-                                icon: 'none'
-                            });
-                        }
-                    }, 400)
+                    // api.getSrces(item)
+                    // if (item.copyright) {
+                    // 点击的是音源时将歌曲信息存入vuex中(音源src请求好了放进去)
+                    that.songsources.push(item)
+                        // api.filterSongs(item, that.songsources)
+                    wx.navigateTo({
+                        url: `../../pages/playdetail/playdetail?sid=1`
+                    });
+                    // }
+                    // else {
+                    //     wx.showToast({
+                    //         title: '该歌曲暂无版权哦~',
+                    //         icon: 'none'
+                    //     });
+                    // }
                 } else {
                     wx.navigateTo({
                         url: `../../pages/playdetail/playdetail?sid=${item.id}`

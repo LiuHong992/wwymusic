@@ -20,6 +20,14 @@ export default {
         // 我的页面接收到的uid
         myUid: '',
         // 音乐(音源数组)
-        songsources: []
+        songsources: [],
+        // 背景播放实例
+        bgMusic: null,
+        // 播放状态
+        isPlay: false,
+        // 播放类型
+        playTypes: 0,
+        // 播放到第几首歌
+        playIndex: 0,
     }
 }

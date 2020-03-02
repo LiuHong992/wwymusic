@@ -5,14 +5,64 @@
     <!-- 头部歌名和歌手名 -->
     <view class="song-singername">
         <!-- 歌名 -->
-        <view class="song-name t-center wh-text f-s-18 m-b-15">{{songRes.name}}</view>
+        <view class="song-name t-center wh-text f-s-18 m-b-20">{{songRes.name}}</view>
         <!-- 歌手名 -->
         <view class="singer-name t-center wh-text f-s-12">
             {{songRes.artists[0].name}}-{{songRes.album.name}}
         </view>
     </view>
     <!-- 唱片盘内容层 -->
-    <view class="circle-cover">
+    <view class="circle-cover m-auto p-r">
         <image class="i-circle" src="../../assets/images/record.png"></image>
+        <!-- 专辑封面(含动画) -->
+        <view class="album-cover p-a {{animations?'animation-cover':''}}" style="animation-play-state:{{animationstate}}">
+            <image class="i-circle" src="{{songRes.album.blurPicUrl}}"></image>
+        </view>
+    </view>
+    <!-- 导航栏按钮（无功能） -->
+    <view class="third-nav fl s-a">
+        <!-- 导航栏模板 -->
+        <view class="nav-models" wx:for="{{navImages}}" wx:key="index">
+            <image class="img" src="{{item}}"></image>
+        </view>
+    </view>
+    <!-- 歌曲进度条 -->
+    <view class="song-slider fl p-15">
+        <view class='slid m-auto f-s p-r'>
+            <slider bindchange="sliderChange" block-size="12px" step="2" value="{{offset}}" max="{{max}}" selected-color="#4c9dee" />
+            <view class="fl s-b">
+                <text class='times'>{{starttime}}</text>
+                <!-- 进度时长 -->
+                <text class='times'>{{duration}}</text>
+                <!-- 总时长 -->
+            </view>
+        </view>
+    </view>
+    <!-- 底部导航栏 -->
+    <view class="bottom-nav fl s-a">
+        <!-- 改变歌曲循环模式 -->
+        <view class="change-type" bind:tap="changeType">
+            <image class="img" src="../../assets/images/list-play.png" wx:if="{{playmode===0}}"></image>
+            <image class="img" src="../../assets/images/single-play.png" wx:if="{{playmode===1}}"></image>
+            <image class="img" src="../../assets/images/random-play.png" wx:if="{{playmode===2}}"></image>
+        </view>
+        <!-- 上一曲按钮 -->
+        <view class="prev-btn" bind:tap="playPrev">
+            <image class="img" src="../../assets/images/prev-btn.png"></image>
+        </view>
+        <!-- 暂停播放按钮 -->
+        <view class="play-pause" bind:tap="changePlay">
+            <!-- 播放按钮(点击后暂停) -->
+            <image wx:if="{{isOpen}}" class="img" src="../../assets/images/playing.png"></image>
+            <image wx:if="{{!isOpen}}" class="img" src="../../assets/images/pause.png"></image>
+        </view>
+        <!-- 下一曲按钮 -->
+        <view class="next-btn" bind:tap="playNext">
+            <image class="img" src="../../assets/images/next-btn.png"></image>
+        </view>
+        <!-- 歌单按钮 -->
+        <view class="list-btn">
+            <image class="img" src="../../assets/images/song-list.png"></image>
+        </view>
     </view>
 </view>

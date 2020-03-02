@@ -1,13 +1,136 @@
 .song-singername {
-    margin: 0 auto 100rpx;
-    padding-top: 50rpx;
+    margin: 0 auto 90rpx;
+    padding-top: 120rpx;
 }
 
 
 /* 唱片盘 */
 
 .circle-cover {
-    width: 180rpx;
-    height: 180rpx;
+    width: 400rpx;
+    height: 400rpx;
     border-radius: 50%;
+}
+
+
+/* 封面图 */
+
+.album-cover {
+    left: 40rpx;
+    top: 40rpx;
+    width: 320rpx;
+    height: 320rpx;
+    border-radius: 50%;
+}
+
+
+/* 封面的动画 */
+
+.animation-cover {
+    animation-name: rotateCover;
+    /*动画的名称 */
+    animation-duration: 15000ms;
+    /*动画从开始到结束的时间*/
+    animation-timing-function: linear;
+    /*动画执行快慢的参数*/
+    animation-iteration-count: infinite;
+    /*动画执行多少次的参数*/
+    /*以下是兼容ios所需，参数意义与上相同*/
+}
+
+
+/* 动画 */
+
+@keyframes rotateCover {
+    /*开始转的角度*/
+    from {
+        transform: rotate(0deg);
+    }
+    /*结束的角度*/
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* 导航栏 */
+
+.third-nav {
+    margin-top: 100rpx;
+    margin-bottom: 50rpx;
+}
+
+.nav-models {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+
+/* 进度条 */
+
+.song-slider {
+    height: 80rpx;
+}
+
+.slid view>text:nth-child(1) {
+    color: #4c9dee;
+    margin-left: 6rpx;
+}
+
+.slid view>text:nth-child(2) {
+    margin-right: 6rpx;
+}
+
+slider {
+    width: 600rpx;
+    margin: 0;
+}
+
+
+/*横向布局  */
+
+.times {
+    width: 100rpx;
+    text-align: center;
+    display: inline-block;
+    font-size: 24rpx;
+    color: #999999;
+    margin-top: 5rpx;
+}
+
+.title view {
+    text-indent: 2em;
+}
+
+
+/* 最底部导航栏 */
+
+
+/* 底部导航栏 */
+
+.bottom-nav {
+    margin-top: 30rpx;
+}
+
+
+/* 上一曲按钮(下一曲按钮样式相同) */
+
+
+/* 播放模式 */
+
+.change-type,
+.prev-btn,
+.next-btn,
+.list-btn {
+    margin-top: 8rpx;
+    width: 64rpx;
+    height: 64rpx;
+}
+
+
+/* 暂停播放按钮 */
+
+.play-pause {
+    width: 80rpx;
+    height: 80rpx;
 }
