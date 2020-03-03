@@ -1,2 +1,21 @@
-<!--components/common/players/players.wxml-->
-<text>components/common/players/players.wxml</text>
+<view class="fl playbox s-b a-c">
+    <view style="padding: 10rpx 30rpx;width:100%;border-top: 2rpx solid #AAAAA9;" class="fl s-b a-c">
+        <view class="fl" catch:tap="goToMusic">
+            <image class="picUrl-img" src="{{showData.picUrl || showData.al.picUrl}}" />
+            <view style="margin-left: 20rpx;">
+                <view class="song-name t-over">{{showData.song.name || showData.name}}</view>
+                <view class="song-singer t-over">{{showData.song.artists[0].name || showData.ar[0].name}}</view>
+            </view>
+        </view>
+        <view class="fl" style="z-index:1">
+            <view catch:tap="isPlay">
+                <image class="playlist-img" src="/assets/images/common-playing.png" wx:if="{{isPlay}}" />
+                <image class="playlist-img" src="/assets/images/common-pause.png" wx:else />
+            </view>
+            <image catch:tap="onClose" class="playlist-img" src="/assets/images/common-list.png" />
+            <van-popup show="{{ show }}" catch:close="onClose" round position="bottom" custom-style="height:800rpx;">
+                <!-- <playList /> -->
+            </van-popup>
+        </view>
+    </view>
+</view>

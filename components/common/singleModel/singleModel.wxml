@@ -1,7 +1,7 @@
 <!-- 单曲内容层 -->
 <view class="songs-content" wx:if="{{songes.length>0}}">
     <!-- 单曲模板 -->
-    <view class="song-model fl s-b m-b-10" wx:for="{{songes}}" wx:key="index">
+    <view class="song-model fl s-b m-b-10" wx:for="{{songes}}" wx:key="index" data-item="{{item}}" bind:tap="goToPlay">
         <!-- 左边内容层 -->
         <view class="song-left">
             <!-- 歌曲名 -->

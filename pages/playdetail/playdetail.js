@@ -2,7 +2,7 @@ import api from '../../http/api'
 import create from '../../utils/store/create'
 import store from '../../store/index'
 create.Page(store, {
-    use: ['songsources', 'bgMusic', 'playTypes'],
+    use: ['songsources', 'bgMusic', 'playTypes', 'isPlay', 'playIndex'],
     /**
      * 页面的初始数据
      */
@@ -32,14 +32,16 @@ create.Page(store, {
     // 获取音乐播放实例
     getPlayer() {
         const bgMusic = wx.getBackgroundAudioManager()
+        let that = this.store.data
+        let playNows = that.songsources[this.data.pIndex].publishTime ? 1 : 0
             // 歌曲名
         bgMusic.title = this.data.songRes.name
             // 专辑名
-        bgMusic.epname = this.data.songRes.album.name
+        bgMusic.epname = playNows === 0 ? this.data.songRes.album.name : this.data.songRes.al.name
             // 歌手名
-        bgMusic.singer = this.data.songRes.artists[0].name
+        bgMusic.singer = playNows === 0 ? this.data.songRes.artists[0].name : this.data.songRes.ar[0].name
             // 封面图
-        bgMusic.coverImgUrl = this.data.songRes.album.blurPicUrl
+        bgMusic.coverImgUrl = playNows === 0 ? this.data.songRes.album.blurPicUrl : this.data.songRes.al.picUrl
             // 设置了 src 之后会自动播放
             // 音源
         bgMusic.src = this.data.playSrc
@@ -53,16 +55,20 @@ create.Page(store, {
         this.setData({
             pIndex: that.songsources.length - 1
         })
+        that.playIndex = that.songsources.length - 1
         api.getSrces(that.songsources[this.data.pIndex])
-            // console.log(that.songsources[playIndex]);
-            // console.log(that.songsources[playIndex].srcs);
+        console.log(that.songsources[that.playIndex]);
+        // console.log(that.songsources[playIndex].srcs);
         setTimeout(() => {
             this.setData({
                 playSrc: that.songsources[this.data.pIndex].srcs,
-                songRes: that.songsources[this.data.pIndex].song
+                songRes: that.songsources[this.data.pIndex].publishTime ? that.songsources[this.data.pIndex] : that.songsources[this.data.pIndex].song
             })
-            this.getPlayer()
-        }, 1600)
+            console.log(this.data.playSrc);
+            setTimeout(() => {
+                this.getPlayer()
+            }, 2000)
+        }, 4000)
     },
     // 播放状态的监听
     onTimeUpdate(bgMusic) {
@@ -138,13 +144,13 @@ create.Page(store, {
             title: `${n===1?'单曲循环':n===2?'随机循环':'列表循环'}`,
             icon: 'none'
         });
-        console.log(this.data.playmode);
     },
     // 播放按钮和暂停按钮
     changePlay() {
         this.setData({
             isOpen: !this.data.isOpen
         })
+        this.store.data.isPlay = !this.store.data.isPlay
         if (!this.data.isOpen) {
             this.store.data.bgMusic.pause()
         } else {
@@ -178,7 +184,7 @@ create.Page(store, {
                     this.setData({
                         pIndex: t.pIndex,
                         playSrc: ts.songsources[t.pIndex].srcs,
-                        songRes: ts.songsources[t.pIndex].song
+                        songRes: ts.songsources[this.data.pIndex].publishTime ? ts.songsources[this.data.pIndex] : ts.songsources[this.data.pIndex].song
                     })
                 } else {
                     wx.showToast({
@@ -195,7 +201,7 @@ create.Page(store, {
                 this.setData({
                     pIndex: t.pIndex,
                     playSrc: ts.songsources[t.pIndex].srcs,
-                    songRes: ts.songsources[t.pIndex].song
+                    songRes: ts.songsources[this.data.pIndex].publishTime ? ts.songsources[this.data.pIndex] : ts.songsources[this.data.pIndex].song
                 })
             }
             this.setData({
@@ -223,7 +229,7 @@ create.Page(store, {
                 this.setData({
                     pIndex: t.pIndex,
                     playSrc: ts.songsources[t.pIndex].srcs,
-                    songRes: ts.songsources[t.pIndex].song
+                    songRes: ts.songsources[this.data.pIndex].publishTime ? ts.songsources[this.data.pIndex] : ts.songsources[this.data.pIndex].song
                 })
             } else {
                 let rNum = parseInt(Math.random() * (ts.songsources.length))
@@ -231,7 +237,7 @@ create.Page(store, {
                 this.setData({
                     pIndex: t.pIndex,
                     playSrc: ts.songsources[t.pIndex].srcs,
-                    songRes: ts.songsources[t.pIndex].song
+                    songRes: ts.songsources[this.data.pIndex].publishTime ? ts.songsources[this.data.pIndex] : ts.songsources[this.data.pIndex].song
                 })
             }
             this.setData({
@@ -246,20 +252,27 @@ create.Page(store, {
      */
     onLoad: function(options) {
         let that = this.store.data
-        if (options.sid === '1') {
-            this.getSongs()
+        if (options.sid) {
+            if (options.sid === '1') {
+                this.getSongs()
+            } else {
+                that.songsources.map(item => {
+                    if (item.id == options.sid) {
+                        this.setData({
+                            playSrc: item.srcs,
+                            songRes: item.publishTime ? item : item.song
+                        })
+                    }
+                })
+                setTimeout(() => {
+                    this.getPlayer()
+                }, 100)
+            }
         } else {
-            that.songsources.map(item => {
-                if (item.id == options.sid) {
-                    this.setData({
-                        playSrc: item.srcs,
-                        songRes: item.song
-                    })
-                }
+            this.setData({
+                songRes: that.songsources[this.store.data.playIndex].al ? that.songsources[this.store.data.playIndex] : that.songsources[this.store.data.playIndex].song
             })
-            setTimeout(() => {
-                this.getPlayer()
-            }, 100)
+            console.log(this.data.songRes);
         }
     },
 
@@ -274,6 +287,22 @@ create.Page(store, {
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
+        if (this.store.data.isPlay) {
+            this.setData({
+                isOpen: true,
+                animationstate: 'running'
+            })
+        } else {
+            this.setData({
+                isOpen: false,
+                animationstate: 'paused'
+            })
+        }
+        if (this.store.data.playTypes !== null) {
+            this.setData({
+                playmode: this.store.data.playTypes
+            })
+        }
         this.setData({
             playlist: this.store.data.songsources
         })

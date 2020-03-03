@@ -3,6 +3,7 @@
         "singerDetail": "../../components/singerDetail/singerDetail",
         "singerDetailTwo": "../../components/singerDetailTwo/singerDetailTwo",
         "singerAlbumDetail": "../../components/singerAlbumDetail/singerAlbumDetail",
-        "singerMvDetail": "../../components/singerMvDetail/singerMvDetail"
+        "singerMvDetail": "../../components/singerMvDetail/singerMvDetail",
+        "playBox": "../../components/common/players/players"
     }
 }

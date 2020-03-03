@@ -3,7 +3,12 @@ import create from '../../utils/store/create'
 import store from '../../store/index'
 var time = require('../../utils/util');
 create.Page(store, {
-    use: ['singerOffset'],
+    use: ['singerOffset', 'songsources'],
+    computed: {
+        length() {
+            return this.songsources.length
+        }
+    },
     /**
      * 页面的初始数据
      */

@@ -13,6 +13,7 @@
         "songlist": "../../components/search/songlist/songlist",
         "radio": "../../components/search/radio/radio",
         "user": "../../components/search/user/user",
-        "mv": "../../components/search/mv/mv"
+        "mv": "../../components/search/mv/mv",
+        "playBox": "../../components/common/players/players"
     }
 }

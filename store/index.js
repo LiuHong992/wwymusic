@@ -24,9 +24,9 @@ export default {
         // 背景播放实例
         bgMusic: null,
         // 播放状态
-        isPlay: false,
+        isPlay: true,
         // 播放类型
-        playTypes: 0,
+        playTypes: null,
         // 播放到第几首歌
         playIndex: 0,
     }

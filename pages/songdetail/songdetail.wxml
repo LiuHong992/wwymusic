@@ -104,12 +104,11 @@
         </view>
         <!-- 下方具体歌曲内容 -->
         <scroll-view scroll-y="{{true}}" class="songs-maincont">
-            <!-- <view class="songs-maincont"> -->
             <!-- 歌曲模板 -->
-            <view class="song-item" wx:for="{{albumsArr}}" wx:key="index">
+            <view class="song-item" wx:for="{{albumsArr}}" wx:key="index" data-item="{{item}}" bind:tap="goToPlay">
                 <songDetailModel songMain="{{item}}" songIndex="{{index+1}}"></songDetailModel>
             </view>
-            <!-- </view> -->
         </scroll-view>
     </view>
+    <playBox wx:if="{{length>0}}"></playBox>
 </scroll-view>

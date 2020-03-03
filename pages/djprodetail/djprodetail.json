@@ -1,6 +1,7 @@
 {
     "usingComponents": {
         "mainDetail": "../../components/djproDetail/mainDetail/mainDetail",
-        "proDetail": "../../components/djproDetail/proDetail/proDetail"
+        "proDetail": "../../components/djproDetail/proDetail/proDetail",
+        "playBox": "../../components/common/players/players"
     }
 }

@@ -1,7 +1,8 @@
 {
     "usingComponents": {
         "navBarTwo": "../../components/navBarTwo/navBarTwo",
-        "songDetailModel": "../../components/songDetailModel/songDetailModel"
+        "songDetailModel": "../../components/songDetailModel/songDetailModel",
+        "playBox": "../../components/common/players/players"
     },
     "navigationStyle": "custom"
 }

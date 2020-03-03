@@ -1,14 +1,14 @@
 <!-- 最大的内容层盒子 -->
 <view class="main-contents">
     <!-- 虚化背景图 -->
-    <view class="bgs p-a w-100" style="background-image:url({{songRes.album.blurPicUrl}})"></view>
+    <view class="bgs p-a w-100" style="background-image:url({{songRes.album.blurPicUrl || songRes.al.picUrl}})"></view>
     <!-- 头部歌名和歌手名 -->
     <view class="song-singername">
         <!-- 歌名 -->
         <view class="song-name t-center wh-text f-s-18 m-b-20">{{songRes.name}}</view>
         <!-- 歌手名 -->
         <view class="singer-name t-center wh-text f-s-12">
-            {{songRes.artists[0].name}}-{{songRes.album.name}}
+            {{songRes.artists[0].name || songRes.ar[0].name}}-{{songRes.album.name || songRes.al.name}}
         </view>
     </view>
     <!-- 唱片盘内容层 -->
@@ -16,7 +16,7 @@
         <image class="i-circle" src="../../assets/images/record.png"></image>
         <!-- 专辑封面(含动画) -->
         <view class="album-cover p-a {{animations?'animation-cover':''}}" style="animation-play-state:{{animationstate}}">
-            <image class="i-circle" src="{{songRes.album.blurPicUrl}}"></image>
+            <image class="i-circle" src="{{songRes.album.blurPicUrl || songRes.al.picUrl}}"></image>
         </view>
     </view>
     <!-- 导航栏按钮（无功能） -->

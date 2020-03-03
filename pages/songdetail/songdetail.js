@@ -1,6 +1,13 @@
 import api from '../../http/api'
-Page({
-
+import store from '../../store/index'
+import create from '../../utils/store/create'
+create.Page(store, {
+    use: ['songsources'],
+    computed: {
+        length() {
+            return this.songsources.length
+        }
+    },
     /**
      * 页面的初始数据
      */
@@ -100,6 +107,28 @@ Page({
             return items.subscribedCount = `${one}万`
         } else {
             return items.subscribedCount = `${items.subscribedCount}`
+        }
+    },
+    // 跳转播放页
+    goToPlay(e) {
+        let { item } = e.currentTarget.dataset
+        let that = this.store.data
+        let hadFlag = true
+        that.songsources.map(itemOne => {
+            if (itemOne.id === item.id) {
+                hadFlag = false
+            }
+        })
+        if (hadFlag) {
+            that.songsources.push(item)
+            wx.navigateTo({
+                url: `../../pages/playdetail/playdetail?sid=1`
+            });
+            console.log(that.songsources);
+        } else {
+            wx.navigateTo({
+                url: `../../pages/playdetail/playdetail?sid=${item.id}`
+            });
         }
     },
     /**

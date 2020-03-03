@@ -3,7 +3,12 @@ var time = require('../../utils/util');
 import store from '../../store/index'
 import create from '../../utils/store/create'
 create.Page(store, {
-    use: ['searchLimit', 'afterSearch', 'searchH'],
+    use: ['searchLimit', 'afterSearch', 'searchH', 'songsources'],
+    computed: {
+        length() {
+            return this.songsources.length
+        }
+    },
     /**
      * 页面的初始数据
      */

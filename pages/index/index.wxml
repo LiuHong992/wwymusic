@@ -156,3 +156,5 @@
         </vant-tab>
     </vant-tabs>
 </view>
+<!-- 音乐播放盒子 -->
+<playBox wx:if="{{length>0}}"></playBox>
